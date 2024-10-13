@@ -1,12 +1,18 @@
+<app-navbar></app-navbar>  <!-- Incluir lso componentes asi-->
+
 <header>
-  <p>Página inicial de {{ title }}</p>
+ 
   <ul>
     <li><a routerLink="">Inicio</a></li>
     <li><a routerLink="/login">Login</a></li>
     <li><a routerLink="/registro">Registro</a></li>
- </ul>
- </header>
- <router-outlet></router-outlet>
- <footer>
-  <p>{{footer}}</p>
- </footer>
+  </ul>
+  
+</header>
+
+<router-outlet></router-outlet> <!-- Aquí se renderizan las rutas -->
+
+
+<footer>
+  <p>{{ footer }}</p>
+</footer>
