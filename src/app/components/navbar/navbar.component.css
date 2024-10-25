@@ -8,7 +8,7 @@
 body {
   height: 100vh; /* Altura completa de la ventana */
   background-color: #222; /* Color de fondo oscuro */
-  background-image: url('https://i.pinimg.com/originals/5d/75/8f/5d758f8778e039a171942a1993334d50.gif'); /* Añade la URL de la imagen aquí si es necesario */
+  background-image: url('https://i.pinimg.com/originals/61/0d/30/610d309ee5ecc91b82365a0f71926bc9.gif'); /* Añade la URL de la imagen aquí si es necesario */
   background-size: cover; /* Opcional: para que la imagen cubra toda la pantalla */
   background-position: center; /* Opcional: centra la imagen de fondo */
 }
