@@ -1,63 +1,86 @@
-/* Ajustar el tamaño máximo del logo */
-.logo {
-    max-height: 100px; /* Puedes ajustar según necesites */
-    width: auto;      /* Mantiene la proporción de la imagen */
-  }
-  
-  /* Ajuste adicional para pantallas más pequeñas */
-  @media (max-width: 576px) {
-    .logo {
-      max-height: 40px; /* Tamaño menor para pantallas pequeñas */
-    }
-  }
-  
-/* Cambiar el color de fondo del navbar */
-.navbar {
-    background-color: #b2ff00 !important; /* Color de fondo */
-  }
-  
-  /* Cambiar el color y el grosor de las letras */
-  .navbar-nav .nav-link {
-    color: #191919 !important; /* Color de las letras */
-    font-weight: 800; /* Extra bold*/
-  }
-  
-  /* Cambiar el color de las letras en el hover */
-  .navbar-nav .nav-link:hover {
-    color: rebeccapurple; /* Color al pasar el mouse, ajusta según prefieras */
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif; /* Fuente general */
+}
 
-  .nav-link i {
-  margin-left: 15px;  /* Espacio entre los iconos */
-  color: #191919;     /* Color del icono */
+body {
+  height: 100vh; /* Altura completa de la ventana */
+  background-color: #222; /* Color de fondo oscuro */
+  background-image: url('https://i.pinimg.com/originals/5d/75/8f/5d758f8778e039a171942a1993334d50.gif'); /* Añade la URL de la imagen aquí si es necesario */
+  background-size: cover; /* Opcional: para que la imagen cubra toda la pantalla */
+  background-position: center; /* Opcional: centra la imagen de fondo */
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #ffff;
+  font-size: 1rem;
+}
+
+a:hover {
+  color: burlywood;
+}
+
+/* Header */
+header {
+  position: relative;
+  padding: 0 2rem;
 }
 
 .navbar {
-  background-color: #191919; /* Fondo del navbar */
+  width: 100%;
+  height: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.icon {
-    color: #b2ff00;  /* Color del icono */
-    transition: all 0.3s ease;  /* Suaviza el cambio */
-  }
-  
-  /* Pantallas grandes: Computadoras y tablets grandes */
-  @media (min-width: 1200px) {
-    .icon {
-      font-size: 2.5rem;
-    }
-  }
-  
-  /* Tablets y pantallas medianas */
-  @media (min-width: 768px) and (max-width: 1199px) {
-    .icon {
-      font-size: 2rem;
-    }
-  }
-  
-  /* Móviles: Incluye dispositivos de alta densidad */
-  @media (max-width: 767px) {
-    .icon {
-      font-size: 1.8rem;
-    }
-  }
+.navbar .logo a {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar .links { /* Corregido aquí */
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar .toggle_btn{
+  color: #ffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+
+}
+
+.action_btn{
+  background-color: rgb(224, 219, 208);
+  color: #000000;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: scale 0.2 ease;
+}
+
+.action_btn:hover{
+  scale: 1.05;
+  color: #ffff;
+
+}
+
+.action_btn:active{
+  scale: 0.95;
+
+}
