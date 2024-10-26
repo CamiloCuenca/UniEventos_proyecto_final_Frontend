@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ItemEventDTO } from '../interface/item-event-dto'; // Ruta al DTO
-import { CarrucelComponent } from '../carrucel/carrucel.component';
-import { CardComponent } from '../card/card.component';
+import { ItemEventDTO } from '../../interface/item-event-dto'; // Ruta al DTO
+import { CarrucelComponent } from '../../components/carrucel/carrucel.component';
+import { CardComponent } from '../../components/card/card.component';
 import { CommonModule } from '@angular/common';
-import { EventService } from '../services/event.service';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-inicio',
