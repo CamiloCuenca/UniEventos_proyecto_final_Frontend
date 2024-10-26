@@ -8,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-
+  onSubmit() {
+    // Aquí puedes manejar la lógica del inicio de sesión
+    console.log('Formulario de inicio de sesión enviado');
+  }
 }

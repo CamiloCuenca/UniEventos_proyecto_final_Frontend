@@ -1,6 +1,7 @@
 <body>
   <app-carrucel></app-carrucel>
 
+
   <div class="card-container">
     <app-card *ngFor="let event of events"
       [eventImage]="event.urlImagePoster"
@@ -9,4 +10,5 @@
       [eventLocation]="event.address ?? 'Ubicación no disponible'">
     </app-card>
   </div>
+  <app-paginador></app-paginador>
 </body>

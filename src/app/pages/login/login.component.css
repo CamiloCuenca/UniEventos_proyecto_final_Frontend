@@ -1,0 +1,50 @@
+.container {
+  max-width: 400px; /* Ancho máximo del contenedor */
+  margin: auto; /* Centra el contenedor */
+  padding: 30px; /* Espaciado interior aumentado */
+  border-radius: 12px; /* Bordes redondeados */
+  background-color: #f9f9f9; /* Fondo claro */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+}
+
+/* Efecto al pasar el ratón sobre el contenedor */
+.container:hover {
+  transform: translateY(-5px); /* Eleva el contenedor al pasar el ratón */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+
+/* Estilo para los campos de entrada */
+input[type="email"],
+input[type="password"] {
+  border: 1px solid #5e5e5e; /* Borde del campo de entrada */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px; /* Espaciado interno */
+  width: 100%; /* Ancho completo */
+  margin-bottom: 15px; /* Espacio entre los campos */
+  transition: border-color 0.3s ease; /* Transición suave para el borde */
+}
+
+/* Efecto al pasar el ratón sobre los campos de entrada */
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: burlywood; /* Color del borde al enfocar */
+  outline: none; /* Quitar contorno por defecto */
+}
+
+/* Estilo para el botón de enviar */
+button[type="submit"] {
+  background-color: #5e5e5e; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  padding: 10px 15px; /* Espaciado interno del botón */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave */
+}
+
+/* Efecto al pasar el ratón sobre el botón */
+button[type="submit"]:hover {
+  background-color: burlywood; /* Color de fondo al pasar el ratón */
+  transform: translateY(-2px); /* Eleva el botón al pasar el ratón */
+}

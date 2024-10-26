@@ -1,0 +1,14 @@
+/* Estilo para el fondo de toda la aplicación */
+:host {
+  display: block; /* Asegúrate de que el host ocupa todo el espacio disponible */
+  background-color: #5e5e5e; /* Color de fondo para toda la aplicación */
+  min-height: 100vh; /* Asegura que el componente ocupe al menos la altura de la ventana */
+}
+
+/* Si tienes un contenedor específico que debe ser blanco */
+.container {
+  background-color: #ffffff; /* Fondo blanco solo para el contenedor */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  padding: 20px; /* Espaciado interno */
+}

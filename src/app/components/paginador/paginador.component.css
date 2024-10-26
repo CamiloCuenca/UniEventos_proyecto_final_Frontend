@@ -1,0 +1,42 @@
+/* Asegúrate de que no haya márgenes no deseados */
+.pagination-container {
+  margin: 5px; /* Márgenes alrededor de la paginación */
+  display: flex; /* Utiliza flexbox para el contenedor */
+  justify-content: flex-end; /* Alinea el contenido a la derecha */
+}
+
+/* Personalización de la paginación */
+.pagination {
+  background-color: #fff; /* Color de fondo */
+  border-radius: 0.5rem; /* Esquinas redondeadas */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  padding: 5px; /* Espaciado interno de la paginación */
+  display: flex; /* Asegura que los elementos estén en línea */
+  gap: 5px; /* Espacio entre los elementos de paginación */
+  width: max-content; /* Ajusta el ancho al contenido */
+  min-width: 150px; /* Establece un ancho mínimo para la paginación */
+}
+
+/* Estilos para los enlaces */
+.page-link {
+  color: #5e5e5e; /* Color de texto */
+  padding: 0.5rem 0.75rem; /* Espaciado interior */
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+/* Efecto al pasar el ratón por encima */
+.page-link:hover {
+  background-color: burlywood; /* Color de fondo al pasar el ratón */
+  color: white; /* Color del texto al pasar el ratón */
+}
+
+/* Estilos para el estado deshabilitado */
+.page-item.disabled .page-link {
+  color: #6c757d; /* Color para texto deshabilitado */
+  background-color: transparent; /* Fondo transparente */
+}
+
+/* Estilo del botón "Next" y "Previous" */
+.page-item a {
+  font-weight: bold; /* Texto en negrita */
+}

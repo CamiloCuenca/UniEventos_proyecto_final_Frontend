@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { InicioComponent } from './components/inicio/inicio.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegistroComponent } from './components/registro/registro.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegistroComponent } from './pages/registro/registro.component';
+
 
 
 export const routes: Routes = [
