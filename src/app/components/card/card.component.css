@@ -5,6 +5,7 @@
   color: white; /* Texto blanco */
   border-radius: 8px; /* Bordes redondeados */
   overflow: hidden; /* Para que el contenido no desborde */
+
 }
 
 .event-image {
@@ -33,7 +34,7 @@
 }
 
 .btn:hover {
-  background-color: #0056b3; /* Color al pasar el mouse */
+  background-color: burlywood; /* Color al pasar el mouse */
   transform: scale(1.05); /* Efecto de escala al pasar el mouse */
 }
 
@@ -48,6 +49,6 @@
 }
 
 .btn-outline-light:hover {
-  background-color: white; /* Fondo blanco al pasar el mouse en el botón "Agregar al Carrito" */
+  background-color: burlywood; /* Fondo blanco al pasar el mouse en el botón "Agregar al Carrito" */
   color: black; /* Texto negro al pasar el mouse en el botón "Agregar al Carrito" */
 }

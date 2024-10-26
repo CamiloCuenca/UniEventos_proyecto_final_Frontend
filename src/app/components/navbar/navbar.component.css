@@ -2,15 +2,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif; /* Fuente general */
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
-  height: 10vh; /* Altura completa de la ventana */
+  height: 10vh; /* Cambiado a 100vh para ocupar toda la altura de la ventana */
   background-color: #5e5e5e; /* Color de fondo oscuro */
- /* background-image: url('https://i.pinimg.com/originals/61/0d/30/610d309ee5ecc91b82365a0f71926bc9.gif'); /* Fondo animado */
-  background-size: cover; /* Cubre toda la pantalla */
-  background-position: center; /* Centra la imagen */
+  /* background-image: url('https://i.pinimg.com/originals/61/0d/30/610d309ee5ecc91b82365a0f71926bc9.gif'); */
+  background-size: cover;
+  background-position: center;
+
 }
 
 li {
@@ -19,12 +20,12 @@ li {
 
 a {
   text-decoration: none;
-  color: #ffff;
+  color: #ffffff; /* Color blanco para el texto */
   font-size: 1rem;
 }
 
 a:hover {
-  color: burlywood;
+  color: burlywood; /* Color claro al pasar el mouse */
 }
 
 /* Header */
@@ -41,11 +42,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.2); /* Fondo semitransparente */
+  border-radius: 20px; /* Bordes redondeados */
+  padding: 0 1rem; /* Espaciado interno */
 }
 
-.navbar .logo a {
-  font-size: 1.5rem;
-  font-weight: bold;
+.navbar .logo a img {
+  height: 60px; /* Control de altura de la imagen del logo */
 }
 
 .navbar .links {
@@ -54,33 +57,56 @@ header {
 }
 
 .navbar .toggle_btn {
-  color: #ffff;
+  color: #ffffff;
   font-size: 1.5rem;
   cursor: pointer;
-  display: none;
+  display: none; /* Ocultamos el botón en pantallas grandes */
 }
 
+/* Estilos para botones */
 .action_btn {
   background-color: rgb(224, 219, 208);
   color: #000000;
   padding: 0.5rem 1rem;
+  margin: 5px;
   border: none;
-  outline: none;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: bold;
   cursor: pointer;
-  transition: scale 0.2s ease;
+  transition: all 0.3s ease; /* Transición suave para todos los cambios */
 }
 
 .action_btn:hover {
-  scale: 1.05;
-  color: #ffff;
+  transform: scale(1.05); /* Escala al pasar el mouse */
+  color: #ffffff; /* Cambiar color al pasar el mouse */
 }
 
 .action_btn:active {
-  scale: 0.95;
-
-
+  transform: scale(0.95); /* Efecto de reducción al hacer clic */
 }
 
+/* Media Query para responsividad */
+@media (max-width: 768px) {
+  .navbar .links {
+    display: none; /* Ocultar enlaces en pantallas pequeñas */
+  }
+
+  .navbar .toggle_btn {
+    display: block; /* Mostrar botón de menú en pantallas pequeñas */
+  }
+
+  /* Muestra los enlaces al hacer clic en el botón */
+  .navbar.active .links {
+    display: flex;
+    flex-direction: column; /* Muestra en columna */
+    position: absolute; /* Posiciona el menú */
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo más oscuro */
+    width: 100%; /* Ancho completo */
+    top: 60px; /* Ubicación debajo de la navbar */
+    left: 0; /* Alinear a la izquierda */
+    z-index: 100; /* Asegura que esté encima de otros elementos */
+    border-radius: 0 0 8px 8px; /* Bordes redondeados en la parte inferior */
+    padding: 1rem 0; /* Espaciado vertical */
+  }
+}
