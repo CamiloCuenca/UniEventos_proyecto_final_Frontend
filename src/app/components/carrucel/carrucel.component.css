@@ -1,0 +1,81 @@
+/* Estilos del Carrusel */
+.carrusel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px; /* Máximo ancho del carrusel */
+  margin: auto;
+  overflow: hidden; /* Para ocultar imágenes fuera del contenedor */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra para profundidad */
+}
+
+/* Animación para las imágenes */
+.carrusel img {
+  width: 100%;
+  display: none; /* Oculta todas las imágenes por defecto */
+  opacity: 0; /* Inicialmente transparentes */
+  transition: opacity 0.5s ease-in-out; /* Transición suave de opacidad */
+}
+
+.carrusel img.active {
+  display: block; /* Muestra la imagen activa */
+  opacity: 1; /* Hace visible la imagen activa */
+}
+
+/* Estilos de los botones */
+button {
+  position: absolute; /* Para posicionar los botones sobre el carrusel */
+  top: 50%; /* Centrado vertical */
+  transform: translateY(-50%); /* Ajuste para el centrado */
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  font-size: 24px; /* Tamaño de la fuente */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  padding: 10px 15px; /* Espaciado interno */
+  border-radius: 50px; /* Bordes redondeados en los botones */
+  width: auto; /* Ancho automático */
+  z-index: 10; /* Asegura que los botones estén sobre las imágenes */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave para fondo y transformación */
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente al pasar el mouse */
+  color: black; /* Cambia el color del texto al negro */
+  transform: scale(1.1); /* Escala ligeramente el botón */
+}
+
+button:nth-of-type(1) {
+  left: 20px; /* Botón izquierdo */
+}
+
+button:nth-of-type(2) {
+  right: 20px; /* Botón derecho */
+}
+
+/* Efecto de 'Cinta de Película' */
+.carrusel {
+  display: flex; /* Para colocar las imágenes en línea */
+  transition: transform 0.5s ease; /* Transición suave para mover el carrusel */
+}
+
+.carrusel img {
+  width: 100%; /* Asegura que las imágenes ocupen todo el ancho */
+  min-width: 100%; /* Asegura que cada imagen ocupe toda la vista */
+}
+
+/* Estilos Generales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif; /* Fuente general */
+}
+
+body {
+  height: 100vh; /* Altura completa de la ventana */
+  background-color: #5e5e5e; /* Color de fondo oscuro */
+  background-image: url('https://i.pinimg.com/originals/61/0d/30/610d309ee5ecc91b82365a0f71926bc9.gif'); /* Fondo animado */
+  background-size: cover; /* Cubre toda la pantalla */
+  background-position: center; /* Centra la imagen */
+}

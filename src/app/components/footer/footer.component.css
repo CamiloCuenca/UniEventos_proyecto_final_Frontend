@@ -1,0 +1,38 @@
+.footer {
+  background-color: #333; /* Color de fondo oscuro */
+  color: #fff; /* Color del texto */
+  padding: 20px; /* Espaciado interno */
+  text-align: center; /* Centra el texto */
+  position: relative; /* Permite posicionar elementos de forma absoluta */
+}
+
+.footer-content {
+  display: flex; /* Usar flexbox para alinear el contenido */
+  flex-direction: column; /* Coloca los elementos en columna */
+  align-items: center; /* Centra horizontalmente */
+}
+
+.social-media {
+  margin-bottom: 15px; /* Margen inferior */
+}
+
+.social-icon {
+  color: #fff; /* Color de los íconos */
+  font-size: 24px; /* Tamaño de los íconos */
+  margin: 0 10px; /* Espaciado lateral entre íconos */
+  transition: color 0.3s; /* Transición suave al cambiar de color */
+}
+
+.social-icon:hover {
+  color: #007bff; /* Color al pasar el mouse */
+}
+
+.contact-info p {
+  margin: 5px 0; /* Espaciado vertical */
+}
+
+.footer-bottom {
+  border-top: 1px solid #555; /* Línea superior */
+  padding-top: 10px; /* Espaciado superior */
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+}

@@ -1,0 +1,54 @@
+.event-card {
+  width: 300px; /* Ancho de la tarjeta */
+  height: 400px; /* Altura de la tarjeta */
+  background-color: #fff; /* Color de fondo blanco */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+  overflow: hidden; /* Para que el contenido no desborde */
+  display: flex; /* Usar flexbox para alinear el contenido */
+  flex-direction: column; /* Colocar el contenido en columna */
+  margin: 20px; /* Margen alrededor de la tarjeta */
+}
+
+.event-image {
+  width: 100%; /* Ancho completo de la tarjeta */
+  height: 60%; /* Ocupa el 60% de la altura de la tarjeta */
+  object-fit: cover; /* Cubre el área sin distorsionar la imagen */
+}
+
+.event-info {
+  padding: 15px; /* Espaciado interno */
+  flex-grow: 1; /* Permite que la sección de información crezca */
+}
+
+.event-title {
+  font-size: 1.5em; /* Tamaño de fuente del título */
+  margin-bottom: 10px; /* Espaciado inferior */
+}
+
+.event-date, .event-location {
+  font-size: 1em; /* Tamaño de fuente de la fecha y lugar */
+  color: #555; /* Color gris para el texto */
+  margin: 5px 0; /* Espaciado vertical */
+}
+
+.button-container {
+  display: flex; /* Usar flexbox para los botones */
+  justify-content: space-between; /* Espaciado entre botones */
+  margin-top: 10px; /* Margen superior */
+}
+
+.btn {
+  background-color: #007bff; /* Color de fondo azul */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px 15px; /* Espaciado interno */
+  font-size: 1em; /* Tamaño de fuente */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  transition: background-color 0.3s; /* Transición suave al cambiar de color */
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Color al pasar el mouse */
+}

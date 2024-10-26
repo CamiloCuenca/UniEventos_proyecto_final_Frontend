@@ -1,0 +1,17 @@
+
+<div class="event-card">
+  <img [src]="eventImage" alt="Imagen del Evento" class="event-image">
+  <div class="event-info">
+      <h2 class="event-title">{{ eventTitle }}</h2>
+      <p class="event-date">Fecha: {{ eventDate }}</p>
+      <p class="event-location">Lugar: {{ eventLocation }}</p>
+      <div class="button-container">
+          <button class="btn buy-btn">
+              <i class="fas fa-shopping-cart"></i> Comprar
+          </button>
+          <button class="btn cart-btn">
+              <i class="fas fa-plus-circle"></i> Agregar al Carrito
+          </button>
+      </div>
+  </div>
+</div>

@@ -6,11 +6,11 @@
 }
 
 body {
-  height: 100vh; /* Altura completa de la ventana */
-  background-color: #222; /* Color de fondo oscuro */
-  background-image: url('https://i.pinimg.com/originals/61/0d/30/610d309ee5ecc91b82365a0f71926bc9.gif'); /* Añade la URL de la imagen aquí si es necesario */
-  background-size: cover; /* Opcional: para que la imagen cubra toda la pantalla */
-  background-position: center; /* Opcional: centra la imagen de fondo */
+  height: 10vh; /* Altura completa de la ventana */
+  background-color: #5e5e5e; /* Color de fondo oscuro */
+ /* background-image: url('https://i.pinimg.com/originals/61/0d/30/610d309ee5ecc91b82365a0f71926bc9.gif'); /* Fondo animado */
+  background-size: cover; /* Cubre toda la pantalla */
+  background-position: center; /* Centra la imagen */
 }
 
 li {
@@ -48,20 +48,19 @@ header {
   font-weight: bold;
 }
 
-.navbar .links { /* Corregido aquí */
+.navbar .links {
   display: flex;
   gap: 2rem;
 }
 
-.navbar .toggle_btn{
+.navbar .toggle_btn {
   color: #ffff;
   font-size: 1.5rem;
   cursor: pointer;
   display: none;
-
 }
 
-.action_btn{
+.action_btn {
   background-color: rgb(224, 219, 208);
   color: #000000;
   padding: 0.5rem 1rem;
@@ -71,16 +70,17 @@ header {
   font-size: 0.8rem;
   font-weight: bold;
   cursor: pointer;
-  transition: scale 0.2 ease;
+  transition: scale 0.2s ease;
 }
 
-.action_btn:hover{
+.action_btn:hover {
   scale: 1.05;
   color: #ffff;
-
 }
 
-.action_btn:active{
+.action_btn:active {
   scale: 0.95;
 
+
 }
+
