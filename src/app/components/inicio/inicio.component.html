@@ -1,11 +1,12 @@
 <body>
+  <app-carrucel></app-carrucel>
 
-<app-carrucel></app-carrucel>
-
-<p>Eventos</p>
-
-
-
-
-
+  <div class="card-container">
+    <app-card *ngFor="let event of events"
+      [eventImage]="event.urlImagePoster"
+      [eventTitle]="event.name"
+      [eventDate]="event.date | date:'medium'"
+      [eventLocation]="event.address ?? 'Ubicación no disponible'">
+    </app-card>
+  </div>
 </body>

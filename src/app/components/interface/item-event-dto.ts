@@ -9,5 +9,5 @@ export interface ItemEventDTO {
   date: string; // Se puede usar un string para representar LocalDateTime en formato ISO 8601
 
   /** La dirección no debe exceder los 100 caracteres */
-  address?: string; // Este campo es opcional, ya que no tiene @NotNull
+  address?: string | null; // Cambiar a string | null para que sea compatible
 }
