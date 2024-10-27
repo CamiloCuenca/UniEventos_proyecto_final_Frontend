@@ -6,11 +6,12 @@ import { CardComponent } from '../../components/card/card.component';
 import { CommonModule } from '@angular/common';
 import { EventService } from '../../services/event.service';
 import { PaginadorComponent } from '../../components/paginador/paginador.component';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [CarrucelComponent, CardComponent,CommonModule,PaginadorComponent],
+  imports: [CarrucelComponent, CardComponent,CommonModule,PaginadorComponent,FooterComponent],
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
 })
