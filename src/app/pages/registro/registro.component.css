@@ -1,0 +1,52 @@
+.container {
+  max-width: 500px; /* Ancho máximo del contenedor */
+  margin: auto; /* Centra el contenedor */
+  padding: 30px; /* Espaciado interior */
+  border-radius: 12px; /* Bordes redondeados */
+  background-color: #ffffff; /* Fondo blanco */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+}
+
+/* Efecto al pasar el ratón por encima del contenedor */
+.container:hover {
+  transform: translateY(-5px); /* Eleva el contenedor */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+}
+
+/* Botón personalizado */
+.btn-primary {
+  background-color: #5e5e5e; /* Color de fondo */
+  border: none; /* Sin borde */
+}
+
+.btn-primary:hover {
+  background-color: burlywood; /* Color al pasar el ratón */
+  color: white; /* Color del texto al pasar el ratón */
+  transform: scale(1.05); /* Efecto de aumento */
+}
+
+/* Estilo para los inputs */
+.form-control {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Sombra para los inputs */
+  transition: box-shadow 0.3s ease; /* Transición suave para la sombra */
+}
+
+.form-control:focus {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* Sombra más intensa al hacer foco */
+}
+
+/* Mensaje de error */
+.text-danger {
+  animation: fadeIn 0.5s; /* Animación para el mensaje de error */
+}
+
+/* Animación de desvanecimiento */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
