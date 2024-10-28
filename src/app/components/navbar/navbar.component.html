@@ -1,37 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="navbar.component.css">
-  <title>Responsive Navbar</title>
-</head>
-
-<body>
-  <header>
-    <div class="navbar">
-      <div class="logo">
-        <a href="#">
-          <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-1c779.appspot.com/o/logoOscuro.svg?alt=media&token=2d245213-4432-4284-a36b-089cc0da1bf8" alt="Web Dev Creative" />
-        </a>
-      </div>
-      <ul class="links">
-        <li><a routerLink="#">Inicio</a></li>
-        <li><a routerLink="about">About</a></li>
-        <li><a routerLink="services">Services</a></li>
-        <li><a routerLink="contact">Contact</a></li>
-      </ul>
-      <div>
-        <a routerLink="/login" class="action_btn">Login</a>
-        <a routerLink="/registro" class="action_btn">Registrate</a>
-      </div>
-      <div class="toggle_btn">
-        <i class="fa-solid fa-bars"></i>
-      </div>
+<header>
+  <div class="navbar">
+    <div class="logo">
+      <a href="#">
+        <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-1c779.appspot.com/o/logoOscuro.svg?alt=media&token=2d245213-4432-4284-a36b-089cc0da1bf8" alt="Web Dev Creative" />
+      </a>
     </div>
-  </header>
-</body>
+    <ul class="links">
+      <li><a routerLink="#">Inicio</a></li>
+      <li><a routerLink="about">About</a></li>
+      <li><a routerLink="services">Services</a></li>
+      <li><a routerLink="contact">Contact</a></li>
 
-</html>
+    </ul>
+    <div *ngIf="!isLoggedIn()">
+      <a routerLink="/login" class="action_btn">Login</a>
+      <a routerLink="/registro" class="action_btn">Registrate</a>
+    </div>
+    <div *ngIf="isLoggedIn()" class="dropdown">
+      <button class="btn  dropdown-toggle" type="button" aria-expanded="false" (click)="toggleDropdown()">
+        <i class="fa-solid fa-user"></i> {{ userName || 'Usuario' }}
+      </button>
+      <ul class="dropdown-menu" [ngClass]="{'show': dropdownOpen}">
+        <li><a class="dropdown-item" routerLink="/perfil">Ver Perfil</a></li>
+        <li><a class="dropdown-item" (click)="logout()">Cerrar sesión</a></li>
+      </ul>
+    </div>
+    <div class="toggle_btn">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </div>
+
+  <!--Toco agregar este link para que cargara el icono de FontAwesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</header>
