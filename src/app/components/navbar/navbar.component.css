@@ -110,3 +110,24 @@ header {
     padding: 1rem 0; /* Espaciado vertical */
   }
 }
+
+
+.dropdown-menu {
+  display: none; /* Oculta el menú por defecto */
+  background-color: #5e5e5e;
+}
+
+.dropdown-menu.show {
+  display: block; /* Muestra el menú cuando está activo */
+}
+
+.btn{
+  background-color: #333;
+  color: white;
+}
+.navbar .dropdown button {
+  padding: 0.5rem; /* Ajusta el espaciado interno si es necesario */
+  font-size: 1rem; /* Asegúrate de que el tamaño de la fuente sea adecuado */
+}
+
+

@@ -16,7 +16,7 @@ body {
 .card-container {
   display: grid;
   margin-top: 80px;
-  grid-template-columns: repeat(4, 1fr); /* Tres columnas de igual tamaño */
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual tamaño */
   gap: 16px; /* Espacio entre los cards */
   justify-items: center; /* Centra cada card dentro de su celda */
 }
