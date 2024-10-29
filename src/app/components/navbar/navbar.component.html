@@ -2,40 +2,92 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" /> <!-- Corrección aquí: debe ser UTF-8 -->
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="navbar.component.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
   <title>Responsive Navbar</title>
 </head>
 
 <body>
-  <header>
-    <div class="navbar">
-      <div class="logo">
-        <a href="#">
-          <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-1c779.appspot.com/o/logoOscuro.svg?alt=media&token=2d245213-4432-4284-a36b-089cc0da1bf8" alt="Web Dev Creative" style="height: 40px;"/> <!-- Cambia 'URL_DE_TU_LOGO' por la URL de tu logo -->
+  <div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-between py-3">
+      <div class="col-md-3 mb-2 mb-md-0">
+        <a routerLink="" class="d-inline-flex align-items-center">
+          <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-1c779.appspot.com/o/logoOscuro.svg?alt=media&token=2d245213-4432-4284-a36b-089cc0da1bf8" alt="Logo" style="height: 40px;" />
+      
         </a>
       </div>
-      <ul class="links">
-        <li><a href="hero">inicio</a></li>
-        <li><a href="about">About</a></li>
-        <li><a href="services">Services</a></li>
-        <li><a href="contact">Contact</a></li>
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a routerLink="hero" class="nav-link px-2 link-body-emphasis">Inicio</a></li>
+        <li><a routerLink="about" class="nav-link px-2">About</a></li>
+        <li><a routerLink="services" class="nav-link px-2">Servicios</a></li>
+        <li><a routerLink="contact" class="nav-link px-2">Contact</a></li>
       </ul>
-      <div>
-        <a href="" class="action_btn">login</a>
-        <a href="" class="action_btn">registrate</a>
+
+      <div class="col-md-3 text-end">
+        <button type="button" routerLink="/login" class="btn btn-outline-primary me-2">Login</button>
+        <button type="button" routerLink="/registro" class="btn btn-primary">Registro</button>
       </div>
+
       <div class="toggle_btn">
         <i class="fa-solid fa-bars"></i>
       </div>
-    
+    </header>
 
-    </div>
-  </header>
+    <ul class="dropdown_menu">
+      <li><a routerLink="hero">Inicio</a></li>
+      <li><a routerLink="about">About</a></li>
+      <li><a routerLink="services">Servicios</a></li>
+      <li><a routerLink="contact">Contact</a></li>
+      <li>
+        <a routerLink="/login" class="action_btn">Login</a>
+        <a routerLink="/registro" class="action_btn">Registro</a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggleBtn = document.querySelector('.toggle_btn');
+      const dropDownMenu = document.querySelector('.dropdown_menu');
+
+      toggleBtn.onclick = function () {
+        dropDownMenu.classList.toggle('open');
+      };
+
+      // Cierra el menú al hacer clic fuera de él
+      document.addEventListener('click', function (event) {
+        if (!toggleBtn.contains(event.target) && !dropDownMenu.contains(event.target)) {
+          dropDownMenu.classList.remove('open');
+        }
+      });
+    });
+  </script>
+
+  <style>
+    /* CSS para la navbar */
+    .dropdown_menu {
+      display: none;
+      position: absolute;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      width: 100%;
+    }
+
+    .dropdown_menu.open {
+      display: block;
+    }
+
+    .action_btn {
+      margin: 5px;
+    }
+  </style>
 </body>
 
 </html>
