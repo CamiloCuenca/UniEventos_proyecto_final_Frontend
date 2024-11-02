@@ -6,11 +6,11 @@
 }
 
 body {
-  height: 100vh;
-  background-color: #222;
-  background-image: url('https://i.pinimg.com/originals/61/0d/30/610d309ee5ecc91b82365a0f71926bc9.gif');
-  background-size: cover;
-  background-position: center;
+  height: 100vh; /* Altura completa de la ventana */
+  background-color: #222; /* Color de fondo oscuro */
+  background-image: url('https://i.pinimg.com/originals/61/0d/30/610d309ee5ecc91b82365a0f71926bc9.gif'); /* Fondo animado */
+  background-size: cover; /* Cubre toda la pantalla */
+  background-position: center; /* Centra la imagen */
 }
 
 li {
@@ -19,12 +19,12 @@ li {
 
 a {
   text-decoration: none;
-  color: #ffff;
+  color: #ffffff; /* Color blanco para el texto */
   font-size: 1rem;
 }
 
 a:hover {
-  color: burlywood;
+  color: burlywood; /* Color claro al pasar el mouse */
 }
 
 /* Header */
@@ -43,16 +43,11 @@ header .d-flex {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 0; /* Agregar un poco de padding para espacio */
 }
 
-.logo a {
-  display: flex;
-  align-items: center;
-}
-
-.logo i {
-  font-size: 2rem; /* Icono más grande */
+.navbar .logo a {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .nav {
@@ -60,90 +55,31 @@ header .d-flex {
   gap: 2rem;
 }
 
-.nav-link {
-  color: #ffff; /* Color de los enlaces */
-  transition: color 0.3s ease; /* Transición suave */
+.navbar .toggle_btn {
+  color: #ffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
 }
 
-.nav-link:hover {
-  color: burlywood; /* Color al pasar el mouse */
-}
-
-.col-md-3.text-end {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.btn {
-  border-radius: 20px; /* Bordes redondeados */
-  font-size: 0.9rem;
-  margin-left: 1rem; /* Espacio entre botones */
-}
-
-.btn-outline-primary {
-  color: #ffffff;
-  border-color: #ffffff;
-}
-
-.btn-outline-primary:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.btn-primary {
+.action_btn {
   background-color: rgb(224, 219, 208);
   color: #000000;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: scale 0.2s ease;
 }
 
-/* Dropdown menu */
-.dropdown_menu {
-  position: absolute;
-  right: 2rem;
-  top: 68px;
-  width: 300px;
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  border-radius: 10px;
-  overflow: hidden;
-  opacity: 0; /* Inicialmente oculto */
-  visibility: hidden; /* Para evitar clics cuando está oculto */
-  transition: opacity 0.2s ease, visibility 0.2s ease; /* Transición suave */
+.action_btn:hover {
+  scale: 1.05;
+  color: #ffff;
 }
 
-.dropdown_menu.open {
-  opacity: 1; /* Mostrar el menú */
-  visibility: visible; /* Permitir interacción */
-}
-
-.dropdown_menu li {
-  padding: 0.7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.dropdown_menu .action_btn {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-/* Responsive */
-@media(max-width: 922px) {
-  .nav {
-    display: none; /* Ocultar la navegación en dispositivos pequeños */
-  }
-
-  .toggle_btn {
-    display: block; /* Mostrar el botón para abrir el menú */
-    color: #ffff;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-
-  .dropdown_menu {
-    position: relative; /* Cambiar la posición en vista móvil */
-    right: auto; /* Resetear la posición a la derecha */
-    top: auto; /* Resetear la posición superior */
-    width: 100%; /* Ancho completo en móviles */
-  }
+.action_btn:active {
+  scale: 0.95;
 }

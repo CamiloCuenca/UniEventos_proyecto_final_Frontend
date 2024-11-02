@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif; /* Fuente general */
+}
+
+body {
+
+  background-color: #5e5e5e; /* Color de fondo oscuro */
+ /** background-image: url('https://i.pinimg.com/originals/61/0d/30/610d309ee5ecc91b82365a0f71926bc9.gif'); /* Fondo animado */
+  background-size: cover; /* Cubre toda la pantalla */
+  background-position: center; /* Centra la imagen */
+}
+
+.card-container {
+  display: grid;
+  margin-top: 80px;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual tamaño */
+  gap: 16px; /* Espacio entre los cards */
+  justify-items: center; /* Centra cada card dentro de su celda */
+}
+
+app-card {
+  max-width: 300px; /* Ancho máximo para que las cards no se extiendan demasiado */
+  width: 100%; /* Asegura que ocupen todo el ancho disponible dentro de su celda */
+}

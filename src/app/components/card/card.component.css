@@ -1,0 +1,54 @@
+.event-card {
+  width: 300px; /* Ancho de la tarjeta */
+  height: 400px; /* Altura de la tarjeta */
+  background-color: black; /* Fondo negro */
+  color: white; /* Texto blanco */
+  border-radius: 8px; /* Bordes redondeados */
+  overflow: hidden; /* Para que el contenido no desborde */
+
+}
+
+.event-image {
+  height: 60%; /* Ocupa el 60% de la altura de la tarjeta */
+  object-fit: cover; /* Cubre el área sin distorsionar la imagen */
+}
+
+.event-title {
+  font-size: 1.5em; /* Tamaño de fuente del título */
+  font-weight: bold; /* Título en negrita */
+}
+
+.event-date, .event-location {
+  font-size: 1em; /* Tamaño de fuente de la fecha y lugar */
+  color: #ddd; /* Color gris claro para el texto */
+  margin: 5px 0; /* Espaciado vertical */
+}
+
+.button-container {
+  display: flex; /* Usar flexbox para los botones */
+  justify-content: space-between; /* Espaciado entre botones */
+}
+
+.btn {
+  transition: background-color 0.3s, transform 0.3s; /* Transición suave al cambiar de color y tamaño */
+}
+
+.btn:hover {
+  background-color: burlywood; /* Color al pasar el mouse */
+  transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+}
+
+.btn-light {
+  background-color: #ffffff; /* Color de fondo de los botones "Comprar" */
+  color: black; /* Texto negro en el botón "Comprar" */
+}
+
+.btn-outline-light {
+  border: 1px solid white; /* Borde blanco para el botón "Agregar al Carrito" */
+  color: white; /* Texto blanco en el botón "Agregar al Carrito" */
+}
+
+.btn-outline-light:hover {
+  background-color: burlywood; /* Fondo blanco al pasar el mouse en el botón "Agregar al Carrito" */
+  color: black; /* Texto negro al pasar el mouse en el botón "Agregar al Carrito" */
+}
