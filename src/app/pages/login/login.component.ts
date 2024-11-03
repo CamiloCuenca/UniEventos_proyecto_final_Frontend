@@ -36,8 +36,7 @@ export class LoginComponent {
       this.authService.iniciarSesion(loginData).subscribe({
         next: (response: { error: boolean; respuesta: TokenDTO }) => {
           if (!response.error && response.respuesta && response.respuesta.token) {
-            this.tokenService.login(response.respuesta.token); // Usa TokenService para guardar el token
-            this.router.navigate(['/dashboard']);
+            this.tokenService.login(response.respuesta.token); // Usa TokenService para gestionar el token y redirigir
           } else {
             console.error('Error en la respuesta del servidor:', response);
             this.errorMessage = 'Error en la respuesta del servidor';
