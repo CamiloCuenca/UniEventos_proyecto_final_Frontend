@@ -1,36 +1,58 @@
 <header>
+  <!-- Barra de navegación principal -->
   <div class="navbar">
+    <!-- Sección del logo -->
     <div class="logo">
       <a href="#">
-        <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-1c779.appspot.com/o/logoOscuro.svg?alt=media&token=2d245213-4432-4284-a36b-089cc0da1bf8" alt="Web Dev Creative" />
+        <!-- Imagen del logo que se carga desde Firebase Storage -->
+        <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-1c779.appspot.com/o/logoOscuro.svg?alt=media&token=2d245213-4432-4284-a36b-089cc0da1bf8" 
+             alt="Web Dev Creative" />
       </a>
     </div>
-    <ul class="links">
-      <li><a routerLink="#">Inicio</a></li>
-      <li><a routerLink="about">About</a></li>
-      <li><a routerLink="services">Services</a></li>
-      <li><a routerLink="contact">Contact</a></li>
 
+    <!-- Lista de enlaces de navegación -->
+    <ul class="links">
+      <!-- Enlace a la página de inicio -->
+      <li><a routerLink="#">Inicio</a></li>
+      <!-- Enlace a la página "About" -->
+      <li><a routerLink="about">About</a></li>
+      <!-- Enlace a la página de servicios -->
+      <li><a routerLink="services">Services</a></li>
+      <!-- Enlace a la página de contacto -->
+      <li><a routerLink="contact">Contact</a></li>
     </ul>
+
+    <!-- Condicional para mostrar opciones de login o registro si el usuario no está logueado -->
     <div *ngIf="!isLoggedIn()">
       <a routerLink="/login" class="action_btn">Login</a>
       <a routerLink="/registro" class="action_btn">Registrate</a>
     </div>
+
+    <!-- Condicional para mostrar el menú de usuario si está logueado -->
     <div *ngIf="isLoggedIn()" class="dropdown">
-      <button class="btn  dropdown-toggle" type="button" aria-expanded="false" (click)="toggleDropdown()">
+      <!-- Botón que muestra el nombre del usuario y despliega el menú -->
+      <button class="btn dropdown-toggle" type="button" aria-expanded="false" (click)="toggleDropdown()">
         <i class="fa-solid fa-user"></i> {{ userName || 'Usuario' }}
       </button>
+      
+      <!-- Menú desplegable para opciones del usuario -->
       <ul class="dropdown-menu" [ngClass]="{'show': dropdownOpen}">
-        <li><a class="dropdown-item" routerLink="/perfil">Ver Perfil</a></li>
+        <!-- Enlace al perfil del usuario -->
+        <li><a class="dropdown-item" routerLink="/profile">Ver Perfil</a></li>
+        <!-- Opción para cerrar sesión -->
         <li><a class="dropdown-item" (click)="logout()">Cerrar sesión</a></li>
       </ul>
     </div>
+
+    <!-- Botón para activar el menú en dispositivos móviles -->
     <div class="toggle_btn">
       <i class="fa-solid fa-bars"></i>
     </div>
   </div>
 
-  <!--Toco agregar este link para que cargara el icono de FontAwesome-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+  <!-- Link para cargar los iconos de FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" />
 </header>
