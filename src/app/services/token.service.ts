@@ -26,11 +26,12 @@ export class TokenService {
   public login(token: string) {
     this.setToken(token);
     const rol = this.getRol();
-    let destino = rol == "ADMINISTRATOR" ? "/home-admin" : "/";
+    let destino = rol === "ADMINISTRATOR" ? "/home-admin" : "/";
     this.router.navigate([destino]).then(() => {
       window.location.reload();
     });
-   }
+  }
+
 
   public logout() {
     window.sessionStorage.clear();

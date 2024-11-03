@@ -12,7 +12,11 @@ export const routes: Routes = [
    { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
    { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
    {path:'perfil',component:ProfileComponent},
-   {path:'home-admin',component:HomeAdminComponent,canActivate: [RolesGuard], data:{
-    exectedRole: ["ADMINISTRATOR"]}},
+   {
+    path: 'home-admin',
+    component: HomeAdminComponent,
+    canActivate: [RolesGuard],
+    data: { expectedRole: ["ADMINISTRATOR"] }
+  },
    { path: "**", pathMatch: "full", redirectTo: "" }
 ];

@@ -48,7 +48,7 @@ export class NavbarComponent implements OnInit {
 
   // Método para cerrar sesión
   logout(): void {
-    localStorage.removeItem('token'); // Elimina el token del almacenamiento local
+    sessionStorage.removeItem('AuthToken'); // Elimina el token del almacenamiento local
     this.userName = null;             // Resetea el nombre de usuario
     this.router.navigate(['/login']); // Redirige al usuario a la página de login
   }
