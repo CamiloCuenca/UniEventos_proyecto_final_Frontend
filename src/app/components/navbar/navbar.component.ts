@@ -23,12 +23,12 @@ export class NavbarComponent implements OnInit {
 
   // Método que verifica si el usuario ha iniciado sesión
   isLoggedIn(): boolean {
-    return localStorage.getItem('token') !== null; // Retorna true si el token existe en localStorage
+    return sessionStorage.getItem('AuthToken') !== null; // Retorna true si el token existe en localStorage
   }
 
   // Método que obtiene el nombre del usuario del token almacenado en localStorage
   getUserInfo() {
-    const token = localStorage.getItem('token'); // Obtiene el token JWT del almacenamiento local
+    const token = sessionStorage.getItem('AuthToken'); // Obtiene el token JWT del almacenamiento local
     if (token) {
       const payload = this.decodeToken(token);  // Decodifica el token y obtiene su carga útil
       this.userName = payload?.nombre || 'Usuario'; // Asigna el nombre del usuario o "Usuario" como valor predeterminado

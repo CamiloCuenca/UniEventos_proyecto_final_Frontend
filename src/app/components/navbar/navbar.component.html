@@ -5,7 +5,7 @@
     <div class="logo">
       <a href="#">
         <!-- Imagen del logo que se carga desde Firebase Storage -->
-        <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-1c779.appspot.com/o/logoOscuro.svg?alt=media&token=2d245213-4432-4284-a36b-089cc0da1bf8" 
+        <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-1c779.appspot.com/o/logoOscuro.svg?alt=media&token=2d245213-4432-4284-a36b-089cc0da1bf8"
              alt="Web Dev Creative" />
       </a>
     </div>
@@ -34,11 +34,11 @@
       <button class="btn dropdown-toggle" type="button" aria-expanded="false" (click)="toggleDropdown()">
         <i class="fa-solid fa-user"></i> {{ userName || 'Usuario' }}
       </button>
-      
+
       <!-- Menú desplegable para opciones del usuario -->
       <ul class="dropdown-menu" [ngClass]="{'show': dropdownOpen}">
         <!-- Enlace al perfil del usuario -->
-        <li><a class="dropdown-item" routerLink="/profile">Ver Perfil</a></li>
+        <li><a class="dropdown-item" routerLink="/perfil">Ver Perfil</a></li>
         <!-- Opción para cerrar sesión -->
         <li><a class="dropdown-item" (click)="logout()">Cerrar sesión</a></li>
       </ul>
@@ -51,8 +51,8 @@
   </div>
 
   <!-- Link para cargar los iconos de FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
-        crossorigin="anonymous" 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous"
         referrerpolicy="no-referrer" />
 </header>

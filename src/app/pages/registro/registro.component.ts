@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service'; // Asegúrate de que la ruta es correcta
 import { HttpErrorResponse } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-registro',
   standalone: true, // Hacemos el componente standalone
   templateUrl: './registro.component.html',
-  imports: [ReactiveFormsModule] // Importamos ReactiveFormsModule aquí
+  imports: [ReactiveFormsModule,CommonModule] // Importamos ReactiveFormsModule aquí
 })
 export class RegistroComponent {
   registroForm: FormGroup;

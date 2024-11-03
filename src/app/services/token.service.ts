@@ -11,7 +11,6 @@ export class TokenService {
   constructor(private router: Router) { }
 
   public setToken(tokesessionStoragen: string) {
-    // Corrección aquí: usar sessionStorage
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, tokesessionStoragen); // Cambiado a sessionStorage
   }
@@ -26,13 +25,19 @@ export class TokenService {
 
   public login(token: string) {
     this.setToken(token);
-    this.router.navigate(["/"]); // Redirigir después de iniciar sesión
-  }
+    const rol = this.getRol();
+    let destino = rol == "ADMINISTRATOR" ? "/home-admin" : "/";
+    this.router.navigate([destino]).then(() => {
+      window.location.reload();
+    });
+   }
 
   public logout() {
     window.sessionStorage.clear();
-    this.router.navigate(["/login"]); // Redirigir después de cerrar sesión
-  }
+    this.router.navigate(["/login"]).then(() => {
+      window.location.reload();
+    });
+   }
 
   private decodePayload(token: string): any {
     const payload = token.split(".")[1];
