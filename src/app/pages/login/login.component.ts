@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { LoginDTO } from '../../interface/login.dto';
 import { TokenDTO } from '../../interface/token.dto';
+import { TokenService } from '../../services/token.service'; // Importa TokenService
 
 @Component({
   selector: 'app-login',
@@ -14,12 +15,13 @@ import { TokenDTO } from '../../interface/token.dto';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  errorMessage: string = ''; // Declarar la variable errorMessage
+  errorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private tokenService: TokenService // Inyecta TokenService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -34,7 +36,7 @@ export class LoginComponent {
       this.authService.iniciarSesion(loginData).subscribe({
         next: (response: { error: boolean; respuesta: TokenDTO }) => {
           if (!response.error && response.respuesta && response.respuesta.token) {
-            localStorage.setItem('token', response.respuesta.token);
+            this.tokenService.login(response.respuesta.token); // Usa TokenService para guardar el token
             this.router.navigate(['/dashboard']);
           } else {
             console.error('Error en la respuesta del servidor:', response);
