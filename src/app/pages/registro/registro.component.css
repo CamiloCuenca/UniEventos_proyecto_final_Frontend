@@ -5,7 +5,6 @@
   border-radius: 12px; /* Bordes redondeados */
   background-color: #ffffff; /* Fondo blanco */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
 }
 
 /* Efecto al pasar el ratón por encima del contenedor */
@@ -14,7 +13,7 @@
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
 }
 
-/* Botón personalizado */
+/* Estilo para los botones */
 .btn-primary {
   background-color: #5e5e5e; /* Color de fondo */
   border: none; /* Sin borde */
@@ -44,9 +43,9 @@
 /* Animación de desvanecimiento */
 @keyframes fadeIn {
   from {
-      opacity: 0;
+    opacity: 0;
   }
   to {
-      opacity: 1;
+    opacity: 1;
   }
 }

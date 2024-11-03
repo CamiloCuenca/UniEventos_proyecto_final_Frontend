@@ -11,6 +11,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class RegistroComponent {
   registroForm: FormGroup;
+  passwordVisible = false;
+  confirmaPasswordVisible = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.registroForm = this.fb.group({
@@ -22,10 +24,19 @@ export class RegistroComponent {
       password: ['', [
         Validators.required,
         Validators.pattern(/^(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.*[0-9])(?=.*[a-z]).{8,}$/)
-      ]]
-    });
+      ]],
+      confirmaPassword: ['', [Validators.required]] // Agregamos el campo para confirmar la contraseña
+    }, { validators: this.passwordsMatchValidator }); // Agregamos la validación personalizada
   }
 
+  // Valida que las contraseñas coincidan
+  passwordsMatchValidator(formGroup: FormGroup) {
+    const password = formGroup.get('password')?.value;
+    const confirmaPassword = formGroup.get('confirmaPassword')?.value;
+    return password === confirmaPassword ? null : { passwordsMismatch: true };
+  }
+
+  // Método para manejar el registro
   public registrar() {
     if (this.registroForm.valid) {
       this.authService.crearCuenta(this.registroForm.value).subscribe(
@@ -39,5 +50,15 @@ export class RegistroComponent {
     } else {
       console.error('Formulario inválido', this.registroForm.errors);
     }
+  }
+
+  // Método para alternar la visibilidad de la contraseña
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+  }
+
+  // Método para alternar la visibilidad de la contraseña de confirmación
+  toggleConfirmaPasswordVisibility() {
+    this.confirmaPasswordVisible = !this.confirmaPasswordVisible;
   }
 }
