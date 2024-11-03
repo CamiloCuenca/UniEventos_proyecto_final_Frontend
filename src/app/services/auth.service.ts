@@ -15,9 +15,16 @@ interface LoginResponse {
 export class AuthService {
   private apiUrl = 'http://localhost:8080/api/auth';
 
+  private apiUrlC = 'http://localhost:8080/api/auth/cuenta/crear-cuenta'; // URL de tu API
+
   constructor(private http: HttpClient) {}
 
   iniciarSesion(loginData: LoginDTO): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.apiUrl}/cuenta/iniciar-sesion`, loginData);
+  }
+
+
+  crearCuenta(datos: any): Observable<any> {
+    return this.http.post(this.apiUrlC, datos);
   }
 }
