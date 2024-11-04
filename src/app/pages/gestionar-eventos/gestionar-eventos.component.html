@@ -1,0 +1,10 @@
+<!-- gestionar-eventos.component.html -->
+<div>
+  <h1>Gestión de Eventos</h1>
+  <button (click)="toggleCreateEvent()" class="btn btn-primary">Crear Evento</button>
+
+  <!-- Condicional para renderizar el componente de crear evento -->
+  <div *ngIf="isCreatingEvent">
+    <app-crear-evento></app-crear-evento>
+  </div>
+</div>

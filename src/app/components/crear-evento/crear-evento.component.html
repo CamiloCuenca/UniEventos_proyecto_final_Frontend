@@ -1,1 +1,94 @@
-<p>crear-evento works!</p>
+<!-- create-event.component.html -->
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="coverImage">Imagen de Portada</label>
+    <input type="text" id="coverImage" formControlName="coverImage" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label for="name">Nombre del Evento</label>
+    <input type="text" id="name" formControlName="name" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label for="status">Estado</label>
+    <select id="status" formControlName="status" class="form-control" required>
+      <option value="ACTIVE">Activo</option>
+      <option value="INACTIVE">Inactivo</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Descripción</label>
+    <textarea id="description" formControlName="description" class="form-control" required></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="imageLocalities">Imagen de Localidades</label>
+    <input type="text" id="imageLocalities" formControlName="imageLocalities" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label for="type">Tipo de Evento</label>
+    <select id="type" formControlName="type" class="form-control" required>
+      <option value="CONCERT">Concierto</option>
+      <option value="FAIR">Feria</option>
+      <option value="FESTIVAL">Festival</option>
+      <option value="CONFERENCE">Conferencia</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="date">Fecha del Evento</label>
+    <input type="datetime-local" id="date" formControlName="date" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label for="city">Ciudad</label>
+    <input type="text" id="city" formControlName="city" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label for="address">Dirección</label>
+    <input type="text" id="address" formControlName="address" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label for="amount">Cantidad de Localidades</label>
+    <input type="number" id="amount" formControlName="amount" class="form-control" required>
+  </div>
+
+  <!-- Sección de Localidades -->
+  <div formArrayName="localities" class="form-group">
+    <div *ngFor="let locality of localities.controls; let i = index" [formGroupName]="i" class="locality-group">
+      <h5>Localidad {{ i + 1 }}</h5>
+
+      <div class="form-group">
+        <label for="name-{{ i }}">Nombre</label>
+        <input type="text" id="name-{{ i }}" formControlName="name" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="price-{{ i }}">Precio</label>
+        <input type="number" id="price-{{ i }}" formControlName="price" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="ticketsSold-{{ i }}">Boletos Vendidos</label>
+        <input type="number" id="ticketsSold-{{ i }}" formControlName="ticketsSold" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="maximumCapacity-{{ i }}">Capacidad Máxima</label>
+        <input type="number" id="maximumCapacity-{{ i }}" formControlName="maximumCapacity" class="form-control" required>
+      </div>
+
+      <button type="button" class="btn btn-danger" (click)="removeLocality(i)">Eliminar Localidad</button>
+      <hr>
+    </div>
+
+    <button type="button" class="btn btn-secondary" (click)="addLocality()">Agregar Localidad</button>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Guardar Evento</button>
+</form>
