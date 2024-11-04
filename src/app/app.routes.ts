@@ -6,6 +6,7 @@ import { LoginGuard } from './services/permiso.service';
 import {ProfileComponent} from './pages/profile/profile.component'
 import {HomeAdminComponent} from './pages/home-admin/home-admin.component'
 import { RolesGuard } from './services/roles.service';
+import { GestionarEventosComponent } from './pages/gestionar-eventos/gestionar-eventos.component';
 
 export const routes: Routes = [
    { path: '', component: InicioComponent },
@@ -16,6 +17,12 @@ export const routes: Routes = [
     path: 'home-admin',
     component: HomeAdminComponent,
     canActivate: [RolesGuard],
+    data: { expectedRole: ["ADMINISTRATOR"] }
+  },
+  {
+    path:'gestionar-eventos',
+    component:GestionarEventosComponent,
+    canActivate :[RolesGuard],
     data: { expectedRole: ["ADMINISTRATOR"] }
   },
    { path: "**", pathMatch: "full", redirectTo: "" }
