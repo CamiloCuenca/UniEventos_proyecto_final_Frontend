@@ -4,7 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { LoginGuard } from './services/permiso.service';
 import {ProfileComponent} from './pages/profile/profile.component'
-import {HomeAdminComponent} from './components/home-admin/home-admin.component'
+import {HomeAdminComponent} from './pages/home-admin/home-admin.component'
 import { RolesGuard } from './services/roles.service';
 
 export const routes: Routes = [

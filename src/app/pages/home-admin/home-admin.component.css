@@ -1,0 +1,50 @@
+/* src/app/home-admin/home-admin.component.css */
+
+h2{
+  color: white;
+  background-color: #333;
+  border-radius: 50px;
+
+}
+
+.subtext{
+  color: white;
+}
+
+
+.icon-large {
+  font-size: 3rem;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.card:hover .icon-large {
+  color: #0056b3;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.card:hover  {
+  transform: translateY(-10px);
+  background-color: burlywood;
+
+}
+
+.card-title {
+  font-weight: 700;
+}
+
+.card .btn {
+  border-radius: 20px;
+  background-color: #333;
+  color: white;
+}
+
+.card .btn:hover {
+  color: burlywood;
+}
+
