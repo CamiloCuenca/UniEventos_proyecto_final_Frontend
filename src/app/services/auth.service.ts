@@ -28,7 +28,7 @@ export class AuthService {
     if (token) {
       try {
         const userId = this.tokenService.getIDCuenta(); // Usa `getIDCuenta` para obtener el id
-        return this.http.get<ProfileDTO>(`${this.apiUrl}/cliente/cuenta/obtener-info/${userId}`).pipe(
+        return this.http.get<ProfileDTO>(`/cliente/cuenta/obtener-info/${userId}`).pipe(
           catchError((error: HttpErrorResponse) => {
             return throwError('Error al obtener la información del perfil');
           })
@@ -44,7 +44,7 @@ export class AuthService {
 
   updateUserProfile(updatedProfile: ProfileDTO): Observable<ProfileDTO> {
     const userId = this.tokenService.getIDCuenta(); // Extrae el userId desde el token
-    const url = `${this.apiUrl}/cliente/cuenta/editar-perfil/${userId}`;
+    const url = `/cliente/cuenta/editar-perfil/${userId}`;
     return this.http.put<ProfileDTO>(url, updatedProfile).pipe(
       catchError((error: HttpErrorResponse) => {
         return throwError('Error al actualizar el perfil');
@@ -53,7 +53,7 @@ export class AuthService {
   }
   updatePassword(updatedPassword: UpdatedPassword): Observable<UpdatedPassword> {
     const userId = this.tokenService.getIDCuenta(); // Extrae el userId desde el token
-    const url = `${this.apiUrl}/cliente/cuenta/editar-password/${userId}`;
+    const url = `/cliente/cuenta/editar-password/${userId}`;
     return this.http.put<UpdatedPassword>(url, updatedPassword).pipe(
       catchError((error: HttpErrorResponse) => {
         return throwError('Error al actualizar la contraseña');

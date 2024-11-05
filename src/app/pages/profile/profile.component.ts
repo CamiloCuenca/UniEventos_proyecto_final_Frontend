@@ -6,6 +6,7 @@ import { ProfileDTO } from '../../interface/profileDTO';
 import { CommonModule } from '@angular/common';
 import { TokenService } from '../../services/token.service';
 
+
 @Component({
   selector: 'app-profile',
   standalone: true,
