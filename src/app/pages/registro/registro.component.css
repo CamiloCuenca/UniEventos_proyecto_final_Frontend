@@ -1,51 +1,47 @@
 .container {
-  max-width: 500px; /* Ancho máximo del contenedor */
+  max-width: 600px; /* Ancho máximo del contenedor */
   margin: auto; /* Centra el contenedor */
-  padding: 30px; /* Espaciado interior */
+  margin-bottom: 4.5rem; /* Margen inferior */
+  padding: 30px; /* Espaciado interior aumentado */
   border-radius: 12px; /* Bordes redondeados */
   background-color: #ffffff; /* Fondo blanco */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  box-shadow: 0 40px 40px rgba(0, 0, 0, 0.2), 0 8px 30px rgba(0, 0, 0, 0.1); /* Sombra exterior */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
 }
 
-/* Efecto al pasar el ratón por encima del contenedor */
-.container:hover {
-  transform: translateY(-5px); /* Eleva el contenedor */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+  border: 1px solid #5e5e5e; /* Borde del campo de entrada */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px; /* Espaciado interno */
+  width: 100%; /* Ancho completo */
+  margin-bottom: 15px; /* Espacio entre los campos */
+  transition: border-color 0.3s ease; /* Transición suave para el borde */
 }
 
-/* Estilo para los botones */
-.btn-primary {
-  background-color: #5e5e5e; /* Color de fondo */
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="number"]:focus {
+  border-color: burlywood; /* Color del borde al enfocar */
+  outline: none; /* Quitar contorno por defecto */
+}
+
+button {
+  background-color: #5e5e5e; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  padding: 10px 15px; /* Espaciado interno del botón */
   border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave */
+  width: 100%; /* Ancho completo para ambos botones */
+  margin-top: 10px; /* Espacio superior para separación */
 }
 
-.btn-primary:hover {
-  background-color: burlywood; /* Color al pasar el ratón */
-  color: white; /* Color del texto al pasar el ratón */
-  transform: scale(1.05); /* Efecto de aumento */
+button:hover {
+  background-color: burlywood; /* Color de fondo al pasar el ratón */
+  transform: translateY(-2px); /* Eleva el botón al pasar el ratón */
 }
 
-/* Estilo para los inputs */
-.form-control {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Sombra para los inputs */
-  transition: box-shadow 0.3s ease; /* Transición suave para la sombra */
-}
-
-.form-control:focus {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* Sombra más intensa al hacer foco */
-}
-
-/* Mensaje de error */
-.text-danger {
-  animation: fadeIn 0.5s; /* Animación para el mensaje de error */
-}
-
-/* Animación de desvanecimiento */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+small {
+  color: red; /* Color de texto rojo para los mensajes de error */
+  font-size: 0.875em; /* Tamaño de fuente más pequeño */
+  margin-top: -10px; /* Espacio negativo para alinear mejor con el campo de entrada */
 }

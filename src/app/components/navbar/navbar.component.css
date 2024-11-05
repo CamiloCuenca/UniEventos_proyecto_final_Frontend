@@ -79,7 +79,7 @@ header {
 
 .action_btn:hover {
   transform: scale(1.05); /* Escala al pasar el mouse */
-  color: #ffffff; /* Cambiar color al pasar el mouse */
+  color: #ff5500; /* Cambiar color al pasar el mouse */
 }
 
 .action_btn:active {
@@ -123,7 +123,7 @@ header {
 
 .btn{
   background-color: #333;
-  color: white;
+  color: rgb(255, 132, 0);
 }
 .navbar .dropdown button {
   padding: 0.5rem; /* Ajusta el espaciado interno si es necesario */

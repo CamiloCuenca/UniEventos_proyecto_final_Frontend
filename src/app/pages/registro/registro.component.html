@@ -1,6 +1,9 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4">Registro</h2>
 
+   <!-- Mensaje de éxito -->
+
+
   <form [formGroup]="registroForm" (ngSubmit)="registrar()">
     <div class="mb-3">
       <label for="idNumber" class="form-label">Número de Identificación:</label>
@@ -66,6 +69,16 @@
         <label class="form-check-label" for="showConfirmaPassword">Mostrar Contraseña</label>
       </div>
     </div>
+    
+    <div *ngIf="registroExitoso" class="alert alert-success text-center">
+      ¡Cuenta creada exitosamente!
+    </div>
+
+    <div *ngIf="mensajeError" class="alert alert-danger text-center">
+      {{ mensajeError }}
+    </div>
+
+    
 
     <button type="submit" class="btn btn-primary">Registrar</button>
   </form>
