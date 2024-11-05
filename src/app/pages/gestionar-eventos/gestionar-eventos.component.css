@@ -1,0 +1,73 @@
+/* src/app/home-admin/home-admin.component.css */
+
+h2{
+  color: white;
+  background-color: #333;
+  border-radius: 50px;
+
+}
+
+.subtext{
+  color: white;
+}
+
+
+.icon-large {
+  font-size: 3rem;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.card:hover .icon-large {
+  color: #0056b3;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.card:hover  {
+  transform: translateY(-10px);
+  background-color: burlywood;
+
+}
+
+.card-title {
+  font-weight: 700;
+}
+
+.card .btn {
+  border-radius: 20px;
+  background-color: #333;
+  color: white;
+}
+
+.card .btn:hover {
+  color: burlywood;
+}
+
+.table-responsive {
+  max-height: 400px; /* Ajusta la altura según lo necesites */
+  overflow-y: auto; /* Scroll vertical */
+  overflow-x: auto; /* Scroll horizontal */
+  border: 1px solid #dee2e6; /* Agregar borde para mejor visualización */
+  border-radius: 0.25rem; /* Bordes redondeados */
+}
+
+.table {
+  min-width: 600px; /* Asegura que la tabla no sea demasiado estrecha */
+}
+
+.table th, .table td {
+  vertical-align: middle; /* Centrar verticalmente */
+}
+
+.table th {
+  background-color: #f8f9fa; /* Color de fondo para los encabezados */
+}
+
+.table td {
+  white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+}
