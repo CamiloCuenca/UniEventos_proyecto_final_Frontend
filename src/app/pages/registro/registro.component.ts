@@ -8,12 +8,15 @@ import { CommonModule } from '@angular/common';
   selector: 'app-registro',
   standalone: true, // Hacemos el componente standalone
   templateUrl: './registro.component.html',
-  imports: [ReactiveFormsModule,CommonModule] // Importamos ReactiveFormsModule aquí
+  imports: [ReactiveFormsModule,CommonModule],
+  styleUrls: ['./registro.component.css'] // Importamos ReactiveFormsModule aquí
 })
 export class RegistroComponent {
   registroForm: FormGroup;
+  registroExitoso: boolean = false; 
   passwordVisible = false;
   confirmaPasswordVisible = false;
+  mensajeError: string | null = null;
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.registroForm = this.fb.group({
@@ -43,15 +46,20 @@ export class RegistroComponent {
       this.authService.crearCuenta(this.registroForm.value).subscribe(
         response => {
           console.log('Cuenta creada con éxito', response);
+          this.mensajeError = null; // Reinicia el mensaje de error
+          this.registroForm.reset(); // Resetea el formulario
+          this.registroExitoso = true; 
         },
         (error: HttpErrorResponse) => {
           console.error('Error al crear la cuenta', error);
+          this.mensajeError = error.message; // Captura el mensaje de error del servicio
         }
       );
     } else {
-      console.error('Formulario inválido', this.registroForm.errors);
+      this.mensajeError = 'Por favor, complete el formulario correctamente.';
     }
   }
+
 
   // Método para alternar la visibilidad de la contraseña
   togglePasswordVisibility() {

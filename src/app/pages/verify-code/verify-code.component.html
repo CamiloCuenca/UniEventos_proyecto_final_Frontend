@@ -1,0 +1,32 @@
+<div class="container">
+    <h2 class="text-center mb-4">Recuperación de Contraseña</h2>
+    
+    <form [formGroup]="recuperacionForm" (ngSubmit)="validarCodigo()">
+      <!-- Campo para ingresar el código de recuperación -->
+      <div class="mb-3">
+        <label for="codigo" class="form-label">Código de Recuperación:</label>
+        <input id="codigo" class="form-control" formControlName="codigo" required />
+        <div *ngIf="codigoInvalid && recuperacionForm.get('codigo')?.touched" class="text-danger">
+          <small>Código inválido. Intente nuevamente.</small>
+        </div>
+      </div>
+  
+      <!-- Campos para la nueva contraseña, visibles solo si el código es válido -->
+      <div *ngIf="codigoValido">
+        <div class="mb-3">
+          <label for="nuevaClave" class="form-label">Nueva Contraseña:</label>
+          <input id="nuevaClave" type="password" class="form-control" formControlName="nuevaClave" required />
+        </div>
+  
+        <div class="mb-3">
+          <label for="confirmarClave" class="form-label">Confirmar Contraseña:</label>
+          <input id="confirmarClave" type="password" class="form-control" formControlName="confirmarClave" required />
+          <div *ngIf="recuperacionForm.hasError('passwordsMismatch')" class="text-danger">
+            <small>Las contraseñas no coinciden.</small>
+          </div>
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Validar Código</button>
+    </form>
+  </div>

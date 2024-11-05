@@ -3,9 +3,11 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { LoginDTO } from '../interface/login.dto';
 import { TokenDTO } from '../interface/token.dto';
-import { ProfileDTO } from '../interface/profileDTO';
-import { UpdatedPassword } from '../interface/updatePassword';
+import { dtoAccountInformation } from '../interface/dtoAccountInformation';
+import { MessageDTO } from '../interface/MessageDTO';
 import { TokenService } from './token.service';
+import { editAccountDTO } from '../interface/editAccountDTO';
+import { updatePasswordDTO } from '../interface/updatePasswordDTO';
 
 interface LoginResponse {
   error: boolean;
@@ -23,43 +25,18 @@ export class AuthService {
 
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
-  getUserProfile(): Observable<ProfileDTO> {
-    const token = this.tokenService.getToken();
-    if (token) {
-      try {
-        const userId = this.tokenService.getIDCuenta(); // Usa `getIDCuenta` para obtener el id
-        return this.http.get<ProfileDTO>(`/cliente/cuenta/obtener-info/${userId}`).pipe(
-          catchError((error: HttpErrorResponse) => {
-            return throwError('Error al obtener la información del perfil');
-          })
-        );
-      } catch (error) {
-        return throwError('Error al decodificar el token');
-      }
-    }
-    return throwError('No se encontró el token');
+  getUserData(): Observable<MessageDTO<dtoAccountInformation>> {
+    const userId = this.tokenService.getIDCuenta(); // Obtén el ID del token
+    return this.http.get<MessageDTO<dtoAccountInformation>>(`http://localhost:8080/api/cliente/cuenta/obtener-info/${userId}`);
   }
 
-
-
-  updateUserProfile(updatedProfile: ProfileDTO): Observable<ProfileDTO> {
-    const userId = this.tokenService.getIDCuenta(); // Extrae el userId desde el token
-    const url = `/cliente/cuenta/editar-perfil/${userId}`;
-    return this.http.put<ProfileDTO>(url, updatedProfile).pipe(
-      catchError((error: HttpErrorResponse) => {
-        return throwError('Error al actualizar el perfil');
-      })
-    );
+  editAccount(accountData: editAccountDTO, userId: string): Observable<MessageDTO<string>> {
+    return this.http.put<MessageDTO<string>>(`http://localhost:8080/api/cliente/cuenta/editar-perfil/${userId}`, accountData);
   }
-  updatePassword(updatedPassword: UpdatedPassword): Observable<UpdatedPassword> {
-    const userId = this.tokenService.getIDCuenta(); // Extrae el userId desde el token
-    const url = `/cliente/cuenta/editar-password/${userId}`;
-    return this.http.put<UpdatedPassword>(url, updatedPassword).pipe(
-      catchError((error: HttpErrorResponse) => {
-        return throwError('Error al actualizar la contraseña');
-      })
-    );
-  }
+
+  updatePassword(passwordData: updatePasswordDTO, userId: string): Observable<MessageDTO<string>> {
+    return this.http.put<MessageDTO<string>>(`http://localhost:8080/api/cliente/cuenta/editar-password/${userId}`, passwordData);
+}
 
   recoverPassword(correo: string): Observable<any> {
     return this.http.post<any>(`http://localhost:8080/api/cliente/email/enviar-codigo/${correo}`, {});
@@ -72,7 +49,42 @@ export class AuthService {
 
 
   crearCuenta(datos: any): Observable<any> {
-    return this.http.post(this.apiUrl, datos);
+    return this.http.post('http://localhost:8080/api/auth/cuenta/crear-cuenta', datos).pipe(
+      catchError(this.handleError) // Captura y maneja errores
+    );
   }
+
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Ocurrió un error inesperado.';
+  
+    if (error.error instanceof ErrorEvent) {
+      // Error del lado del cliente
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Error del lado del servidor
+      if (error.error && error.error.message) {
+        // Asegúrate de que el backend devuelva un mensaje en error.error.message
+        errorMessage = error.error.message; // Extraer el mensaje específico del cuerpo de la respuesta
+      } else {
+        switch (error.status) {
+          case 409: // Conflicto: Email ya existe
+            errorMessage = 'El correo electrónico ya está en uso.';
+            break;
+          case 400: // Solicitud incorrecta: Cédula ya existe
+            errorMessage = 'El número de identificación ya está en uso.';
+            break;
+          default:
+            errorMessage = 'Error en la solicitud.';
+            break;
+        }
+      }
+    }
+  
+    return throwError(() => new Error(errorMessage));
+  }
+
+
+
+
 }
 
