@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { TokenService } from '../../services/token.service';
 import { MessageDTO } from '../../interface/MessageDTO';
 import { editAccountDTO } from '../../interface/editAccountDTO';
+import { updatePasswordDTO } from '../../interface/updatePasswordDTO';
 
 
 @Component({
@@ -35,6 +36,7 @@ export class ProfileComponent implements OnInit {
       nombre: ['', [Validators.required, Validators.maxLength(100)]],
       telefono: ['', [Validators.required, Validators.maxLength(10)]],
       direccion: ['', [Validators.maxLength(100)]],
+      
     });
   }
 
@@ -65,7 +67,46 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  
+  /*
+  updatePassword() {
+  const currentPassword = this.profileForm.value.currentPassword;
+  const newPassword = this.profileForm.value.password;
+  const userId = this.tokenService.getIDCuenta();
+
+  if (currentPassword && newPassword) {
+    // Crear el objeto DTO para actualizar la contraseña
+    const updatePasswordDTO = {
+      currentPassword: currentPassword,
+      newPassword: newPassword,
+    };
+
+    // Llamar al servicio para cambiar la contraseña
+    this.authService.updatePassword(updatePasswordDTO, userId).subscribe({
+      next: (response: MessageDTO<string>) => {
+        if (!response.error) {
+          console.log('Contraseña actualizada exitosamente');
+          this.successMessage = 'Contraseña actualizada exitosamente';
+
+          // Llamar al método editAccount para actualizar el perfil después de actualizar la contraseña
+          this.editAccount();
+        } else {
+          this.errorMessage = "Ocurrió un error al actualizar la contraseña: " + response.errorResponse?.message;
+          this.successMessage = null;
+        }
+      },
+      error: (err) => {
+        console.error('Error al actualizar la contraseña', err);
+        this.errorMessage = 'Error al actualizar la contraseña.';
+        this.successMessage = null;
+      },
+    });
+  } else {
+    this.errorMessage = 'Por favor, complete todos los campos requeridos para cambiar la contraseña.';
+  }
+    /** */
+
+
+
 
   loadUserData() {
     this.authService.getUserData().subscribe(
@@ -90,6 +131,9 @@ export class ProfileComponent implements OnInit {
   }
 }
 
+
+
+
 /*
   onSubmit() {
     if (this.profileForm.valid) {
@@ -103,7 +147,7 @@ export class ProfileComponent implements OnInit {
         telefono: this.profileForm.value.telefono,
       };
 
-      // Verificar si el usuario quiere cambiar la contraseña
+    
       const currentPassword = this.profileForm.value.currentPassword;
       const newPassword = this.profileForm.value.password;
 
