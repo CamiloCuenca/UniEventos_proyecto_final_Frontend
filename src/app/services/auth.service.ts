@@ -17,9 +17,9 @@ interface LoginResponse {
 })
 export class AuthService {
 
-  private apiUrA = 'http://localhost:8080/api/auth';
+  private apiUrl = 'http://localhost:8080/api/auth';
 
-  private apiUrlC = 'http://localhost:8080/api/cliente/cuenta/'; // URL de tu API
+
 
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
@@ -28,7 +28,7 @@ export class AuthService {
     if (token) {
       try {
         const userId = this.tokenService.getIDCuenta(); // Usa `getIDCuenta` para obtener el id
-        return this.http.get<ProfileDTO>(`${this.apiUrlC}obtener-info/${userId}`).pipe(
+        return this.http.get<ProfileDTO>(`${this.apiUrl}/cliente/cuenta/obtener-info/${userId}`).pipe(
           catchError((error: HttpErrorResponse) => {
             return throwError('Error al obtener la información del perfil');
           })
@@ -44,7 +44,7 @@ export class AuthService {
 
   updateUserProfile(updatedProfile: ProfileDTO): Observable<ProfileDTO> {
     const userId = this.tokenService.getIDCuenta(); // Extrae el userId desde el token
-    const url = `${this.apiUrlC}editar-perfil/${userId}`;
+    const url = `${this.apiUrl}/cliente/cuenta/editar-perfil/${userId}`;
     return this.http.put<ProfileDTO>(url, updatedProfile).pipe(
       catchError((error: HttpErrorResponse) => {
         return throwError('Error al actualizar el perfil');
@@ -53,7 +53,7 @@ export class AuthService {
   }
   updatePassword(updatedPassword: UpdatedPassword): Observable<UpdatedPassword> {
     const userId = this.tokenService.getIDCuenta(); // Extrae el userId desde el token
-    const url = `${this.apiUrlC}editar-password/${userId}`;
+    const url = `${this.apiUrl}/cliente/cuenta/editar-password/${userId}`;
     return this.http.put<UpdatedPassword>(url, updatedPassword).pipe(
       catchError((error: HttpErrorResponse) => {
         return throwError('Error al actualizar la contraseña');
@@ -61,16 +61,18 @@ export class AuthService {
     );
   }
 
+  recoverPassword(correo: string): Observable<any> {
+    return this.http.post<any>(`http://localhost:8080/api/cliente/email/enviar-codigo/${correo}`, {});
+}
+  
+
   iniciarSesion(loginData: LoginDTO): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrA}/cuenta/iniciar-sesion`, loginData);
+    return this.http.post<LoginResponse>(`${this.apiUrl}/cuenta/iniciar-sesion`, loginData);
   }
 
 
   crearCuenta(datos: any): Observable<any> {
-    return this.http.post(this.apiUrlC, datos);
+    return this.http.post(this.apiUrl, datos);
   }
 }
 
-function jwtDecode(token: string): any {
-  throw new Error('Function not implemented.');
-}
