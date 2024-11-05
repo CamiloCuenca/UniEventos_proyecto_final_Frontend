@@ -64,7 +64,7 @@ export class AuthService {
   recoverPassword(correo: string): Observable<any> {
     return this.http.post<any>(`http://localhost:8080/api/cliente/email/enviar-codigo/${correo}`, {});
 }
-  
+
 
   iniciarSesion(loginData: LoginDTO): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.apiUrl}/cuenta/iniciar-sesion`, loginData);
