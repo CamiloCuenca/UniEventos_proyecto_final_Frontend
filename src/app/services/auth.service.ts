@@ -4,10 +4,10 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { LoginDTO } from '../interface/login.dto';
 import { TokenDTO } from '../interface/token.dto';
 import { dtoAccountInformation } from '../interface/dtoAccountInformation';
-import { UpdatedPassword } from '../interface/updatePassword';
 import { MessageDTO } from '../interface/MessageDTO';
 import { TokenService } from './token.service';
 import { editAccountDTO } from '../interface/editAccountDTO';
+import { updatePasswordDTO } from '../interface/updatePasswordDTO';
 
 interface LoginResponse {
   error: boolean;
@@ -27,34 +27,16 @@ export class AuthService {
 
   getUserData(): Observable<MessageDTO<dtoAccountInformation>> {
     const userId = this.tokenService.getIDCuenta(); // Obtén el ID del token
-    return this.http.get<MessageDTO<dtoAccountInformation>>(`http://localhost:8080/api/cliente/cuenta/obtener-/${userId}`);
+    return this.http.get<MessageDTO<dtoAccountInformation>>(`http://localhost:8080/api/cliente/cuenta/obtener-info/${userId}`);
   }
 
   editAccount(accountData: editAccountDTO, userId: string): Observable<MessageDTO<string>> {
     return this.http.put<MessageDTO<string>>(`http://localhost:8080/api/cliente/cuenta/editar-perfil/${userId}`, accountData);
   }
 
-
-  /*
-  updateUserProfile(updatedProfile: ProfileDTO): Observable<ProfileDTO> {
-    const userId = this.tokenService.getIDCuenta(); // Extrae el userId desde el token
-    const url = `http://localhost:8080/api/cliente/cuenta/editar-perfil/${userId}`;
-    return this.http.put<ProfileDTO>(url, updatedProfile).pipe(
-      catchError((error: HttpErrorResponse) => {
-        return throwError('Error al actualizar el perfil');
-      })
-    );
+  updatePassword(newPassword: updatePasswordDTO, userId: string ): Observable<MessageDTO<String>>{
+    return this.http.put<MessageDTO<string>>(`http://localhost:8080/api/cliente/cuenta/editar-perfil/${userId}`, newPassword);
   }
-  updatePassword(updatedPassword: UpdatedPassword): Observable<UpdatedPassword> {
-    const userId = this.tokenService.getIDCuenta(); // Extrae el userId desde el token
-    const url = `http://localhost:8080/api/cliente/actualizar-contrasena/${userId}`;
-    return this.http.put<UpdatedPassword>(url, updatedPassword).pipe(
-      catchError((error: HttpErrorResponse) => {
-        return throwError('Error al actualizar la contraseña');
-      })
-    );
-  }
-    /** */
 
   recoverPassword(correo: string): Observable<any> {
     return this.http.post<any>(`http://localhost:8080/api/cliente/email/enviar-codigo/${correo}`, {});
