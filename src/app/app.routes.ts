@@ -7,9 +7,11 @@ import {ProfileComponent} from './pages/profile/profile.component'
 import {HomeAdminComponent} from './pages/home-admin/home-admin.component'
 import { RolesGuard } from './services/roles.service';
 import { GestionarEventosComponent } from './pages/gestionar-eventos/gestionar-eventos.component';
+import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 
 export const routes: Routes = [
    { path: '', component: InicioComponent },
+   { path: 'recover-password', component: RecoverPasswordComponent},
    { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
    { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
    {path:'perfil',component:ProfileComponent},
