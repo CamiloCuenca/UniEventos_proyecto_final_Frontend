@@ -1,10 +1,10 @@
 <div class="container mt-5">
   <h2 class="text-center">Actualizar Perfil</h2>
-  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" novalidate>
+  <form [formGroup]="profileForm" (ngSubmit)="editAccount()" novalidate>
+    
     <div class="mb-4">
       <label for="nombre" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" formControlName="nombre"
-        required>
+      <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" formControlName="nombre" required>
       <div *ngIf="profileForm.get('nombre')?.invalid && profileForm.get('nombre')?.touched">
         <small class="text-danger">El nombre es requerido.</small>
       </div>
@@ -12,38 +12,20 @@
 
     <div class="mb-4">
       <label for="telefono" class="form-label">Teléfono</label>
-      <input type="text" class="form-control" id="telefono" placeholder="Ingrese su teléfono" formControlName="telefono"
-        required>
+      <input type="text" class="form-control" id="telefono" placeholder="Ingrese su teléfono" formControlName="telefono" required>
       <div *ngIf="profileForm.get('telefono')?.invalid && profileForm.get('telefono')?.touched">
         <small class="text-danger">El teléfono es requerido.</small>
       </div>
     </div>
 
-
     <div class="mb-4">
       <label for="direccion" class="form-label">Dirección</label>
-      <input type="text" class="form-control" id="direccion" placeholder="Ingrese su dirección"
-        formControlName="direccion" required>
+      <input type="text" class="form-control" id="direccion" placeholder="Ingrese su dirección" formControlName="direccion" required>
       <div *ngIf="profileForm.get('direccion')?.invalid && profileForm.get('direccion')?.touched">
         <small class="text-danger">La dirección es requerida.</small>
       </div>
     </div>
 
-    <h3>Cambiar Contraseña</h3>
-    <div class="mb-4">
-      <label for="currentPassword" class="form-label">Contraseña Actual</label>
-      <input type="password" class="form-control" id="currentPassword" placeholder="Ingrese su contraseña actual"
-        formControlName="currentPassword">
-    </div>
-
-    <div class="mb-4">
-      <label for="password" class="form-label">Nueva Contraseña</label>
-      <input type="password" class="form-control" id="password" placeholder="Ingrese su nueva contraseña"
-        formControlName="password">
-      <div *ngIf="profileForm.get('password')?.touched && profileForm.get('password')?.invalid">
-        <small class="text-danger">Se requiere una nueva contraseña.</small>
-      </div>
-    </div>
 
     <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
     <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>

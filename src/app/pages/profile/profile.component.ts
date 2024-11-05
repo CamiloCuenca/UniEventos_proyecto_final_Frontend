@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { ProfileDTO } from '../../interface/profileDTO';
+import { dtoAccountInformation } from '../../interface/dtoAccountInformation';
 import { CommonModule } from '@angular/common';
 import { TokenService } from '../../services/token.service';
+import { MessageDTO } from '../../interface/MessageDTO';
+import { editAccountDTO } from '../../interface/editAccountDTO';
 
 
 @Component({
@@ -17,43 +19,78 @@ import { TokenService } from '../../services/token.service';
 export class ProfileComponent implements OnInit {
 
   profileForm: FormGroup;
-  errorMessage: string = '';
+  errorMessage: string | null = null;
   successMessage: string | null = null;
-  userProfile: ProfileDTO | null = null;
+
+  ngOnInit(): void {
+    this.loadUserData();
+  }
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private tokenService: TokenService,
-    private router: Router
+    private tokenService: TokenService
   ) {
     this.profileForm = this.fb.group({
-      nombre: ['', Validators.required],
-      direccion: ['', Validators.required],
-      telefono: ['', Validators.required],
-      currentPassword: [''],
-      password: [''],
+      nombre: ['', [Validators.required, Validators.maxLength(100)]],
+      telefono: ['', [Validators.required, Validators.maxLength(10)]],
+      direccion: ['', [Validators.maxLength(100)]],
     });
   }
 
-  ngOnInit(): void {
-    this.loadUserProfile();
-    this.onSubmit();
+  editAccount() {
+    const editedAccount: editAccountDTO = {
+      name: this.profileForm.value.nombre,
+      phoneNumber: this.profileForm.value.telefono,
+      address: this.profileForm.value.direccion
+    };
+
+    const userId = this.tokenService.getIDCuenta(); // Obtén el ID del token
+
+    this.authService.editAccount(editedAccount, userId).subscribe(
+      (response: MessageDTO<string>) => {
+        if (!response.error) {
+          this.successMessage = 'Cuenta actualizada correctamente';
+          this.errorMessage = null; // Limpiar cualquier mensaje de error anterior
+        } else {
+          this.errorMessage = "Ocurrió un error al actualizar la cuenta: " + response.errorResponse?.message;
+          this.successMessage = null; // Limpiar cualquier mensaje de éxito anterior
+        }
+      },
+      (error) => {
+        console.error('Error al editar la cuenta', error);
+        this.errorMessage = 'Error al editar la cuenta';
+        this.successMessage = null; // Limpiar cualquier mensaje de éxito anterior
+      }
+    );
   }
 
-  loadUserProfile() {
-    this.authService.getUserProfile().subscribe({
-      next: (profile: ProfileDTO) => {
-        this.userProfile = profile;
-        this.profileForm.patchValue(profile); // Rellena el formulario con los datos del usuario
-      },
-      error: (err) => {
-        console.error('Error al cargar el perfil', err);
-        this.errorMessage = err; // Mostrar el mensaje de error específico del servicio
-      },
-    });
-  }
+  
 
+  loadUserData() {
+    this.authService.getUserData().subscribe(
+      (response: MessageDTO<dtoAccountInformation>) => {
+        if (!response.error) {
+          const data = response.respuesta; // Accede a la información de cuenta
+          this.profileForm.patchValue({
+            nombre: data.name,             // Cambiado a 'name' para que coincida con el DTO
+            telefono: data.phoneNumber,     // Cambiado a 'phoneNumber'
+            direccion: data.address         // Cambiado a 'address'
+          });
+        } else {
+          // Aquí asumimos que response.respuesta contiene un mensaje de error en forma de string
+          this.errorMessage = "Ocurrió un error al obtener la información: " + response.errorResponse?.message; 
+        }
+      },
+      (error) => {
+        console.error('Error al cargar los datos del usuario', error);
+        this.errorMessage = 'Error al cargar los datos del usuario';
+      }
+    );
+  }
+}
+
+/*
   onSubmit() {
     if (this.profileForm.valid) {
       this.errorMessage = '';
@@ -111,5 +148,7 @@ export class ProfileComponent implements OnInit {
       },
     });
   }
-}
+    /** */
+
+
  
