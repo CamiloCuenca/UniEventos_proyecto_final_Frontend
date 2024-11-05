@@ -1,5 +1,5 @@
 export interface ProfileDTO {
-  nombre: string;  
-  telefono: string;         
-  direccion: string;      
+  nombre: string; 
+  telefono: string;          
+  direccion: string;  
 }

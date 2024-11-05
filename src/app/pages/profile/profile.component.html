@@ -1,47 +1,54 @@
-<div class="profile-container">
-  <h2>Actualizar Perfil</h2>
-
-  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="nombre">Nombre:</label>
-      <input id="nombre" formControlName="nombre" />
+<div class="container mt-5">
+  <h2 class="text-center">Actualizar Perfil</h2>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-4">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" formControlName="nombre"
+        required>
       <div *ngIf="profileForm.get('nombre')?.invalid && profileForm.get('nombre')?.touched">
-        <small class="error">El nombre es requerido.</small>
+        <small class="text-danger">El nombre es requerido.</small>
       </div>
     </div>
 
-    <div>
-      <label for="direccion">Dirección:</label>
-      <input id="direccion" formControlName="direccion" />
-      <div *ngIf="profileForm.get('direccion')?.invalid && profileForm.get('direccion')?.touched">
-        <small class="error">La dirección es requerida.</small>
-      </div>
-    </div>
-
-    <div>
-      <label for="telefono">Teléfono:</label>
-      <input id="telefono" formControlName="telefono" />
+    <div class="mb-4">
+      <label for="telefono" class="form-label">Teléfono</label>
+      <input type="text" class="form-control" id="telefono" placeholder="Ingrese su teléfono" formControlName="telefono"
+        required>
       <div *ngIf="profileForm.get('telefono')?.invalid && profileForm.get('telefono')?.touched">
-        <small class="error">El teléfono es requerido.</small>
+        <small class="text-danger">El teléfono es requerido.</small>
+      </div>
+    </div>
+
+
+    <div class="mb-4">
+      <label for="direccion" class="form-label">Dirección</label>
+      <input type="text" class="form-control" id="direccion" placeholder="Ingrese su dirección"
+        formControlName="direccion" required>
+      <div *ngIf="profileForm.get('direccion')?.invalid && profileForm.get('direccion')?.touched">
+        <small class="text-danger">La dirección es requerida.</small>
       </div>
     </div>
 
     <h3>Cambiar Contraseña</h3>
-    <div>
-      <label for="currentPassword">Contraseña Actual:</label>
-      <input id="currentPassword" type="password" formControlName="currentPassword" />
+    <div class="mb-4">
+      <label for="currentPassword" class="form-label">Contraseña Actual</label>
+      <input type="password" class="form-control" id="currentPassword" placeholder="Ingrese su contraseña actual"
+        formControlName="currentPassword">
     </div>
 
-    <div>
-      <label for="password">Nueva Contraseña:</label>
-      <input id="password" type="password" formControlName="password" />
+    <div class="mb-4">
+      <label for="password" class="form-label">Nueva Contraseña</label>
+      <input type="password" class="form-control" id="password" placeholder="Ingrese su nueva contraseña"
+        formControlName="password">
+      <div *ngIf="profileForm.get('password')?.touched && profileForm.get('password')?.invalid">
+        <small class="text-danger">Se requiere una nueva contraseña.</small>
+      </div>
     </div>
 
-    <div class="messages">
-      <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-      <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
-    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
 
-    <button type="submit" [disabled]="profileForm.invalid">Actualizar Perfil</button>
+    <button type="submit" class="btn btn-primary w-100" [disabled]="profileForm.invalid">Actualizar Perfil</button>
   </form>
+  <p class="mt-3 text-center">¿Desea salir? <a href="/logout">Cerrar Sesión</a></p>
 </div>

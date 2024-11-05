@@ -3,11 +3,13 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ProfileDTO } from '../../interface/profileDTO';
+import { CommonModule } from '@angular/common';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']  // Corregir "styleUrl" a "styleUrls"
 })
@@ -21,6 +23,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private tokenService: TokenService,
     private router: Router
   ) {
     this.profileForm = this.fb.group({
@@ -34,6 +37,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadUserProfile();
+    this.onSubmit();
   }
 
   loadUserProfile() {
@@ -44,7 +48,7 @@ export class ProfileComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error al cargar el perfil', err);
-        this.errorMessage = 'Error al cargar los datos del perfil.';
+        this.errorMessage = err; // Mostrar el mensaje de error específico del servicio
       },
     });
   }
@@ -53,81 +57,58 @@ export class ProfileComponent implements OnInit {
     if (this.profileForm.valid) {
       this.errorMessage = '';
       this.successMessage = null;
-  
+
       // Extraer los datos del formulario
       const updatedProfile: ProfileDTO = {
         nombre: this.profileForm.value.nombre,
         direccion: this.profileForm.value.direccion,
         telefono: this.profileForm.value.telefono,
       };
-  
+
       // Verificar si el usuario quiere cambiar la contraseña
       const currentPassword = this.profileForm.value.currentPassword;
       const newPassword = this.profileForm.value.password;
-  
-      // Extraer el userId del token
-      const token = localStorage.getItem('token');
-      let userId: string | null = null;
-  
-      if (token) {
-        try {
-          const payload = this.authService.decodeToken(token);
-          userId = payload.id; // Obtener el userId del payload
-        } catch (error) {
-          this.errorMessage = 'Error al decodificar el token.';
-        }
-      } else {
-        this.errorMessage = 'No se encontró el token.';
-      }
-  
+
       if (currentPassword && newPassword) {
         // Crear el objeto DTO para actualizar la contraseña
         const updatePasswordDTO = {
           currentPassword: currentPassword,
           newPassword: newPassword,
         };
-  
-        if (userId) {
-          // Llamar al servicio para cambiar la contraseña usando el userId
-          this.authService.updatePassword(updatePasswordDTO, userId).subscribe({
-            next: () => {
-              console.log('Contraseña actualizada exitosamente');
-              this.successMessage = 'Contraseña actualizada exitosamente';
-  
-              // Después de actualizar la contraseña, actualiza el perfil
-              this.updateProfile(updatedProfile, userId);
-            },
-            error: (err) => {
-              console.error('Error al actualizar la contraseña', err);
-              this.errorMessage = 'Error al actualizar la contraseña.';
-            },
-          });
-        } else {
-          this.errorMessage = 'No se pudo obtener el ID del usuario.';
-        }
+
+        // Llamar al servicio para cambiar la contraseña
+        this.authService.updatePassword(updatePasswordDTO).subscribe({
+          next: () => {
+            console.log('Contraseña actualizada exitosamente');
+            this.successMessage = 'Contraseña actualizada exitosamente';
+
+            // Después de actualizar la contraseña, actualiza el perfil
+            this.updateProfile(updatedProfile);
+          },
+          error: (err) => {
+            console.error('Error al actualizar la contraseña', err);
+            this.errorMessage = 'Error al actualizar la contraseña.';
+          },
+        });
       } else {
         // Solo actualizar el perfil si no se proporciona la nueva contraseña
-        this.updateProfile(updatedProfile, userId);
+        this.updateProfile(updatedProfile);
       }
     }
   }
-  
+
   // Método auxiliar para actualizar el perfil
-  private updateProfile(updatedProfile: ProfileDTO, userId: string | null) {
-    if (userId) {
-      this.authService.updateUserProfile(updatedProfile, userId).subscribe({
-        next: () => {
-          console.log('Perfil actualizado exitosamente');
-          this.successMessage = 'Perfil actualizado exitosamente';
-        },
-        error: (err) => {
-          console.error('Error al actualizar el perfil', err);
-          this.errorMessage = 'Error al actualizar el perfil.';
-        },
-      });
-    } else {
-      this.errorMessage = 'No se pudo obtener el ID del usuario.';
-    }
+  private updateProfile(updatedProfile: ProfileDTO) {
+    this.authService.updateUserProfile(updatedProfile).subscribe({
+      next: () => {
+        console.log('Perfil actualizado exitosamente');
+        this.successMessage = 'Perfil actualizado exitosamente';
+      },
+      error: (err) => {
+        console.error('Error al actualizar el perfil', err);
+        this.errorMessage = 'Error al actualizar el perfil.';
+      },
+    });
   }
-  
 }
+ 
