@@ -34,9 +34,9 @@ export class AuthService {
     return this.http.put<MessageDTO<string>>(`http://localhost:8080/api/cliente/cuenta/editar-perfil/${userId}`, accountData);
   }
 
-  updatePassword(newPassword: updatePasswordDTO, userId: string ): Observable<MessageDTO<String>>{
-    return this.http.put<MessageDTO<string>>(`http://localhost:8080/api/cliente/cuenta/editar-perfil/${userId}`, newPassword);
-  }
+  updatePassword(passwordData: updatePasswordDTO, userId: string): Observable<MessageDTO<string>> {
+    return this.http.put<MessageDTO<string>>(`http://localhost:8080/api/cliente/cuenta/editar-password/${userId}`, passwordData);
+}
 
   recoverPassword(correo: string): Observable<any> {
     return this.http.post<any>(`http://localhost:8080/api/cliente/email/enviar-codigo/${correo}`, {});
