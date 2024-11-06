@@ -8,6 +8,8 @@ import { MessageDTO } from '../interface/MessageDTO';
 import { TokenService } from './token.service';
 import { editAccountDTO } from '../interface/editAccountDTO';
 import { updatePasswordDTO } from '../interface/updatePasswordDTO';
+import { CodeRecoverDTO } from '../interface/CodeRecoverDTO';
+import { RecoverPasswordDTO } from '../interface/RecoverPasswordDTO';
 
 interface LoginResponse {
   error: boolean;
@@ -15,48 +17,83 @@ interface LoginResponse {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   private apiUrl = 'http://localhost:8080/api/auth';
-
-
 
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
   getUserData(): Observable<MessageDTO<dtoAccountInformation>> {
     const userId = this.tokenService.getIDCuenta(); // Obtén el ID del token
-    return this.http.get<MessageDTO<dtoAccountInformation>>(`http://localhost:8080/api/cliente/cuenta/obtener-info/${userId}`);
+    return this.http.get<MessageDTO<dtoAccountInformation>>(
+      `http://localhost:8080/api/cliente/cuenta/obtener-info/${userId}`
+    );
   }
 
-  editAccount(accountData: editAccountDTO, userId: string): Observable<MessageDTO<string>> {
-    return this.http.put<MessageDTO<string>>(`http://localhost:8080/api/cliente/cuenta/editar-perfil/${userId}`, accountData);
+  editAccount(
+    accountData: editAccountDTO,
+    userId: string
+  ): Observable<MessageDTO<string>> {
+    return this.http.put<MessageDTO<string>>(
+      `http://localhost:8080/api/cliente/cuenta/editar-perfil/${userId}`,
+      accountData
+    );
   }
 
-  updatePassword(passwordData: updatePasswordDTO, userId: string): Observable<MessageDTO<string>> {
-    return this.http.put<MessageDTO<string>>(`http://localhost:8080/api/cliente/cuenta/editar-password/${userId}`, passwordData);
-}
+  updatePassword(
+    passwordData: updatePasswordDTO,
+    userId: string
+  ): Observable<MessageDTO<string>> {
+    return this.http.put<MessageDTO<string>>(
+      `http://localhost:8080/api/cliente/cuenta/editar-password/${userId}`,
+      passwordData
+    );
+  }
+
+  
 
   recoverPassword(correo: string): Observable<any> {
-    return this.http.post<any>(`http://localhost:8080/api/cliente/email/enviar-codigo/${correo}`, {});
-}
-
+    return this.http.post<any>(
+      `http://localhost:8080/api/cliente/email/enviar-codigo/${correo}`,
+      {}
+    );
+  }
 
   iniciarSesion(loginData: LoginDTO): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/cuenta/iniciar-sesion`, loginData);
+    return this.http.post<LoginResponse>(
+      `${this.apiUrl}/cuenta/iniciar-sesion`,
+      loginData
+    );
   }
+
+  cambiarContrasena(
+    passwordData: RecoverPasswordDTO,
+    userId: string
+  ): Observable<MessageDTO<string>> {
+    return this.http.put<MessageDTO<string>>(
+      `http://localhost:8080/api/cliente/cuenta/cambiar-password/${userId}`,
+      passwordData
+    );
+  }
+
+  validarCodigo(codeDTO: CodeRecoverDTO) {
+  console.log("Validando código:", codeDTO);
+  return this.http.post<any>(`http://localhost:8080/api/cliente/cuenta/validar-codigo`, codeDTO);
+}
 
 
   crearCuenta(datos: any): Observable<any> {
-    return this.http.post('http://localhost:8080/api/auth/cuenta/crear-cuenta', datos).pipe(
-      catchError(this.handleError) // Captura y maneja errores
-    );
+    return this.http
+      .post('http://localhost:8080/api/auth/cuenta/crear-cuenta', datos)
+      .pipe(
+        catchError(this.handleError) // Captura y maneja errores
+      );
   }
 
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Ocurrió un error inesperado.';
-  
+
     if (error.error instanceof ErrorEvent) {
       // Error del lado del cliente
       errorMessage = `Error: ${error.error.message}`;
@@ -79,12 +116,6 @@ export class AuthService {
         }
       }
     }
-  
     return throwError(() => new Error(errorMessage));
   }
-
-
-
-
 }
-

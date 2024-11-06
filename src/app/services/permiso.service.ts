@@ -23,7 +23,6 @@ export class PermisoService {
 
 }
 
-
 export const LoginGuard: CanActivateFn = (next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean => {
  return inject(PermisoService).canActivate(next, state);
 }

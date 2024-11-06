@@ -55,6 +55,16 @@ export class TokenService {
     return "";
   }
 
+  public getEmailCuenta(): string {
+    const token = this.getToken();
+    if (token) {
+      const values = this.decodePayload(token);
+      return values.email; // Suponiendo que 'id' está en el payload
+    }
+    return "";
+  }
+
+ 
   public getRol(): string {
     const token = this.getToken();
     if (token) {
