@@ -30,44 +30,6 @@
   </div>
 
   <div *ngIf="isListingEvents" class="mt-4">
-    <h3>Lista de Eventos</h3>
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Tipo</th>
-            <th>Ciudad</th>
-            <th>Dirección</th>
-            <th>Fecha</th>
-            <th>Localidades</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let event of events">
-            <td>{{event._id}}</td>
-            <td>{{ event.name }}</td>
-            <td>{{ event.type }}</td>
-            <td>{{ event.city }}</td>
-            <td>{{ event.address }}</td>
-            <td>{{ event.date | date: 'short' }}</td>
-            <td>
-              <ul>
-                <li *ngFor="let locality of event.localities">
-                  {{ locality.name }} - Precio: {{ locality.price }} - Capacidad: {{ locality.maximumCapacity }} - Vendidos: {{ locality.ticketsSold }}
-                </li>
-              </ul>
-            </td>
-            <td>
-              <button (click)="editEvent(event)" class="btn btn-sm btn-warning me-2">Editar</button>
-              <button (click)="deleteEvent(event)" class="btn btn-sm btn-danger">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <app-listar-eventos></app-listar-eventos>
   </div>
-
 </div>

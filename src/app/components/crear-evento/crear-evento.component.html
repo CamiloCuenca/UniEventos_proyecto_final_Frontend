@@ -1,8 +1,10 @@
 <!-- create-event.component.html -->
 <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+
   <div class="form-group">
     <label for="coverImage">Imagen de Portada</label>
-    <input type="text" id="coverImage" formControlName="coverImage" class="form-control" required>
+    <input type="file" (change)="onFileSelected($event)" class="form-control" required>
+    <img *ngIf="coverImageUrl" [src]="coverImageUrl" alt="Vista previa de imagen" width="200">
   </div>
 
   <div class="form-group">
@@ -24,9 +26,11 @@
   </div>
 
   <div class="form-group">
-    <label for="imageLocalities">Imagen de Localidades</label>
-    <input type="text" id="imageLocalities" formControlName="imageLocalities" class="form-control" required>
+    <label for="localityImage">Imagen de Localidad</label>
+    <input type="file" (change)="onLocalityImageSelected($event)" class="form-control" required>
+    <img *ngIf="localityImageUrl" [src]="localityImageUrl" alt="Vista previa de imagen de localidad" width="200">
   </div>
+
 
   <div class="form-group">
     <label for="type">Tipo de Evento</label>
