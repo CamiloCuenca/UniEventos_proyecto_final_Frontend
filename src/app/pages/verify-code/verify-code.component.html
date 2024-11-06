@@ -1,32 +1,52 @@
-<div class="container">
-    <h2 class="text-center mb-4">Recuperación de Contraseña</h2>
-    
-    <form [formGroup]="recuperacionForm" (ngSubmit)="validarCodigo()">
-      <!-- Campo para ingresar el código de recuperación -->
-      <div class="mb-3">
-        <label for="codigo" class="form-label">Código de Recuperación:</label>
-        <input id="codigo" class="form-control" formControlName="codigo" required />
-        <div *ngIf="codigoInvalid && recuperacionForm.get('codigo')?.touched" class="text-danger">
-          <small>Código inválido. Intente nuevamente.</small>
-        </div>
-      </div>
-  
-      <!-- Campos para la nueva contraseña, visibles solo si el código es válido -->
-      <div *ngIf="codigoValido">
-        <div class="mb-3">
-          <label for="nuevaClave" class="form-label">Nueva Contraseña:</label>
-          <input id="nuevaClave" type="password" class="form-control" formControlName="nuevaClave" required />
-        </div>
-  
-        <div class="mb-3">
-          <label for="confirmarClave" class="form-label">Confirmar Contraseña:</label>
-          <input id="confirmarClave" type="password" class="form-control" formControlName="confirmarClave" required />
-          <div *ngIf="recuperacionForm.hasError('passwordsMismatch')" class="text-danger">
-            <small>Las contraseñas no coinciden.</small>
-          </div>
-        </div>
-      </div>
-  
-      <button type="submit" class="btn btn-primary">Validar Código</button>
-    </form>
+<!-- Formulario para el código de recuperación -->
+<form [formGroup]="recuperacionFormCode" (ngSubmit)="onSubmitCode()">
+  <div class="mb-3">
+    <label for="codigo" class="form-label">Código de Recuperación:</label>
+    <input id="codigo" class="form-control" formControlName="code" required />
+    <div *ngIf="codigoInvalid && recuperacionFormCode.get('code')?.touched" class="text-danger">
+      <small>Código inválido. Intente nuevamente.</small>
+    </div>
   </div>
+
+  <div *ngIf="loading" class="text-center">
+    <small>Cargando...</small>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="loading">Validar Código</button>
+</form>
+
+<!-- Formulario para la nueva contraseña, solo visible si el código es válido -->
+<form *ngIf="codigoValido" [formGroup]="recuperacionFormPassword" (ngSubmit)="onSubmitPassword()">
+  <div class="mb-3">
+    <label for="nuevaClave" class="form-label">Nueva Contraseña:</label>
+    <input id="nuevaClave" type="password" class="form-control" formControlName="newPassword" required />
+    <div *ngIf="recuperacionFormPassword.get('newPassword')?.touched && recuperacionFormPassword.get('newPassword')?.invalid" class="text-danger">
+      <small *ngIf="recuperacionFormPassword.get('newPassword')?.hasError('required')">La contraseña es obligatoria.</small>
+      <small *ngIf="recuperacionFormPassword.get('newPassword')?.hasError('minlength')">La contraseña debe tener al menos 7 caracteres.</small>
+      <small *ngIf="recuperacionFormPassword.get('newPassword')?.hasError('maxlength')">La contraseña debe tener como máximo 20 caracteres.</small>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="confirmarClave" class="form-label">Confirmar Contraseña:</label>
+    <input id="confirmarClave" type="password" class="form-control" formControlName="confirmationPassword" required />
+    <div *ngIf="recuperacionFormPassword.hasError('passwordsMismatch')" class="text-danger">
+      <small>Las contraseñas no coinciden.</small>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="text-center">
+    <small>Cargando...</small>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="loading">Actualizar Contraseña</button>
+</form>
+
+<!-- Mensajes de éxito o error -->
+<div *ngIf="successMessage" class="alert alert-success">
+  {{ successMessage }}
+</div>
+  
+<div *ngIf="errorMessage" class="alert alert-danger">
+  {{ errorMessage }}
+</div>

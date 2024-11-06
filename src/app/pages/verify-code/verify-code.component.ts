@@ -1,55 +1,139 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TokenService } from '../../services/token.service';
+import { RecoverPasswordDTO } from '../../interface/RecoverPasswordDTO';
+import { CodeRecoverDTO } from '../../interface/CodeRecoverDTO';
+import { MessageDTO } from '../../interface/MessageDTO';
 
 @Component({
   selector: 'app-verify-code',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './verify-code.component.html',
-  styleUrl: './verify-code.component.css'
+  styleUrl: './verify-code.component.css',
 })
 export class VerifyCodeComponent {
-  recuperacionForm: FormGroup;
-  codigoValido: boolean = false;
-  codigoInvalid: boolean = false;
+  // Formulario para el código de recuperación
+  recuperacionFormCode: FormGroup;
+  // Formulario para la nueva contraseña
+  recuperacionFormPassword: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.recuperacionForm = this.fb.group({
-      codigo: ['', Validators.required],
-      nuevaClave: ['', [Validators.required, Validators.minLength(8)]],
-      confirmarClave: ['', Validators.required]
-    }, { validator: this.passwordsMatchValidator });
+  // Estado de la validación del código
+  codigoValido = false;
+  codigoInvalid = false;
+
+  // Estado de carga para el proceso de recuperación
+  loading = false;
+  
+  // Mensajes de error y éxito
+  errorMessage: string | null = null;
+  successMessage: string | null = null;
+
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private tokenService: TokenService
+  ) {
+    // Inicialización del formulario para el código
+    this.recuperacionFormCode = this.fb.group({
+      code: ['', Validators.required], // Código de recuperación
+    });
+
+    // Inicialización del formulario para la nueva contraseña
+    this.recuperacionFormPassword = this.fb.group({
+      newPassword: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(7),
+          Validators.maxLength(20),
+        ],
+      ],
+      confirmationPassword: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(7),
+          Validators.maxLength(20),
+        ],
+      ],
+    });
   }
 
-  // Función que valida el código de recuperación
-  validarCodigo() {
-    const codigo = this.recuperacionForm.get('codigo')?.value;
+  ngOnInit(): void {}
 
-    if (this.esCodigoValido(codigo)) {
-      this.codigoValido = true;
-      this.codigoInvalid = false;
-    } else {
-      this.codigoInvalid = true;
-      this.codigoValido = false;
-      this.recuperacionForm.get('nuevaClave')?.reset();
-      this.recuperacionForm.get('confirmarClave')?.reset();
+  onSubmitCode(): void {
+    if (this.recuperacionFormCode.invalid) {
+      console.log("Formulario inválido");
+      return;
     }
+  
+    this.loading = true;
+    const formValues = this.recuperacionFormCode.value;
+    const codeDTO: CodeRecoverDTO = { code: formValues.code };
+  
+    this.authService.validarCodigo(codeDTO).subscribe(
+      (response) => {
+        console.log("Código válido");
+        this.codigoValido = true;
+        this.codigoInvalid = false;
+        this.loading = false;
+      },
+      (error) => {
+        console.log("Código inválido");
+        this.codigoInvalid = true;
+        this.codigoValido = false;
+        this.loading = false;
+        alert('Código de recuperación no válido o ha expirado');
+      }
+    );
   }
 
-  // Simulación de verificación del código (puedes agregar lógica real aquí)
-  esCodigoValido(codigo: string): boolean {
-    // Lógica para validar el código; por ahora, se considera válido si es "123456"
-    return codigo === '123456';
-  }
+  // Método para cambiar la contraseña
+  onSubmitPassword(): void {
+    if (this.recuperacionFormPassword.invalid) {
+      return;
+    }
 
-  // Validador personalizado para verificar que ambas contraseñas coinciden
-  passwordsMatchValidator(form: FormGroup) {
-    const password = form.get('nuevaClave')?.value;
-    const confirmPassword = form.get('confirmarClave')?.value;
-    return password === confirmPassword ? null : { passwordsMismatch: true };
-  }
+    const formValues = this.recuperacionFormPassword.value;
+    if (formValues.newPassword !== formValues.confirmationPassword) {
+      console.log("Las contraseñas no coinciden");
+      this.codigoInvalid = true;
+      alert('Las contraseñas no coinciden');
+      return;
+    }
 
+    const recoverPasswordDTO: RecoverPasswordDTO = {
+      newPassword: formValues.newPassword,
+      confirmationPassword: formValues.confirmationPassword,
+    };
+
+    const userId = this.tokenService.getIDCuenta();
+    this.loading = true;
+
+    this.authService.cambiarContrasena(recoverPasswordDTO, userId).subscribe(
+      (response: MessageDTO<string>) => {
+        console.log("Respuesta:", response);
+        this.loading = false;
+        if (!response.error) {
+          this.successMessage = 'Contraseña actualizada correctamente';
+        } else {
+          this.errorMessage = 'Ocurrió un error al actualizar la contraseña: ' + response.errorResponse?.message;
+        }
+      },
+      (error) => {
+        console.error('Error al actualizar la contraseña', error);
+        this.loading = false;
+        this.errorMessage = 'Error al actualizar la contraseña';
+      }
+    );
+  }
 }
