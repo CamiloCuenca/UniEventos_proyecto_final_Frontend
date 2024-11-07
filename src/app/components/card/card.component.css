@@ -1,7 +1,7 @@
 .event-card {
   width: 300px; /* Ancho de la tarjeta */
   height: 400px; /* Altura de la tarjeta */
-  background-color: black; /* Fondo negro */
+  background-color: #0A0B0D; /* Fondo negro */
   color: white; /* Texto blanco */
   border-radius: 8px; /* Bordes redondeados */
   overflow: hidden; /* Para que el contenido no desborde */
