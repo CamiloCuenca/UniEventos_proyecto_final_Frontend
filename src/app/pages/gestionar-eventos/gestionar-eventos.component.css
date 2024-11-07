@@ -1,73 +1,88 @@
-/* src/app/home-admin/home-admin.component.css */
-
-h2{
-  color: white;
-  background-color: #333;
-  border-radius: 50px;
-
+/* Estilos generales para la sección de gestión de eventos */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #333;
+  font-weight: bold;
 }
 
-.subtext{
-  color: white;
+/* Contenedor centrado para las tarjetas */
+.center-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px; /* Espacio entre las tarjetas */
+  margin: 0 auto;
+  padding: 20px;
 }
 
-
-.icon-large {
-  font-size: 3rem;
-  color: #007bff;
-  transition: color 0.3s ease;
-}
-
-.card:hover .icon-large {
-  color: #0056b3;
-}
-
+/* Estilos para las tarjetas */
 .card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 20px;
-  cursor: pointer;
+  width: 600px; /* Ajusta el ancho de las tarjetas */
+  border-radius: 50px;
+  transition: transform 0.3s ease-in-out;
 }
 
-.card:hover  {
-  transform: translateY(-10px);
-  background-color: burlywood;
-
-}
-
-.card-title {
-  font-weight: 700;
-}
-
-.card .btn {
-  border-radius: 20px;
+.btn {
   background-color: #333;
-  color: white;
+  color: #fff;
 }
 
-.card .btn:hover {
+.btn:hover {
   color: burlywood;
 }
 
-.table-responsive {
-  max-height: 400px; /* Ajusta la altura según lo necesites */
-  overflow-y: auto; /* Scroll vertical */
-  overflow-x: auto; /* Scroll horizontal */
-  border: 1px solid #dee2e6; /* Agregar borde para mejor visualización */
-  border-radius: 0.25rem; /* Bordes redondeados */
+.card:hover {
+  transform: translateY(-5px);
 }
 
-.table {
-  min-width: 600px; /* Asegura que la tabla no sea demasiado estrecha */
+.card-body {
+  padding: 20px;
 }
 
-.table th, .table td {
-  vertical-align: middle; /* Centrar verticalmente */
+/* Icono dentro de cada tarjeta */
+.card-body i {
+  color: black; /* Color de icono */
 }
 
-.table th {
-  background-color: #f8f9fa; /* Color de fondo para los encabezados */
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.table td {
-  white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+.card-text {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* Botones en las tarjetas */
+.btn-primary {
+  font-size: 1rem;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: burlywood;
+  color: #fff;
+}
+
+/* Animaciones y sombras para las tarjetas */
+.animate__animated.animate__fadeInLeft {
+  animation-duration: 0.8s;
+}
+
+.animate__animated.animate__fadeInRight {
+  animation-duration: 0.8s;
+}
+
+/* Separación entre las tarjetas en dispositivos pequeños */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 20px;
+  }
 }

@@ -1,0 +1,23 @@
+.table-responsive {
+  max-height: 400px; /* Ajusta la altura según lo necesites */
+  overflow-y: auto; /* Scroll vertical */
+  overflow-x: auto; /* Scroll horizontal */
+  border: 1px solid #dee2e6; /* Agregar borde para mejor visualización */
+  border-radius: 0.25rem; /* Bordes redondeados */
+}
+
+.table {
+  min-width: 600px; /* Asegura que la tabla no sea demasiado estrecha */
+}
+
+.table th, .table td {
+  vertical-align: middle; /* Centrar verticalmente */
+}
+
+.table th {
+  background-color: #f8f9fa; /* Color de fondo para los encabezados */
+}
+
+.table td {
+  white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+}

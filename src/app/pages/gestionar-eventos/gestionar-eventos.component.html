@@ -1,73 +1,32 @@
 <div>
   <h1>Gestión de Eventos</h1>
 
-  <div class="row">
-    <div class="col-md-4 mb-4">
-      <div class="card shadow-sm border-0 animate__animated animate__fadeInLeft">
-        <div class="card-body text-center">
-          <i class="fa-solid fa-masks-theater fa-2x mb-3"></i>
-          <h5 class="card-title">Nuevo Evento</h5>
-          <p class="card-text text-muted">Crea nuevos eventos</p>
-          <button (click)="toggleCreateEvent()" class="btn btn-primary">Crear Evento</button>
-        </div>
+  <div class="center-cards">
+    <div class="card shadow-sm border-0 animate__animated animate__fadeInLeft">
+      <div class="card-body text-center">
+        <i class="fa-solid fa-masks-theater fa-2x mb-3"></i>
+        <h5 class="card-title">Nuevo Evento</h5>
+        <p class="card-text text-muted">Crea nuevos eventos</p>
+        <button (click)="toggleCreateEvent()" class="btn ">Crear Evento</button>
       </div>
     </div>
 
-    <div class="col-md-4 mb-4">
-      <div class="card shadow-sm border-0 animate__animated animate__fadeInRight">
-        <div class="card-body text-center">
-          <i class="fa-solid fa-list fa-2x mb-3"></i>
-          <h5 class="card-title">Listado de Eventos</h5>
-          <p class="card-text text-muted">Visualiza, edita o elimina eventos</p>
-          <button (click)="toggleEventList()" class="btn btn-primary">Listar Eventos</button>
-        </div>
+    <div class="card shadow-sm border-0 animate__animated animate__fadeInRight">
+      <div class="card-body text-center">
+        <i class="fa-solid fa-list fa-2x mb-3"></i>
+        <h5 class="card-title">Listado de Eventos</h5>
+        <p class="card-text text-muted">Visualiza, edita o elimina eventos</p>
+        <button (click)="toggleEventList()" class="btn ">Listar Eventos</button>
       </div>
     </div>
   </div>
+
 
   <div *ngIf="isCreatingEvent">
     <app-crear-evento></app-crear-evento>
   </div>
 
   <div *ngIf="isListingEvents" class="mt-4">
-    <h3>Lista de Eventos</h3>
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Tipo</th>
-            <th>Ciudad</th>
-            <th>Dirección</th>
-            <th>Fecha</th>
-            <th>Localidades</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let event of events">
-            <td>{{event._id}}</td>
-            <td>{{ event.name }}</td>
-            <td>{{ event.type }}</td>
-            <td>{{ event.city }}</td>
-            <td>{{ event.address }}</td>
-            <td>{{ event.date | date: 'short' }}</td>
-            <td>
-              <ul>
-                <li *ngFor="let locality of event.localities">
-                  {{ locality.name }} - Precio: {{ locality.price }} - Capacidad: {{ locality.maximumCapacity }} - Vendidos: {{ locality.ticketsSold }}
-                </li>
-              </ul>
-            </td>
-            <td>
-              <button (click)="editEvent(event)" class="btn btn-sm btn-warning me-2">Editar</button>
-              <button (click)="deleteEvent(event)" class="btn btn-sm btn-danger">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <app-listar-eventos></app-listar-eventos>
   </div>
-
 </div>

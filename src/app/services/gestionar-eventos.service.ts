@@ -18,11 +18,19 @@ export class GestionarEventosService {
     return this.http.post(url, eventData, { headers });
   }
 
-  // Método para obtener la lista de eventos
+   // Método para obtener la lista de eventos
   getEvents(headers?: HttpHeaders): Observable<EventDTO[]> {
     const url = `${this.apiUrl}/obtener-eventos`;
     return this.http.get<{ error: boolean; respuesta: EventDTO[] }>(url, { headers }).pipe(
       map(response => response.respuesta)
     );
   }
+  deleteEvent(eventId: string, headers: HttpHeaders): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/eliminar-evento/${eventId}`, { headers });
+  }
+
+  uploadImage(imageData: FormData) {
+    return this.http.post<{ error: boolean, respuesta: string }>('http://localhost:8080/api/imagenes/upload-image', imageData);
+  }
+
 }

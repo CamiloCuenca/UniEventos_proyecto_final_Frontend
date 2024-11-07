@@ -7,7 +7,7 @@ export interface Locality {
 }
 
 export interface EventDTO {
-  _id?: string; // Optional for new events
+  id?: string; // Optional for new events
   coverImage: string;
   name: string;
   status: 'ACTIVE' | 'INACTIVE'; // Puedes usar un enum si lo prefieres
