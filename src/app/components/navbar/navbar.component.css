@@ -1,3 +1,4 @@
+/* Reset de estilos */
 * {
   margin: 0;
   padding: 0;
@@ -6,11 +7,10 @@
 }
 
 body {
-  height: 10vh; /* Cambiado a 100vh para ocupar toda la altura de la ventana */
-  background-color: #5e5e5e; /* Color de fondo oscuro */
+  height: 100vh; /* Cambiado a 100vh para ocupar toda la altura de la ventana */
+  background-color: #5e5e5e;
   background-size: cover;
   background-position: center;
-
 }
 
 li {
@@ -19,12 +19,12 @@ li {
 
 a {
   text-decoration: none;
-  color: #ffffff; /* Color blanco para el texto */
+  color: #ffffff;
   font-size: 1rem;
 }
 
 a:hover {
-  color: burlywood; /* Color claro al pasar el mouse */
+  color: burlywood;
 }
 
 /* Header */
@@ -32,6 +32,7 @@ header {
   position: relative;
   padding: 0 2rem;
 }
+
 .navbar {
   width: 100%;
   height: 60px;
@@ -40,23 +41,15 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  /* Fondo semitransparente con efecto vidrioso */
-  background-color: rgba(10, 11, 13, 0.6); /* Color de fondo con opacidad */
-  border-radius: 20px; /* Bordes redondeados */
-  padding: 0 1rem; /* Espaciado interno */
-
-  /* Efecto de "vidrioso" que difumina el fondo detrás de la navbar */
-  backdrop-filter: blur(10px); /* Difumina el fondo */
-
-  /* Establece una sombra sutil para dar profundidad */
+  background-color: rgba(10, 11, 13, 0.6);
+  border-radius: 20px;
+  padding: 0 1rem;
+  backdrop-filter: blur(10px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-
-
 .navbar .logo a img {
-  height: 60px; /* Control de altura de la imagen del logo */
+  height: 60px;
 }
 
 .navbar .links {
@@ -68,82 +61,81 @@ header {
   color: #ffffff;
   font-size: 1.5rem;
   cursor: pointer;
-  display: none; /* Ocultamos el botón en pantallas grandes */
+  display: none;
 }
 
-/* Estilos para botones */
-.action_btn {
-  background-color: rgb(224, 219, 208);
-  color: #000000;
-  padding: 0.5rem 1rem;
-  margin: 5px;
+/* Estilos globales para botones */
+button, .action_btn, .btn {
+  background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+  border-radius: 8px;
   border: none;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: bold;
+  color: #FFFFFF;
   cursor: pointer;
-  transition: all 0.3s ease; /* Transición suave para todos los cambios */
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0.5rem 1.6rem;
+  margin: 5px;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
 }
 
-.action_btn:hover {
-  transform: scale(1.05); /* Escala al pasar el mouse */
-  color: burlywood; /* Cambiar color al pasar el mouse */
+
+/* Efecto hover para todos los botones */
+button:hover, .action_btn:hover, .btn:hover {
+  transform: scale(1.05);
+  color: burlywood;
+  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
 }
 
-.action_btn:active {
-  transform: scale(0.95); /* Efecto de reducción al hacer clic */
+button:active, .action_btn:active, .btn:active {
+  transform: scale(0.95);
 }
 
 /* Media Query para responsividad */
 @media (max-width: 768px) {
   .navbar .links {
-    display: none; /* Ocultar enlaces en pantallas pequeñas */
+    display: none;
   }
 
   .navbar .toggle_btn {
-    display: block; /* Mostrar botón de menú en pantallas pequeñas */
+    display: block;
   }
 
-  /* Muestra los enlaces al hacer clic en el botón */
   .navbar.active .links {
     display: flex;
-    flex-direction: column; /* Muestra en columna */
-    position: absolute; /* Posiciona el menú */
-    background-color: rgba(0, 0, 0, 0.9); /* Fondo más oscuro */
-    width: 100%; /* Ancho completo */
-    top: 60px; /* Ubicación debajo de la navbar */
-    left: 0; /* Alinear a la izquierda */
-    z-index: 100; /* Asegura que esté encima de otros elementos */
-    border-radius: 0 0 8px 8px; /* Bordes redondeados en la parte inferior */
-    padding: 1rem 0; /* Espaciado vertical */
+    flex-direction: column;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    top: 60px;
+    left: 0;
+    z-index: 100;
+    border-radius: 0 0 8px 8px;
+    padding: 1rem 0;
   }
 }
 
-
 .dropdown-menu {
-  display: none; /* Oculta el menú por defecto */
+  display: none;
   background-color: burlywood;
 }
 
-.dropdown-item{
+.dropdown-item {
   background-color: black;
   color: white;
 }
+
 .dropdown-menu.show {
-  display: block; /* Muestra el menú cuando está activo */
+  display: block;
 }
 
-.btn{
-  background-color: #333;
-  color: white
-}
 .navbar .dropdown button {
-  padding: 0.5rem; /* Ajusta el espaciado interno si es necesario */
-  font-size: 1rem; /* Asegúrate de que el tamaño de la fuente sea adecuado */
-
-}
-.navbar .dropdown button:hover{
-  color: burlywood;
+  padding: 0.5rem;
+  font-size: 1rem;
 }
 
-
+.navbar .dropdown button:hover {
+  color: rgb(255, 255, 255);
+}

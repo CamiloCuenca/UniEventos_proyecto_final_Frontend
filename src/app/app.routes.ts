@@ -17,7 +17,7 @@ export const routes: Routes = [
    { path: 'verify-code', component: VerifyCodeComponent},
    { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
    { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
-   {path:'perfil',component:ProfileComponent , canActivate: [LoginGuard]},
+   {path:'profile',component:ProfileComponent},
    {
     path: 'home-admin',
     component: HomeAdminComponent,

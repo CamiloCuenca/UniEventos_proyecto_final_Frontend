@@ -1,19 +1,13 @@
-/* Estilo para el fondo de toda la aplicación */
+/* Fondo dinámico de la aplicación */
 :host {
-  display: block; /* Asegúrate de que el host ocupa todo el espacio disponible */
-  background: linear-gradient(135deg,
-    #A60D7D, /* Rosa */
-    #6505A6, /* Morado claro */
-    #3E1659, /* Morado oscuro */
-    #400E73, /* Morado profundo */
-    #0A0B0D /* Negro muy oscuro */
-  );
-  background-size: 400% 400%; /* Esto hará que el gradiente se expanda y sea dinámico */
-  animation: gradientBackground 8s ease infinite; /* Animación más rápida */
-  min-height: 100vh; /* Asegura que el componente ocupe al menos la altura de la ventana */
+  display: block;
+  background: linear-gradient(135deg, #A60D7D, #6505A6, #3E1659, #400E73, #0A0B0D);
+  background-size: 400% 400%;
+  animation: gradientBackground 8s ease infinite;
+  min-height: 100vh;
 }
 
-/* Animación para darle movimiento al fondo */
+/* Animación del fondo */
 @keyframes gradientBackground {
   0% {
     background-position: 0% 50%;
@@ -26,11 +20,13 @@
   }
 }
 
-/* Contenedor con fondo blanco y sombra */
+/* Contenedor con fondo blanco */
 .container {
-  background-color: #ffffff; /* Fondo blanco solo para el contenedor */
-  border-radius: 12px; /* Bordes redondeados */
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
-  padding: 20px; /* Espaciado interno */
-  border: 1px solid #6505A6; /* Borde sutil con el color morado */
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  border: 1px solid #6505A6;
 }
+
+
