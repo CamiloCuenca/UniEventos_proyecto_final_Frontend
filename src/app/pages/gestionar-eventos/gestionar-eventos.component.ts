@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CrearEventoComponent } from '../../components/crear-evento/crear-evento.component';
 import { ListarEventosComponent } from '../../components/listar-eventos/listar-eventos.component';
+import { AdminCardComponent } from '../../components/admin-card/admin-card.component';
 
 @Component({
   selector: 'app-gestionar-eventos',
   standalone: true,
-  imports: [CrearEventoComponent, ListarEventosComponent, CommonModule, RouterModule],
+  imports: [CrearEventoComponent, ListarEventosComponent, CommonModule, RouterModule,AdminCardComponent],
   templateUrl: './gestionar-eventos.component.html',
   styleUrls: ['./gestionar-eventos.component.css']
 })

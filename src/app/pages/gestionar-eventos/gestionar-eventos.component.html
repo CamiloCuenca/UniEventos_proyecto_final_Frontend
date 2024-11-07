@@ -2,25 +2,26 @@
   <h1 class="text-center mb-4 animate__animated animate__fadeInDown">Gestión de Eventos</h1>
 
   <div class="center-cards">
-    <div class="card shadow-sm border-0 animate__animated animate__fadeInLeft">
-      <div class="card-body text-center">
-        <i class="fa-solid fa-masks-theater fa-2x mb-3"></i>
-        <h5 class="card-title">Nuevo Evento</h5>
-        <p class="card-text text-muted">Crea nuevos eventos</p>
-        <button (click)="toggleCreateEvent()" class="btn ">Crear Evento</button>
-      </div>
-    </div>
+    <!-- Nuevo Evento -->
+    <app-admin-card
+      title="Nuevo Evento"
+      description="Crea nuevos eventos"
+      iconClass="fa-solid fa-masks-theater"
+      buttonText="Crear Evento"
+      animationClass="animate__fadeInLeft"
+      (click)="toggleCreateEvent()">
+    </app-admin-card>
 
-    <div class="card shadow-sm border-0 animate__animated animate__fadeInRight">
-      <div class="card-body text-center">
-        <i class="fa-solid fa-list fa-2x mb-3"></i>
-        <h5 class="card-title">Listado de Eventos</h5>
-        <p class="card-text text-muted">Visualiza, edita o elimina eventos</p>
-        <button (click)="toggleEventList()" class="btn ">Listar Eventos</button>
-      </div>
-    </div>
+    <!-- Listado de Eventos -->
+    <app-admin-card
+      title="Listado de Eventos"
+      description="Visualiza, edita o elimina eventos"
+      iconClass="fa-solid fa-list"
+      buttonText="Listar Eventos"
+      animationClass="animate__fadeInRight"
+      (click)="toggleEventList()">
+    </app-admin-card>
   </div>
-
 
   <div *ngIf="isCreatingEvent">
     <app-crear-evento></app-crear-evento>
