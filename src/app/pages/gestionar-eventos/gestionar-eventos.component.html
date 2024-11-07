@@ -1,29 +1,26 @@
 <div>
   <h1>Gestión de Eventos</h1>
 
-  <div class="row">
-    <div class="col-md-4 mb-4">
-      <div class="card shadow-sm border-0 animate__animated animate__fadeInLeft">
-        <div class="card-body text-center">
-          <i class="fa-solid fa-masks-theater fa-2x mb-3"></i>
-          <h5 class="card-title">Nuevo Evento</h5>
-          <p class="card-text text-muted">Crea nuevos eventos</p>
-          <button (click)="toggleCreateEvent()" class="btn btn-primary">Crear Evento</button>
-        </div>
+  <div class="center-cards">
+    <div class="card shadow-sm border-0 animate__animated animate__fadeInLeft">
+      <div class="card-body text-center">
+        <i class="fa-solid fa-masks-theater fa-2x mb-3"></i>
+        <h5 class="card-title">Nuevo Evento</h5>
+        <p class="card-text text-muted">Crea nuevos eventos</p>
+        <button (click)="toggleCreateEvent()" class="btn ">Crear Evento</button>
       </div>
     </div>
 
-    <div class="col-md-4 mb-4">
-      <div class="card shadow-sm border-0 animate__animated animate__fadeInRight">
-        <div class="card-body text-center">
-          <i class="fa-solid fa-list fa-2x mb-3"></i>
-          <h5 class="card-title">Listado de Eventos</h5>
-          <p class="card-text text-muted">Visualiza, edita o elimina eventos</p>
-          <button (click)="toggleEventList()" class="btn btn-primary">Listar Eventos</button>
-        </div>
+    <div class="card shadow-sm border-0 animate__animated animate__fadeInRight">
+      <div class="card-body text-center">
+        <i class="fa-solid fa-list fa-2x mb-3"></i>
+        <h5 class="card-title">Listado de Eventos</h5>
+        <p class="card-text text-muted">Visualiza, edita o elimina eventos</p>
+        <button (click)="toggleEventList()" class="btn ">Listar Eventos</button>
       </div>
     </div>
   </div>
+
 
   <div *ngIf="isCreatingEvent">
     <app-crear-evento></app-crear-evento>

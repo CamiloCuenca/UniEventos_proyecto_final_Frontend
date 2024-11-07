@@ -1,40 +1,43 @@
 <!-- create-event.component.html -->
-<form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="p-4 border rounded shadow-lg bg-light">
 
-  <div class="form-group">
-    <label for="coverImage">Imagen de Portada</label>
+  <div class="form-group mb-4">
+    <label for="coverImage" class="form-label fw-bold">Imagen de Portada</label>
     <input type="file" (change)="onFileSelected($event)" class="form-control" required>
-    <img *ngIf="coverImageUrl" [src]="coverImageUrl" alt="Vista previa de imagen" width="200">
+    <div class="mt-2">
+      <img *ngIf="coverImageUrl" [src]="coverImageUrl" alt="Vista previa de imagen" class="img-thumbnail" width="200">
+    </div>
   </div>
 
-  <div class="form-group">
-    <label for="name">Nombre del Evento</label>
-    <input type="text" id="name" formControlName="name" class="form-control" required>
+  <div class="form-group mb-4">
+    <label for="name" class="form-label fw-bold">Nombre del Evento</label>
+    <input type="text" id="name" formControlName="name" class="form-control" placeholder="Ingrese el nombre del evento" required>
   </div>
 
-  <div class="form-group">
-    <label for="status">Estado</label>
-    <select id="status" formControlName="status" class="form-control" required>
+  <div class="form-group mb-4">
+    <label for="status" class="form-label fw-bold">Estado</label>
+    <select id="status" formControlName="status" class="form-select" required>
       <option value="ACTIVE">Activo</option>
       <option value="INACTIVE">Inactivo</option>
     </select>
   </div>
 
-  <div class="form-group">
-    <label for="description">Descripción</label>
-    <textarea id="description" formControlName="description" class="form-control" required></textarea>
+  <div class="form-group mb-4">
+    <label for="description" class="form-label fw-bold">Descripción</label>
+    <textarea id="description" formControlName="description" class="form-control" placeholder="Descripción del evento" required></textarea>
   </div>
 
-  <div class="form-group">
-    <label for="localityImage">Imagen de Localidad</label>
+  <div class="form-group mb-4">
+    <label for="localityImage" class="form-label fw-bold">Imagen de Localidad</label>
     <input type="file" (change)="onLocalityImageSelected($event)" class="form-control" required>
-    <img *ngIf="localityImageUrl" [src]="localityImageUrl" alt="Vista previa de imagen de localidad" width="200">
+    <div class="mt-2">
+      <img *ngIf="localityImageUrl" [src]="localityImageUrl" alt="Vista previa de imagen de localidad" class="img-thumbnail" width="200">
+    </div>
   </div>
 
-
-  <div class="form-group">
-    <label for="type">Tipo de Evento</label>
-    <select id="type" formControlName="type" class="form-control" required>
+  <div class="form-group mb-4">
+    <label for="type" class="form-label fw-bold">Tipo de Evento</label>
+    <select id="type" formControlName="type" class="form-select" required>
       <option value="CONCERT">Concierto</option>
       <option value="FAIR">Feria</option>
       <option value="FESTIVAL">Festival</option>
@@ -42,57 +45,56 @@
     </select>
   </div>
 
-  <div class="form-group">
-    <label for="date">Fecha del Evento</label>
+  <div class="form-group mb-4">
+    <label for="date" class="form-label fw-bold">Fecha del Evento</label>
     <input type="datetime-local" id="date" formControlName="date" class="form-control" required>
   </div>
 
-  <div class="form-group">
-    <label for="city">Ciudad</label>
-    <input type="text" id="city" formControlName="city" class="form-control" required>
+  <div class="form-group mb-4">
+    <label for="city" class="form-label fw-bold">Ciudad</label>
+    <input type="text" id="city" formControlName="city" class="form-control" placeholder="Ciudad del evento" required>
   </div>
 
-  <div class="form-group">
-    <label for="address">Dirección</label>
-    <input type="text" id="address" formControlName="address" class="form-control" required>
+  <div class="form-group mb-4">
+    <label for="address" class="form-label fw-bold">Dirección</label>
+    <input type="text" id="address" formControlName="address" class="form-control" placeholder="Dirección del evento" required>
   </div>
 
-  <div class="form-group">
-    <label for="amount">Cantidad de Localidades</label>
-    <input type="number" id="amount" formControlName="amount" class="form-control" required>
+  <div class="form-group mb-4">
+    <label for="amount" class="form-label fw-bold">Cantidad de Localidades</label>
+    <input type="number" id="amount" formControlName="amount" class="form-control" placeholder="Número de localidades" required>
   </div>
 
   <!-- Sección de Localidades -->
-  <div formArrayName="localities" class="form-group">
-    <div *ngFor="let locality of localities.controls; let i = index" [formGroupName]="i" class="locality-group">
-      <h5>Localidad {{ i + 1 }}</h5>
+  <div formArrayName="localities" class="mb-4">
+    <div *ngFor="let locality of localities.controls; let i = index" [formGroupName]="i" class="border rounded p-3 mb-3 bg-white shadow-sm">
+      <h5 class="mb-3">Localidad {{ i + 1 }}</h5>
 
-      <div class="form-group">
-        <label for="name-{{ i }}">Nombre</label>
-        <input type="text" id="name-{{ i }}" formControlName="name" class="form-control" required>
+      <div class="form-group mb-2">
+        <label for="name-{{ i }}" class="form-label">Nombre</label>
+        <input type="text" id="name-{{ i }}" formControlName="name" class="form-control" placeholder="Nombre de la localidad" required>
       </div>
 
-      <div class="form-group">
-        <label for="price-{{ i }}">Precio</label>
-        <input type="number" id="price-{{ i }}" formControlName="price" class="form-control" required>
+      <div class="form-group mb-2">
+        <label for="price-{{ i }}" class="form-label">Precio</label>
+        <input type="number" id="price-{{ i }}" formControlName="price" class="form-control" placeholder="Precio de la localidad" required>
       </div>
 
-      <div class="form-group">
-        <label for="ticketsSold-{{ i }}">Boletos Vendidos</label>
+      <div class="form-group mb-2">
+        <label for="ticketsSold-{{ i }}" class="form-label">Boletos Vendidos</label>
         <input type="number" id="ticketsSold-{{ i }}" formControlName="ticketsSold" class="form-control" required>
       </div>
 
-      <div class="form-group">
-        <label for="maximumCapacity-{{ i }}">Capacidad Máxima</label>
+      <div class="form-group mb-2">
+        <label for="maximumCapacity-{{ i }}" class="form-label">Capacidad Máxima</label>
         <input type="number" id="maximumCapacity-{{ i }}" formControlName="maximumCapacity" class="form-control" required>
       </div>
 
-      <button type="button" class="btn btn-danger" (click)="removeLocality(i)">Eliminar Localidad</button>
-      <hr>
+      <button type="button" class="btn btn-outline-danger btn-sm mt-3" (click)="removeLocality(i)">Eliminar Localidad</button>
     </div>
 
-    <button type="button" class="btn btn-secondary" (click)="addLocality()">Agregar Localidad</button>
+    <button type="button" class="btn btn-outline-secondary mt-3" (click)="addLocality()">Agregar Localidad</button>
   </div>
 
-  <button type="submit" class="btn btn-primary">Guardar Evento</button>
+  <button type="submit" class="btn btn-primary mt-4 w-100">Guardar Evento</button>
 </form>
