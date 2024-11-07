@@ -4,9 +4,10 @@
   margin-bottom: 4.5rem; /* Margen inferior */
   padding: 30px; /* Espaciado interior aumentado */
   border-radius: 12px; /* Bordes redondeados */
-  background-color: #ffffff; /* Fondo blanco */
+  background-color: rgba(10, 11, 13, 0.6); /* Fondo blanco */
   box-shadow: 0 40px 40px rgba(0, 0, 0, 0.2), 0 8px 30px rgba(0, 0, 0, 0.1); /* Sombra exterior */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+  color: white;
 }
 
 input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
@@ -16,6 +17,7 @@ input[type="text"], input[type="email"], input[type="password"], input[type="num
   width: 100%; /* Ancho completo */
   margin-bottom: 15px; /* Espacio entre los campos */
   transition: border-color 0.3s ease; /* Transición suave para el borde */
+  color: white;
 }
 
 input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="number"]:focus {

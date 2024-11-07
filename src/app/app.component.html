@@ -1,6 +1,15 @@
-<app-navbar></app-navbar>  <!-- Incluir lso componentes asi-->
 
-<router-outlet></router-outlet> <!-- Aquí se renderizan las rutas -->
+<div class="d-flex flex-column min-vh-100">
+  <app-navbar></app-navbar>  <!-- Incluir lso componentes asi-->
 
-<app-footer></app-footer>
+  <div class="flex-grow-1">
+    <router-outlet></router-outlet> <!-- Aquí se renderizan las rutas -->
+  </div>
+
+
+
+  <app-footer></app-footer>
+
+</div>
+
 

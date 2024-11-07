@@ -4,9 +4,10 @@
   margin-bottom: 4.5rem;
   padding: 30px; /* Espaciado interior aumentado */
   border-radius: 12px; /* Bordes redondeados */
-  background-color: #ffffff; /* Fondo blanco */
+  background-color: rgba(10, 11, 13, 0.6); /* Fondo blanco */
   box-shadow: 0 40px 40px rgba(0, 0, 0, 0.2), 0 8px 30px rgba(0, 0, 0, 0.1); /* Sombra exterior */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+  color: white;
 }
 
 
