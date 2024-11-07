@@ -1,0 +1,89 @@
+/* Estilos generales para la sección de gestión de eventos */
+h1 {
+  text-align: center;
+  color: white;
+  background-color: #333;
+  border-radius: 50px;
+
+}
+
+/* Contenedor centrado para las tarjetas */
+.center-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px; /* Espacio entre las tarjetas */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Estilos para las tarjetas */
+.card {
+  width: 600px; /* Ajusta el ancho de las tarjetas */
+  border-radius: 50px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.btn {
+  background-color: #333;
+  color: #fff;
+}
+
+.btn:hover {
+  color: burlywood;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background-color: burlywood;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* Icono dentro de cada tarjeta */
+.card-body i {
+  color: black; /* Color de icono */
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* Botones en las tarjetas */
+.btn-primary {
+  font-size: 1rem;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: burlywood;
+  color: #fff;
+}
+
+/* Animaciones y sombras para las tarjetas */
+.animate__animated.animate__fadeInLeft {
+  animation-duration: 0.8s;
+}
+
+.animate__animated.animate__fadeInRight {
+  animation-duration: 0.8s;
+}
+
+/* Separación entre las tarjetas en dispositivos pequeños */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 20px;
+  }
+}

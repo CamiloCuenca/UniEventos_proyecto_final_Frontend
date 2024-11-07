@@ -1,14 +1,36 @@
 /* Estilo para el fondo de toda la aplicación */
 :host {
   display: block; /* Asegúrate de que el host ocupa todo el espacio disponible */
-  background-color: #5e5e5e; /* Color de fondo para toda la aplicación */
+  background: linear-gradient(135deg,
+    #A60D7D, /* Rosa */
+    #6505A6, /* Morado claro */
+    #3E1659, /* Morado oscuro */
+    #400E73, /* Morado profundo */
+    #0A0B0D /* Negro muy oscuro */
+  );
+  background-size: 400% 400%; /* Esto hará que el gradiente se expanda y sea dinámico */
+  animation: gradientBackground 8s ease infinite; /* Animación más rápida */
   min-height: 100vh; /* Asegura que el componente ocupe al menos la altura de la ventana */
 }
 
-/* Si tienes un contenedor específico que debe ser blanco */
+/* Animación para darle movimiento al fondo */
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Contenedor con fondo blanco y sombra */
 .container {
   background-color: #ffffff; /* Fondo blanco solo para el contenedor */
   border-radius: 12px; /* Bordes redondeados */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
   padding: 20px; /* Espaciado interno */
+  border: 1px solid #6505A6; /* Borde sutil con el color morado */
 }
