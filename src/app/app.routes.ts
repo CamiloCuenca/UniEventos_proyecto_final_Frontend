@@ -9,6 +9,7 @@ import { RolesGuard } from './services/roles.service';
 import { GestionarEventosComponent } from './pages/gestionar-eventos/gestionar-eventos.component';
 import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 import { VerifyCodeComponent } from './pages/verify-code/verify-code.component';
+import { GestionarCuponesComponent } from './pages/gestionar-cupones/gestionar-cupones.component';
 
 export const routes: Routes = [
    { path: '', component: InicioComponent },
@@ -16,7 +17,7 @@ export const routes: Routes = [
    { path: 'verify-code', component: VerifyCodeComponent},
    { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
    { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
-   {path:'perfil',component:ProfileComponent},
+   {path:'perfil',component:ProfileComponent , canActivate: [LoginGuard]},
    {
     path: 'home-admin',
     component: HomeAdminComponent,
@@ -26,6 +27,12 @@ export const routes: Routes = [
   {
     path:'gestionar-eventos',
     component:GestionarEventosComponent,
+    canActivate :[RolesGuard],
+    data: { expectedRole: ["ADMINISTRATOR"] }
+  },
+  {
+    path:'gestionar-cupones',
+    component:GestionarCuponesComponent,
     canActivate :[RolesGuard],
     data: { expectedRole: ["ADMINISTRATOR"] }
   },

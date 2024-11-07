@@ -1,7 +1,7 @@
 /* Estilo para el fondo de toda la aplicación */
 :host {
   display: block; /* Asegúrate de que el host ocupa todo el espacio disponible */
-  background-color: #5e5e5e; /* Color de fondo para toda la aplicación */
+  background-color: #333; /* Color de fondo para toda la aplicación */
   min-height: 100vh; /* Asegura que el componente ocupe al menos la altura de la ventana */
 }
 

@@ -42,7 +42,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.2); /* Fondo semitransparente */
+  background-color: #5e5e5e;/* Fondo semitransparente */
   border-radius: 20px; /* Bordes redondeados */
   padding: 0 1rem; /* Espaciado interno */
 }
@@ -79,7 +79,7 @@ header {
 
 .action_btn:hover {
   transform: scale(1.05); /* Escala al pasar el mouse */
-  color: #ff5500; /* Cambiar color al pasar el mouse */
+  color: burlywood; /* Cambiar color al pasar el mouse */
 }
 
 .action_btn:active {
@@ -114,20 +114,28 @@ header {
 
 .dropdown-menu {
   display: none; /* Oculta el menú por defecto */
-  background-color: #5e5e5e;
+  background-color: burlywood;
 }
 
+.dropdown-item{
+  background-color: black;
+  color: white;
+}
 .dropdown-menu.show {
   display: block; /* Muestra el menú cuando está activo */
 }
 
 .btn{
   background-color: #333;
-  color: rgb(255, 132, 0);
+  color: white
 }
 .navbar .dropdown button {
   padding: 0.5rem; /* Ajusta el espaciado interno si es necesario */
   font-size: 1rem; /* Asegúrate de que el tamaño de la fuente sea adecuado */
+
+}
+.navbar .dropdown button:hover{
+  color: burlywood;
 }
 
 
