@@ -9,6 +9,7 @@ import { TokenService } from './token.service';
 import { editAccountDTO } from '../interface/editAccountDTO';
 import { updatePasswordDTO } from '../interface/updatePasswordDTO';
 import { RecoverPasswordDTO } from '../interface/RecoverPasswordDTO';
+import { PasswordDTO } from '../interface/PasswordDTO';
 
 interface LoginResponse {
   error: boolean;
@@ -74,6 +75,10 @@ export class AuthService {
       `http://localhost:8080/api/cliente/cuenta/cambiar-password/${userId}`,
       passwordData
     );
+  }
+
+  deleteAccount(userId: string, passwordDTO: PasswordDTO): Observable<MessageDTO<string>> {
+    return this.http.post<MessageDTO<string>>(`http://localhost:8080/api/cliente/cuenta/eliminar/${userId}`, passwordDTO);
   }
 
 
