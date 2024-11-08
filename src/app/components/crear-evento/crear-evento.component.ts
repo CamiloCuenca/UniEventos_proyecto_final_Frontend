@@ -4,6 +4,7 @@ import { GestionarEventosService } from '../../services/gestionar-eventos.servic
 import { EventDTO, Locality } from '../../interface/event.dto';
 import { HttpHeaders } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2'; // Importa SweetAlert2
 
 @Component({
   selector: 'app-crear-evento',
@@ -14,11 +15,11 @@ import { CommonModule } from '@angular/common';
 })
 export class CrearEventoComponent {
   eventForm: FormGroup;
-  coverImageUrl: string | null = null; // URL de la imagen cargada para vista previa
-  selectedFile: File | null = null; // Archivo de imagen seleccionado
+  coverImageUrl: string | null = null;
+  selectedFile: File | null = null;
 
-  localityImageUrl: string | null = null; // URL de la imagen cargada para la localidad
-  selectedLocalityFile: File | null = null; // Archivo de imagen de la localidad seleccionado
+  localityImageUrl: string | null = null;
+  selectedLocalityFile: File | null = null;
 
   constructor(private fb: FormBuilder, private eventService: GestionarEventosService) {
     this.eventForm = this.fb.group({
@@ -32,16 +33,14 @@ export class CrearEventoComponent {
       city: ['', Validators.required],
       address: ['', Validators.required],
       amount: [0, [Validators.required, Validators.min(1)]],
-      localities: this.fb.array([]) // Aquí se almacenarán las localidades
+      localities: this.fb.array([])
     });
   }
 
-  // Getter para el FormArray de localidades
   get localities(): FormArray {
     return this.eventForm.get('localities') as FormArray;
   }
 
-  // Método para agregar una nueva localidad
   addLocality(): void {
     const localityForm = this.fb.group({
       name: ['', Validators.required],
@@ -52,30 +51,25 @@ export class CrearEventoComponent {
     this.localities.push(localityForm);
   }
 
-  // Método para eliminar una localidad
   removeLocality(index: number): void {
     this.localities.removeAt(index);
   }
 
-  // Método para manejar la selección de imagen
   onFileSelected(event: Event): void {
     const fileInput = event.target as HTMLInputElement;
     if (fileInput.files && fileInput.files.length > 0) {
       this.selectedFile = fileInput.files[0];
 
-      // Crear una vista previa de la imagen seleccionada
       const reader = new FileReader();
       reader.onload = (e) => {
         this.coverImageUrl = e.target?.result as string;
       };
       reader.readAsDataURL(this.selectedFile);
 
-      // Subir la imagen al servidor
       this.uploadImage();
     }
   }
 
-  // Método para subir la imagen al servidor
   uploadImage(): void {
     if (this.selectedFile) {
       const formData = new FormData();
@@ -83,10 +77,23 @@ export class CrearEventoComponent {
 
       this.eventService.uploadImage(formData).subscribe(
         (response: any) => {
-          this.eventForm.patchValue({ coverImage: response.respuesta }); // URL de la imagen
+          this.eventForm.patchValue({ coverImage: response.respuesta });
+          Swal.fire({
+            icon: 'success',
+            title: 'Imagen subida',
+            text: 'La imagen de portada se subió correctamente',
+            showConfirmButton: false,
+            timer: 1500
+          });
         },
         error => {
           console.error('Error al cargar la imagen:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Hubo un problema al subir la imagen',
+            showConfirmButton: true
+          });
         }
       );
     }
@@ -99,6 +106,12 @@ export class CrearEventoComponent {
       const token = sessionStorage.getItem('AuthToken');
       if (!token) {
         console.error('Token de autenticación no encontrado');
+        Swal.fire({
+          icon: 'warning',
+          title: 'Autenticación',
+          text: 'Token de autenticación no encontrado',
+          showConfirmButton: true
+        });
         return;
       }
 
@@ -110,50 +123,74 @@ export class CrearEventoComponent {
       this.eventService.createEvent(newEvent, headers).subscribe(
         response => {
           console.log('Evento creado:', response);
+          Swal.fire({
+            icon: 'success',
+            title: 'Evento creado',
+            text: 'El evento se creó con éxito',
+            showConfirmButton: true
+          });
         },
         error => {
           console.error('Error al crear evento:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Hubo un problema al crear el evento',
+            showConfirmButton: true
+          });
+        }
+      );
+    } else {
+      Swal.fire({
+        icon: 'info',
+        title: 'Formulario inválido',
+        text: 'Por favor, complete todos los campos requeridos',
+        showConfirmButton: true
+      });
+    }
+  }
+
+  onLocalityImageSelected(event: Event): void {
+    const fileInput = event.target as HTMLInputElement;
+    if (fileInput.files && fileInput.files.length > 0) {
+      this.selectedLocalityFile = fileInput.files[0];
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.localityImageUrl = e.target?.result as string;
+      };
+      reader.readAsDataURL(this.selectedLocalityFile);
+
+      this.uploadLocalityImage();
+    }
+  }
+
+  uploadLocalityImage(): void {
+    if (this.selectedLocalityFile) {
+      const formData = new FormData();
+      formData.append('imagen', this.selectedLocalityFile);
+
+      this.eventService.uploadImage(formData).subscribe(
+        (response: any) => {
+          this.eventForm.patchValue({ imageLocalities: response.respuesta });
+          Swal.fire({
+            icon: 'success',
+            title: 'Imagen de localidad subida',
+            text: 'La imagen de la localidad se subió correctamente',
+            showConfirmButton: false,
+            timer: 1500
+          });
+        },
+        error => {
+          console.error('Error al cargar la imagen de localidad:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Hubo un problema al subir la imagen de la localidad',
+            showConfirmButton: true
+          });
         }
       );
     }
   }
-
-  // Método para manejar la selección de imagen de localidad
-onLocalityImageSelected(event: Event): void {
-  const fileInput = event.target as HTMLInputElement;
-  if (fileInput.files && fileInput.files.length > 0) {
-    this.selectedLocalityFile = fileInput.files[0];
-
-    // Crear una vista previa de la imagen seleccionada
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      this.localityImageUrl = e.target?.result as string;
-    };
-    reader.readAsDataURL(this.selectedLocalityFile);
-
-    // Subir la imagen de la localidad al servidor
-    this.uploadLocalityImage();
-  }
-}
-
-// Método para subir la imagen de localidad al servidor
-uploadLocalityImage(): void {
-  if (this.selectedLocalityFile) {
-    const formData = new FormData();
-    formData.append('imagen', this.selectedLocalityFile);
-
-    this.eventService.uploadImage(formData).subscribe(
-      (response: any) => {
-        this.eventForm.patchValue({ imageLocalities: response.respuesta }); // URL de la imagen de localidad
-      },
-      error => {
-        console.error('Error al cargar la imagen de localidad:', error);
-      }
-    );
-  }
-}
-
-
-
-
 }
