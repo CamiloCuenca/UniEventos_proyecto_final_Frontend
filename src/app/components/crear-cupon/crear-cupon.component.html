@@ -1,0 +1,114 @@
+<div class="container mt-4">
+  <h2>Crear Cupon</h2>
+
+  <!-- Mensajes de error y éxito -->
+  <div *ngIf="mensajeError" class="alert alert-danger">{{ mensajeError }}</div>
+  <div *ngIf="mensajeExitoso" class="alert alert-success">{{ mensajeExitoso }}</div>
+
+  <!-- Formulario de creación de cupón -->
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        [(ngModel)]="cupon.name"
+        name="name"
+        required
+        maxlength="100"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="code">Código:</label>
+      <input
+        type="text"
+        id="code"
+        class="form-control"
+        [(ngModel)]="cupon.code"
+        name="code"
+        required
+        minlength="5"
+        maxlength="20"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="discount">Descuento:</label>
+      <input
+        type="text"
+        id="discount"
+        class="form-control"
+        [(ngModel)]="cupon.discount"
+        name="discount"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="expirationDate">Fecha de expiración:</label>
+      <input
+        type="datetime-local"
+        id="expirationDate"
+        class="form-control"
+        [(ngModel)]="cupon.expirationDate"
+        name="expirationDate"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="startDate">Fecha de inicio:</label>
+      <input
+        type="datetime-local"
+        id="startDate"
+        class="form-control"
+        [(ngModel)]="cupon.startDate"
+        name="startDate"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="status">Estado del cupón:</label>
+      <select
+        id="status"
+        class="form-control"
+        [(ngModel)]="cupon.status"
+        name="status"
+        required
+      >
+        <option [ngValue]="CouponStatus.AVAILABLE">Disponible</option>
+        <option [ngValue]="CouponStatus.NOT_AVAILABLE">No Disponible</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="type">Tipo de cupón:</label>
+      <select
+        id="type"
+        class="form-control"
+        [(ngModel)]="cupon.type"
+        name="type"
+        required
+      >
+        <option [ngValue]="TypeCoupon.MULTIPLE">Múltiple</option>
+        <option [ngValue]="TypeCoupon.ONLY">Único</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="eventId">ID del evento (opcional):</label>
+      <input
+        type="text"
+        id="eventId"
+        class="form-control"
+        [(ngModel)]="cupon.eventId"
+        name="eventId"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Crear Cupón</button>
+  </form>
+</div>

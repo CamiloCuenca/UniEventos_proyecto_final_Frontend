@@ -8,8 +8,8 @@
       description="Crea nuevos cupones"
       iconClass="fa-solid fa-ticket"
       buttonText="Crear Cupon"
-      animationClass="animate__fadeInLeft">
-      <!--buttonClick-->
+      animationClass="animate__fadeInLeft"
+      (buttonClick)="toggleCreateCoupon()">
     </app-admin-card>
 
     <!-- Listado de Cupones -->
@@ -18,8 +18,17 @@
       description="Visualiza, edita o elimina cupones"
       iconClass="fa-solid fa-list"
       buttonText="Listar Cupones"
-      animationClass="animate__fadeInRight">
-      <!--buttonClick-->
+      animationClass="animate__fadeInRight"
+      (buttonClick)="toggleCouponList()">
     </app-admin-card>
+  </div>
+
+  <div *ngIf="isCreatingCoupon">
+    <app-crear-cupon></app-crear-cupon>
+  </div>
+
+  <div *ngIf="isListingCoupons" class="mt-4">
+    <!-- Aquí iría el componente de listar cupones una vez lo crees -->
+    <p>Listado de Cupones (Componente aún no creado)</p>
   </div>
 </div>
