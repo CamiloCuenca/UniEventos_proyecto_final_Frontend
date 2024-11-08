@@ -3,8 +3,8 @@ import { TypeCoupon } from "./enum/TypeCoupon";
 
 
 export interface CouponDTO {
-  name: string;
-  code: string;
+  name: string ;
+  code: string ;
   discount: string;
   expirationDate: string;  // Cambiado a 'string'
   status: CouponStatus;
