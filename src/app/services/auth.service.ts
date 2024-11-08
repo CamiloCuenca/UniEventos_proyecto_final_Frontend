@@ -8,7 +8,6 @@ import { MessageDTO } from '../interface/MessageDTO';
 import { TokenService } from './token.service';
 import { editAccountDTO } from '../interface/editAccountDTO';
 import { updatePasswordDTO } from '../interface/updatePasswordDTO';
-import { CodeRecoverDTO } from '../interface/CodeRecoverDTO';
 import { RecoverPasswordDTO } from '../interface/RecoverPasswordDTO';
 
 interface LoginResponse {
@@ -77,11 +76,11 @@ export class AuthService {
     );
   }
 
-  validarCodigo(codeDTO: CodeRecoverDTO) {
-  console.log("Validando código:", codeDTO);
-  return this.http.post<any>(`http://localhost:8080/api/cliente/cuenta/validar-codigo`, codeDTO);
-}
 
+  changePassword(recoverPasswordDTO: RecoverPasswordDTO): Observable<MessageDTO<string>> {
+    // Aquí se pasa el tipo MessageDTO<string> porque la respuesta es un string (mensaje)
+    return this.http.put<MessageDTO<string>>(`http://localhost:8080/api/cliente/cuenta/cambiar-password`, recoverPasswordDTO);
+  }
 
   crearCuenta(datos: any): Observable<any> {
     return this.http
