@@ -10,11 +10,13 @@ import { GestionarEventosComponent } from './pages/gestionar-eventos/gestionar-e
 import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 import { VerifyCodeComponent } from './pages/verify-code/verify-code.component';
 import { GestionarCuponesComponent } from './pages/gestionar-cupones/gestionar-cupones.component';
+import { DeleteAccountComponent } from './pages/delete-account/delete-account.component';
 
 export const routes: Routes = [
    { path: '', component: InicioComponent },
    { path: 'recover-password', component: RecoverPasswordComponent},
    { path: 'verify-code', component: VerifyCodeComponent},
+   { path: 'delete-account', component: DeleteAccountComponent},
    { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
    { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
    {path:'profile',component:ProfileComponent},
