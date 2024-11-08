@@ -10,9 +10,9 @@
         title="Gestionar Eventos"
         description="Administra los eventos activos, crea nuevos eventos y edita los existentes."
         iconClass="fas fa-calendar-alt"
-        link="/gestionar-eventos"
         buttonText="Gestión de Eventos"
-        animationClass="animate__fadeInLeft">
+        animationClass="animate__fadeInLeft"
+        (buttonClick)="navigateTo('/gestionar-eventos')"> <!-- Escucha el evento y llama al método -->
       </app-admin-card>
     </div>
 
@@ -22,9 +22,9 @@
         title="Gestionar Cupones"
         description="Crea y edita cupones para promociones y descuentos en eventos."
         iconClass="fas fa-tags"
-        link="/gestionar-cupones"
         buttonText="Gestión de Cupones"
-        animationClass="animate__fadeInUp">
+        animationClass="animate__fadeInUp"
+        (buttonClick)="navigateTo('/gestionar-cupones')"> <!-- Escucha el evento y llama al método -->
       </app-admin-card>
     </div>
 
@@ -34,10 +34,10 @@
         title="Generar Reportes"
         description="Genera reportes detallados de ventas, usuarios y eventos para análisis."
         iconClass="fas fa-chart-line"
-        link="#"
         buttonText="Reportes"
-        animationClass="animate__fadeInRight">
+        animationClass="animate__fadeInRight"
+        (buttonClick)="navigateTo('/generar-reportes')"> <!-- Escucha el evento y llama al método -->
       </app-admin-card>
     </div>
-
+  </div>
 </div>

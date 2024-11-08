@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common'; // Cambia BrowserModule por CommonModule
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin-card',
   standalone: true,
-  imports: [RouterModule, CommonModule], // Asegúrate de que CommonModule esté incluido aquí
+  imports: [RouterModule,CommonModule],
   templateUrl: './admin-card.component.html',
   styleUrls: ['./admin-card.component.css']
 })
@@ -16,4 +16,9 @@ export class AdminCardComponent {
   @Input() link: string = '/';
   @Input() buttonText: string = 'Ver más';
   @Input() animationClass: string = 'animate__fadeIn';
+  @Output() buttonClick = new EventEmitter<void>(); // Evento de salida
+
+  onButtonClick() {
+    this.buttonClick.emit(); // Emite el evento cuando se hace clic en el botón
+  }
 }
