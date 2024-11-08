@@ -1,1 +1,26 @@
-<p>delete-account works!</p>
+<div class="delete-account-container">
+    <h2>Eliminar cuenta</h2>
+  
+    <!-- Mensajes de éxito o error -->
+    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  
+    <!-- Formulario de eliminación de cuenta -->
+    <form [formGroup]="deleteForm" (ngSubmit)="deleteAccount()">
+      <div class="form-group">
+        <label for="password">Confirme su contraseña para eliminar la cuenta:</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          required
+          class="form-control"
+          placeholder="Ingrese su contraseña"
+        />
+      </div>
+  
+      <button type="submit" class="btn btn-danger mt-3" [disabled]="deleteForm.invalid">
+        Eliminar Cuenta
+      </button>
+    </form>
+  </div>
