@@ -1,47 +1,43 @@
 <div class="container my-5">
-  <h2 class="text-center mb-4 animate__animated animate__fadeInDown">Panel de Administración</h2>
+  <h2>Panel de Administración</h2>
   <p class="subtext text-center mb-5">
     Bienvenido, Admin. Gestiona eventos, cupones y genera reportes fácilmente desde aquí.
   </p>
-
   <div class="row">
     <!-- Gestionar Eventos -->
     <div class="col-md-4 mb-4">
-      <div class="card shadow-sm border-0 animate__animated animate__fadeInLeft">
-        <span class="icon">
-          <i class="fas fa-calendar-alt fa-2x mb-3"></i>
-        </span>
-        <h4>Gestionar Eventos</h4>
-        <p class="text-muted">Administra los eventos activos, crea nuevos eventos y edita los existentes.</p>
-        <a routerLink="/gestionar-eventos" class="btn">Gestión de Eventos</a>
-        <div class="shine"></div>
-      </div>
+      <app-admin-card
+        title="Gestionar Eventos"
+        description="Administra los eventos activos, crea nuevos eventos y edita los existentes."
+        iconClass="fas fa-calendar-alt"
+        buttonText="Gestión de Eventos"
+        animationClass="animate__fadeInLeft"
+        (buttonClick)="navigateTo('/gestionar-eventos')"> <!-- Escucha el evento y llama al método -->
+      </app-admin-card>
     </div>
 
     <!-- Gestionar Cupones -->
     <div class="col-md-4 mb-4">
-      <div class="card shadow-sm border-0 animate__animated animate__fadeInUp">
-        <span class="icon">
-          <i class="fas fa-tags fa-2x mb-3"></i>
-        </span>
-        <h4>Gestionar Cupones</h4>
-        <p class="text-muted">Crea y edita cupones para promociones y descuentos en eventos.</p>
-        <a routerLink="/gestionar-cupones" class="btn">Gestión de Cupones</a>
-        <div class="shine"></div>
-      </div>
+      <app-admin-card
+        title="Gestionar Cupones"
+        description="Crea y edita cupones para promociones y descuentos en eventos."
+        iconClass="fas fa-tags"
+        buttonText="Gestión de Cupones"
+        animationClass="animate__fadeInUp"
+        (buttonClick)="navigateTo('/gestionar-cupones')"> <!-- Escucha el evento y llama al método -->
+      </app-admin-card>
     </div>
 
     <!-- Generar Reportes -->
     <div class="col-md-4 mb-4">
-      <div class="card shadow-sm border-0 animate__animated animate__fadeInRight">
-        <span class="icon">
-          <i class="fas fa-chart-line fa-2x mb-3"></i>
-        </span>
-        <h4>Generar Reportes</h4>
-        <p class="text-muted">Genera reportes detallados de ventas, usuarios y eventos para análisis.</p>
-        <a href="#" class="btn">Reportes</a>
-        <div class="shine"></div>
-      </div>
+      <app-admin-card
+        title="Generar Reportes"
+        description="Genera reportes detallados de ventas, usuarios y eventos para análisis."
+        iconClass="fas fa-chart-line"
+        buttonText="Reportes"
+        animationClass="animate__fadeInRight"
+        (buttonClick)="navigateTo('/generar-reportes')"> <!-- Escucha el evento y llama al método -->
+      </app-admin-card>
     </div>
   </div>
 </div>

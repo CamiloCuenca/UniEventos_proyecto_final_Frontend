@@ -1,0 +1,9 @@
+<div class="card shadow-sm border-0 animate__animated" [ngClass]="animationClass">
+  <span class="icon">
+    <i [class]="iconClass + ' fa-2x mb-3'"></i>
+  </span>
+  <h4>{{ title }}</h4>
+  <p class="">{{ description }}</p>
+  <button (click)="onButtonClick()" class="btn">{{ buttonText }}</button> <!-- Evento de clic en el botón -->
+  <div class="shine"></div>
+</div>

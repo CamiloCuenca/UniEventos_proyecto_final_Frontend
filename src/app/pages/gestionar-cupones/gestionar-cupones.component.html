@@ -1,29 +1,25 @@
 <div>
-
-
   <h1 class="text-center mb-4 animate__animated animate__fadeInDown">Gestión de Cupones</h1>
 
   <div class="center-cards">
-    <div class="card shadow-sm border-0 animate__animated animate__fadeInLeft">
-      <div class="card-body text-center">
+    <!-- Nuevo Cupon -->
+    <app-admin-card
+      title="Nuevo Cupon"
+      description="Crea nuevos cupones"
+      iconClass="fa-solid fa-ticket"
+      buttonText="Crear Cupon"
+      animationClass="animate__fadeInLeft">
+      <!--buttonClick-->
+    </app-admin-card>
 
-        <i class="fa-solid fa-ticket fa-2x mb-3"></i>
-        <h5 class="card-title">Nuevo Cupon</h5>
-        <p class="card-text text-muted">Crea nuevos cupones</p>
-      <button  class="btn ">Crear Evento</button>
-      </div>
-    </div>
-
-
-    <div class="card shadow-sm border-0 animate__animated animate__fadeInRight">
-      <div class="card-body text-center">
-        <i class="fa-solid fa-list fa-2x mb-3"></i>
-        <h5 class="card-title">Listado de cupones</h5>
-        <p class="card-text text-muted">Visualiza, edita o elimina cupones</p>
-       <button  class="btn ">Listar Eventos</button>
-      </div>
-    </div>
+    <!-- Listado de Cupones -->
+    <app-admin-card
+      title="Listado de Cupones"
+      description="Visualiza, edita o elimina cupones"
+      iconClass="fa-solid fa-list"
+      buttonText="Listar Cupones"
+      animationClass="animate__fadeInRight">
+      <!--buttonClick-->
+    </app-admin-card>
   </div>
-
-
 </div>
