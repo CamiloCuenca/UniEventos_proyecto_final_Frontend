@@ -38,7 +38,7 @@ export class LoginComponent {
           if (!response.error && response.respuesta && response.respuesta.token) {
             this.tokenService.login(response.respuesta.token);
             this.showAlert('Inicio de sesión exitoso', 'success');
-            this.router.navigate(['/dashboard']); // Redirige al usuario tras el inicio de sesión exitoso
+
           } else {
             this.showAlert('Error en la respuesta del servidor', 'danger');
           }
