@@ -12,14 +12,24 @@
       (buttonClick)="toggleCreateCoupon()">
     </app-admin-card>
 
-    <!-- Listado de Cupones -->
+    <!-- Listado de Cupones Disponibles -->
     <app-admin-card
-      title="Listado de Cupones"
-      description="Visualiza, edita o elimina cupones"
+      title="Cupones Disponibles"
+      description="Visualiza cupones activos"
       iconClass="fa-solid fa-list"
-      buttonText="Listar Cupones"
+      buttonText="Listar Cupones Disponibles"
       animationClass="animate__fadeInRight"
-      (buttonClick)="toggleCouponList()">
+      (buttonClick)="toggleCouponList(true)">
+    </app-admin-card>
+
+    <!-- Listado de Cupones No Disponibles -->
+    <app-admin-card
+      title="Cupones No Disponibles"
+      description="Visualiza cupones inactivos"
+      iconClass="fa-solid fa-list"
+      buttonText="Listar Cupones No Disponibles"
+      animationClass="animate__fadeInRight"
+      (buttonClick)="toggleCouponList(false)">
     </app-admin-card>
   </div>
 
@@ -28,7 +38,6 @@
   </div>
 
   <div *ngIf="isListingCoupons" class="mt-4">
-    <!-- Aquí iría el componente de listar cupones una vez lo crees -->
-    <p>Listado de Cupones (Componente aún no creado)</p>
+    <app-listar-cupones [isAvailable]="showAvailableCoupons"></app-listar-cupones>
   </div>
 </div>
