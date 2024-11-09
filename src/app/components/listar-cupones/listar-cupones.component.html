@@ -1,0 +1,29 @@
+<div>
+  <h2>{{ title }}</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Código</th>
+        <th>Descuento</th>
+        <th>Fecha de Expiración</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cupon of cupones">
+        <td>{{ cupon.name }}</td>
+        <td>{{ cupon.code }}</td>
+        <td>{{ cupon.discount }}</td>
+        <td>{{ cupon.expirationDate | date: 'short' }}</td>
+        <td>{{ cupon.status }}</td>
+        <td>
+          <button *ngIf="isAvailable" class="btn btn-warning" (click)="onDesactivar(cupon)">Desactivar</button>
+          <button *ngIf="!isAvailable" class="btn btn-success" (click)="onActivar(cupon)">Activar</button>
+          <button class="btn btn-primary" (click)="onEditar(cupon)">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

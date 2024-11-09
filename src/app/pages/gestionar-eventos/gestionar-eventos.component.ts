@@ -17,7 +17,6 @@ export class GestionarEventosComponent implements OnInit {
   isListingEvents = false;
 
   ngOnInit(): void {
-    // Aquí puedes inicializar variables o realizar otras configuraciones iniciales si es necesario.
   }
 
   toggleCreateEvent(): void {

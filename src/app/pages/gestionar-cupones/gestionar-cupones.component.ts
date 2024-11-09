@@ -1,34 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { CrearCuponComponent } from '../../components/crear-cupon/crear-cupon.component'; // Asegúrate de que la ruta esté correcta
+import { Component } from '@angular/core';
+import { CrearCuponComponent } from '../../components/crear-cupon/crear-cupon.component';
 import { AdminCardComponent } from '../../components/admin-card/admin-card.component';
+import { ListarCuponesComponent } from '../../components/listar-cupones/listar-cupones.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-gestionar-cupones',
   standalone: true,
-  imports: [CrearCuponComponent, AdminCardComponent,CommonModule],
+  imports: [
+    CommonModule,
+    CrearCuponComponent,
+    AdminCardComponent,
+    ListarCuponesComponent
+  ],
   templateUrl: './gestionar-cupones.component.html',
   styleUrls: ['./gestionar-cupones.component.css']
 })
-export class GestionarCuponesComponent implements OnInit {
+export class GestionarCuponesComponent {
   isCreatingCoupon = false;
   isListingCoupons = false;
-
-  ngOnInit(): void {
-    // Aquí puedes inicializar variables o realizar otras configuraciones iniciales si es necesario.
-  }
+  showAvailableCoupons = true;
 
   toggleCreateCoupon(): void {
     this.isCreatingCoupon = !this.isCreatingCoupon;
     if (this.isCreatingCoupon) {
-      this.isListingCoupons = false; // Ocultar listado si se está creando un cupon
+      this.isListingCoupons = false;
     }
   }
 
-  toggleCouponList(): void {
+  toggleCouponList(isAvailable: boolean): void {
     this.isListingCoupons = !this.isListingCoupons;
+    this.showAvailableCoupons = isAvailable;
     if (this.isListingCoupons) {
-      this.isCreatingCoupon = false; // Ocultar la creación de cupones si se está listando
+      this.isCreatingCoupon = false;
     }
   }
 }

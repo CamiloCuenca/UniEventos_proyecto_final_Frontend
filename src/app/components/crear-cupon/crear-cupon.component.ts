@@ -6,6 +6,7 @@ import { TypeCoupon } from '../../interface/enum/TypeCoupon';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2'; // Importa SweetAlert2
 
 @Component({
   selector: 'app-crear-cupon',
@@ -17,17 +18,14 @@ import { CommonModule } from '@angular/common';
 export class CrearCuponComponent {
   cupon: CouponDTO = {
     name: '',
-    code: '',
+    code: '', // Deja el código vacío para que el backend lo maneje
     discount: '',
-    expirationDate: '',  // Debería ser string, no Date
+    expirationDate: '',
     status: CouponStatus.AVAILABLE,
     type: TypeCoupon.MULTIPLE,
-    eventId: '', // Ahora puede aceptar string o undefined
-    startDate: '',  // Debería ser string, no Date
+    eventId: '', // Puede ser null o un string vacío, según lo necesites
+    startDate: '',
   };
-
-  mensajeError: string | null = null;
-  mensajeExitoso: string | null = null;
 
   // Opciones para el estado del cupón y tipo de cupón
   CouponStatus = CouponStatus;
@@ -41,7 +39,7 @@ export class CrearCuponComponent {
       const authToken = sessionStorage.getItem('AuthToken'); // O el método adecuado para obtener el token
 
       if (!authToken) {
-        this.mensajeError = 'No se encontró el token de autenticación.';
+        this.showError('No se encontró el token de autenticación.');
         return;
       }
 
@@ -54,31 +52,29 @@ export class CrearCuponComponent {
           this.cupon.expirationDate = expirationDate.toISOString();
           this.cupon.startDate = startDate.toISOString();
         } else {
-          this.mensajeError = 'Las fechas no son válidas.';
+          this.showError('Las fechas no son válidas.');
           return;
         }
       }
 
       // Validar el campo eventId antes de enviarlo
       if (!this.cupon.eventId || this.cupon.eventId.trim() === '') {
-        this.cupon.eventId = null; // Usar undefined en lugar de null
+        this.cupon.eventId = null; // Usar undefined en lugar de null si es necesario
       }
 
       this.couponService.createCoupon(this.cupon, authToken).subscribe(
         (response) => {
           console.log('Cupón creado con éxito:', response);
-          this.mensajeExitoso = 'El cupón fue creado con éxito.';
-          this.mensajeError = null;
+          this.showSuccess('El cupón fue creado con éxito.');
           this.resetForm(); // Limpiar el formulario después de un envío exitoso
         },
         (error: HttpErrorResponse) => {
           console.error('Error al crear el cupón:', error);
-          this.mensajeError = error.message || 'Hubo un error al crear el cupón.';
-          this.mensajeExitoso = null;
+          this.showError(error.message || 'Hubo un error al crear el cupón.');
         }
       );
     } else {
-      this.mensajeError = 'Por favor, complete el formulario correctamente.';
+      this.showError('Por favor, complete el formulario correctamente.');
     }
   }
 
@@ -86,7 +82,6 @@ export class CrearCuponComponent {
   private isFormValid(): boolean {
     return (
       this.cupon.name.trim() !== '' &&
-      this.cupon.code.trim() !== '' &&
       this.cupon.discount.trim() !== '' &&
       this.cupon.expirationDate.trim() !== '' &&
       this.cupon.startDate.trim() !== ''
@@ -97,13 +92,33 @@ export class CrearCuponComponent {
   private resetForm() {
     this.cupon = {
       name: '',
-      code: '',
+      code: '', // El código se mantiene vacío para que el backend lo maneje
       discount: '',
       expirationDate: '',
       status: CouponStatus.AVAILABLE,
       type: TypeCoupon.MULTIPLE,
-      eventId: '',  // Inicializado con string vacío para el caso de eventos opcionales
+      eventId: '', // Mantenerlo vacío para eventos opcionales
       startDate: '',
     };
+  }
+
+  // Método para mostrar una alerta de éxito con SweetAlert2
+  private showSuccess(message: string) {
+    Swal.fire({
+      icon: 'success',
+      title: '¡Éxito!',
+      text: message,
+      showConfirmButton: true
+    });
+  }
+
+  // Método para mostrar una alerta de error con SweetAlert2
+  private showError(message: string) {
+    Swal.fire({
+      icon: 'error',
+      title: '¡Error!',
+      text: message,
+      showConfirmButton: true
+    });
   }
 }
