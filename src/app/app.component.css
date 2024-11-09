@@ -27,6 +27,18 @@
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
   padding: 20px;
   border: 1px solid #6505A6;
+  min-height: 100%; /* Asegura que el contenedor ocupe todo el espacio disponible */
+  display: flex;
+  flex-direction: column;
 }
 
+/* Estilo para el layout principal con flexbox */
+.d-flex {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garantiza que la altura mínima ocupe toda la ventana */
+}
 
+.flex-grow-1 {
+  flex-grow: 1; /* Este espacio se expandirá para que el contenido ocupe el espacio restante */
+}

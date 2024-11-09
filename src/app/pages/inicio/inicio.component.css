@@ -1,27 +1,57 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif; /* Fuente general */
+/* Estilos generales para el contenedor */
+.container {
+  max-width: 1200px; /* Aumento el ancho máximo para pantallas más grandes */
+  margin: auto; /* Centra el contenedor en la página */
+  margin-bottom: 4.5rem;
+  padding: 30px; /* Espaciado interior */
+  border-radius: 12px; /* Bordes redondeados */
+  background-color: rgba(10, 11, 13, 0.6); /* Fondo oscuro y semitransparente */
+  box-shadow: 0 40px 40px rgba(0, 0, 0, 0.2), 0 8px 30px rgba(0, 0, 0, 0.1); /* Sombra */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: white;
+  display: flex;
+  justify-content: center; /* Centra el contenedor */
+  flex-direction: column;
 }
 
-body {
-
-  background-color: #333; /* Color de fondo oscuro */
- /** background-image: url('https://i.pinimg.com/originals/61/0d/30/610d309ee5ecc91b82365a0f71926bc9.gif'); /* Fondo animado */
-  background-size: cover; /* Cubre toda la pantalla */
-  background-position: center; /* Centra la imagen */
-}
-
+/* Contenedor de las cartas (card-container) */
 .card-container {
   display: grid;
   margin-top: 80px;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual tamaño */
-  gap: 16px; /* Espacio entre los cards */
-  justify-items: center; /* Centra cada card dentro de su celda */
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas fijas */
+  gap: 16px; /* Espacio entre las cartas */
+  justify-items: center; /* Centra cada carta dentro de su celda */
 }
 
+/* Estilos de cada carta (app-card) */
 app-card {
-  max-width: 300px; /* Ancho máximo para que las cards no se extiendan demasiado */
-  width: 100%; /* Asegura que ocupen todo el ancho disponible dentro de su celda */
+  max-width: 300px; /* Ancho máximo para evitar que las cartas sean muy grandes */
+  width: 100%; /* Asegura que las cartas ocupen todo el espacio dentro de la celda */
+  height: auto; /* Mantiene la proporción de las cartas */
+  border-radius: 8px; /* Bordes redondeados */
+  overflow: hidden; /* Evita que el contenido sobrepase los bordes */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para las cartas */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease; /* Transición suave */
+}
+
+/* Efecto hover para las cartas */
+app-card:hover {
+  transform: translateY(-5px); /* Eleva la carta al pasar el cursor */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
+}
+
+/* Media Queries para Responsividad */
+
+/* En pantallas más pequeñas (móviles), se ajusta a 1 columna */
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas (tablet) */
+  }
+}
+
+/* En pantallas muy pequeñas (móviles), se ajusta a 1 sola columna */
+@media (max-width: 480px) {
+  .card-container {
+    grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas (móviles) */
+  }
 }
