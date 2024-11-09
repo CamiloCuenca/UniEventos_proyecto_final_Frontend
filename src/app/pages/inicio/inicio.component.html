@@ -1,5 +1,6 @@
-<body>
 
+<div class="conteiner">
+  <app-carrucel></app-carrucel>
   <div class="card-container">
     <app-card *ngFor="let event of events"
       [eventImage]="event.urlImagePoster"
@@ -9,4 +10,4 @@
     </app-card>
   </div>
 
-</body>
+</div>
