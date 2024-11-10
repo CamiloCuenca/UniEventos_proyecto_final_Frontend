@@ -1,29 +1,29 @@
-<div>
-  <h2>{{ title }}</h2>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Código</th>
-        <th>Descuento</th>
-        <th>Fecha de Expiración</th>
-        <th>Estado</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cupon of cupones">
-        <td>{{ cupon.name }}</td>
-        <td>{{ cupon.code }}</td>
-        <td>{{ cupon.discount }}</td>
-        <td>{{ cupon.expirationDate | date: 'short' }}</td>
-        <td>{{ cupon.status }}</td>
-        <td>
-          <button *ngIf="isAvailable" class="btn btn-warning" (click)="onDesactivar(cupon)">Desactivar</button>
-          <button *ngIf="!isAvailable" class="btn btn-success" (click)="onActivar(cupon)">Activar</button>
-          <button class="btn btn-primary" (click)="onEditar(cupon)">Editar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-striped table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Código</th>
+      <th scope="col">Descuento</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cupon of listCupones; let i = index" [ngClass]="{ 'table-warning': editingCouponIndex === i }">
+      <td>{{ cupon.couponId }}</td>
+      <td *ngIf="editingCouponIndex !== i">{{ cupon.name }}</td>
+      <td *ngIf="editingCouponIndex === i">
+        <input class="form-control" [(ngModel)]="listCupones[i].name" />
+      </td>
+      <td>{{ cupon.code }}</td>
+      <td>{{ cupon.discount }}%</td>
+      <td>
+        <button *ngIf="editingCouponIndex !== i" (click)="onEditar(i)" class="btn btn-primary btn-sm">Editar</button>
+        <button *ngIf="editingCouponIndex === i" (click)="onGuardarEdicion(i)" class="btn btn-success btn-sm">Guardar</button>
+        <button *ngIf="editingCouponIndex === i" (click)="onCancelarEdicion()" class="btn btn-secondary btn-sm">Cancelar</button>
+        <button *ngIf="isAvailable" class="btn btn-warning" (click)="onDesactivar(cupon)">Desactivar</button>
+        <button *ngIf="!isAvailable" class="btn btn-success" (click)="onActivar(cupon)">Activar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
