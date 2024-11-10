@@ -1,19 +1,22 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CouponService } from '../../services/coupon.service';
+import { listaCuponDTO } from '../../interface/listaCupon.dto';
+import { FormsModule } from '@angular/forms';
 import { CouponDTO } from '../../interface/cupon.dto';
 
 @Component({
   selector: 'app-listar-cupones',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './listar-cupones.component.html',
   styleUrls: ['./listar-cupones.component.css']
 })
 export class ListarCuponesComponent implements OnInit {
-  @Input() isAvailable: boolean = true; // Define si muestra cupones disponibles o no disponibles
-  cupones: CouponDTO[] = [];
+  @Input() isAvailable: boolean = true;
+  listCupones: listaCuponDTO[] = [];
   title: string = 'Listado de Cupones';
+  editingCouponIndex: number | null = null;
 
   constructor(private couponService: CouponService) {}
 
@@ -34,16 +37,48 @@ export class ListarCuponesComponent implements OnInit {
 
   private cargarCuponesDisponibles(authToken: string) {
     this.couponService.getAvailableCoupons(authToken).subscribe(
-      (cupones) => (this.cupones = cupones),
+      (listCupones) => (this.listCupones = listCupones),
       (error) => console.error('Error al cargar cupones disponibles:', error)
     );
   }
 
   private cargarCuponesNoDisponibles(authToken: string) {
     this.couponService.getUnavailableCoupons(authToken).subscribe(
-      (cupones) => (this.cupones = cupones),
+      (listCupones) => (this.listCupones = listCupones),
       (error) => console.error('Error al cargar cupones no disponibles:', error)
     );
+  }
+
+  onEditar(index: number) {
+    this.editingCouponIndex = index;
+  }
+
+  onGuardarEdicion(index: number) {
+    const authToken = sessionStorage.getItem('AuthToken');
+    if (!authToken) {
+      console.error('Token de autenticación no encontrado.');
+      return;
+    }
+
+    const updatedCoupon = { ...this.listCupones[index] };
+    this.couponService.updateCoupon(updatedCoupon, authToken).subscribe(
+      (message) => {
+        console.log('Respuesta de la actualización:', message);
+        this.editingCouponIndex = null;
+        this.ngOnInit();
+      },
+      (error) => {
+        console.error('Error al actualizar el cupón:', error);
+      }
+    );
+  }
+
+  onCancelarEdicion() {
+    this.editingCouponIndex = null;
+  }
+
+  onEliminarCupon(index: number) {
+    // Lógica para eliminar el cupón
   }
 
   onActivar(cupon: CouponDTO) {
@@ -52,9 +87,5 @@ export class ListarCuponesComponent implements OnInit {
 
   onDesactivar(cupon: CouponDTO) {
     console.log('Desactivar cupon:', cupon);
-  }
-
-  onEditar(cupon: CouponDTO) {
-    console.log('Editar cupon:', cupon);
   }
 }
