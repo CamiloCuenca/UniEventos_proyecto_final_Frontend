@@ -1,153 +1,67 @@
-/* Reset de estilos */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
-}
-
+/* Estilos generales */
 body {
-  height: 100vh; /* Cambiado a 100vh para ocupar toda la altura de la ventana */
-  background-color: #5e5e5e;
-  background-size: cover;
-  background-position: center;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 1rem;
-}
-
-a:hover {
-  color: rgb(121, 3, 255);
-}
-
-/* Header */
-header {
-  position: relative;
-  padding: 0 2rem;
+  margin-top: 80px; /* Asegura que no quede tapado por el navbar fijo */
 }
 
 /* Navbar */
 .navbar {
-  width: 100%; /* Asegura que la navbar ocupe todo el ancho de la pantalla */
-  height: 80px;
-  margin: 0 auto; /* Centra el contenido dentro de la navbar */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: rgba(10, 11, 13, 0.6); /* Fondo oscuro semitransparente */
-  border-radius: 20px; /* Bordes redondeados */
-  padding: 0 1rem; /* Espaciado interno */
-  backdrop-filter: blur(10px); /* Efecto de desenfoque de fondo */
+  background-color: rgba(10, 11, 13, 0.9); /* Fondo oscuro semitransparente */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  border-radius: 8px;
+  backdrop-filter: blur(10px); /* Efecto de desenfoque para el fondo */
 }
 
 /* Logo */
 .navbar .logo a img {
-  height: 60px;
-  width: auto; /* Asegura que la imagen mantenga su aspecto */
+  height: 50px; /* Ajusta el tamaño del logo */
+  width: auto;
 }
 
-/* Enlaces de la barra de navegación */
-.navbar .links {
-  display: flex;
-  gap: 2rem; /* Espaciado entre los enlaces */
-  align-items: center; /* Centra los enlaces verticalmente */
-}
-
-.navbar .toggle_btn {
-  color: #ffffff;
-  font-size: 1.5rem;
-  cursor: pointer;
-  display: none; /* Ocultamos el botón en pantallas grandes */
-}
-
-/* Estilos globales para botones */
-button, .action_btn, .btn {
-  background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
-  border-radius: 8px;
-  border: none;
-  color: #FFFFFF;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
-  padding: 0.5rem 1.6rem;
-  margin: 5px;
-  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Efecto hover para todos los botones */
-button:hover, .action_btn:hover, .btn:hover {
-  transform: scale(1.05);
-  color: rgb(125, 13, 253);
-  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
-}
-
-button:active, .action_btn:active, .btn:active {
-  transform: scale(0.95);
-}
-
-/* Media Query para responsividad */
-@media (max-width: 768px) {
-  /* Ocultar los enlaces de la navbar en dispositivos pequeños */
-  .navbar .links {
-    display: none;
-  }
-
-  /* Mostrar el botón de hamburguesa en dispositivos pequeños */
-  .navbar .toggle_btn {
-    display: block;
-  }
-
-  /* Cuando la navbar tiene la clase "active", se muestran los enlaces */
-  .navbar.active .links {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro */
-    width: 100%;
-    top: 60px;
-    left: 0;
-    z-index: 100;
-    border-radius: 0 0 8px 8px;
-    padding: 1rem 0;
-  }
-
-  /* Estilos para los enlaces cuando se despliegan */
-  .navbar.active .links a {
-    padding: 1rem;
-    font-size: 1.2rem;
-  }
-}
-
-/* Estilos para dropdowns */
-.dropdown-menu {
-  display: none;
-  background-color: rgb(98, 0, 255);
-}
-
-.dropdown-item {
-  background-color: black;
-  color: white;
-}
-
-.dropdown-menu.show {
-  display: block;
-}
-
-.navbar .dropdown button {
-  padding: 0.5rem;
+/* Links del menú */
+.navbar-nav .nav-item .nav-link {
+  color: #fff; /* Color blanco para los enlaces */
   font-size: 1rem;
+  padding: 10px 15px; /* Espaciado del enlace */
+  transition: color 0.3s ease, transform 0.3s ease; /* Transición suave */
 }
 
-.navbar .dropdown button:hover {
-  color: rgb(255, 255, 255);
+.navbar-nav .nav-item .nav-link:hover {
+  color: rgb(121, 3, 255); /* Color morado al hacer hover */
+  transform: scale(1.05); /* Efecto de escala al pasar el ratón */
+}
+
+/* Dropdown menu */
+.navbar .dropdown-menu {
+  background-color: rgba(98, 0, 255, 0.8); /* Fondo morado con opacidad */
+  border-radius: 5px;
+}
+
+.navbar .dropdown-menu .dropdown-item {
+  color: white; /* Color del texto en el dropdown */
+  padding: 10px 20px;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+  background-color: black; /* Fondo negro al hacer hover */
+  color: rgb(121, 3, 255); /* Cambio de color */
+}
+
+/* Botones y iconos */
+.navbar .btn-link {
+  color: #fff; /* Icono del carrito en blanco */
+}
+
+.navbar .btn-link:hover {
+  color: rgb(121, 3, 255); /* Color morado al pasar el ratón */
+}
+
+.navbar-toggler-icon {
+  background-color: #fff; /* Color blanco para el icono de la hamburguesa */
+}
+
+@media (max-width: 768px) {
+  /* Estilos para el toggle y colapsar el menú */
+  .navbar-nav {
+    text-align: center; /* Alinea los elementos en el centro en dispositivos pequeños */
+  }
 }

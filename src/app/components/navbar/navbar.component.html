@@ -1,58 +1,48 @@
 <header>
-  <!-- Barra de navegación principal -->
-  <div class="navbar">
-    <!-- Sección del logo -->
-    <div class="logo">
-      <a href="#">
-        <!-- Imagen del logo que se carga desde Firebase Storage -->
-        <img src="https://firebasestorage.googleapis.com/v0/b/unieventos-1c779.appspot.com/o/logoNuevo.svg?alt=media&token=87d39113-8201-46e0-8005-36be321f1e13"
-             alt="Web Dev Creative" />
-      </a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <div class="logo">
+        <a href="#">
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/unieventos-1c779.appspot.com/o/logoNuevo.svg?alt=media&token=87d39113-8201-46e0-8005-36be321f1e13"
+            alt="Web Dev Creative" class="navbar-brand" />
+        </a>
+      </div>
+
+      <!-- Enlaces de navegación -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#">Inicio</a>
+          </li>
+          <li class="nav-item" *ngIf="!isLoggedIn()">
+            <a class="nav-link" routerLink="/login">Login</a>
+          </li>
+
+          <!-- Dropdown para usuario -->
+          <li class="nav-item dropdown" *ngIf="isLoggedIn()">
+            <!-- Botón de usuario -->
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+               (click)="toggleDropdown()">
+              <i class="fa-solid fa-user"></i> {{ userName || 'Usuario' }}
+            </a>
+            <!-- Menú del dropdown -->
+            <ul class="dropdown-menu" [ngClass]="{'show': dropdownOpen}" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink="/profile">Gestion perfil</a></li>
+              <li><a class="dropdown-item" routerLink="/home-admin">Gestion Admi</a></li>
+              <li><a class="dropdown-item" (click)="logout()">Cerrar sesión</a></li>
+            </ul>
+          </li>
+
+          <!-- Icono de carrito de compras -->
+        </ul>
+      </div>
     </div>
-
-    <!-- Lista de enlaces de navegación -->
-    <ul class="links">
-      <!-- Enlace a la página de inicio -->
-      <li><a routerLink="#">Inicio</a></li>
-      <!-- Enlace a la página "About" -->
-      <li><a routerLink="about">About</a></li>
-      <!-- Enlace a la página de servicios -->
-      <li><a routerLink="services">Services</a></li>
-      <!-- Enlace a la página de contacto -->
-      <li><a routerLink="contact">Contact</a></li>
-    </ul>
-
-    <!-- Condicional para mostrar opciones de login o registro si el usuario no está logueado -->
-    <div *ngIf="!isLoggedIn()">
-      <a routerLink="/login" class="action_btn">Login</a>
-      <a routerLink="/registro" class="action_btn">Registrate</a>
-    </div>
-
-    <!-- Condicional para mostrar el menú de usuario si está logueado -->
-    <div *ngIf="isLoggedIn()" class="dropdown">
-      <!-- Botón que muestra el nombre del usuario y despliega el menú -->
-      <button class="btn dropdown-toggle" type="button" aria-expanded="false" (click)="toggleDropdown()">
-        <i class="fa-solid fa-user"></i> {{ userName || 'Usuario' }}
-      </button>
-
-      <!-- Menú desplegable para opciones del usuario -->
-      <ul class="dropdown-menu" [ngClass]="{'show': dropdownOpen}">
-        <!-- Enlace al perfil del usuario -->
-        <li><a class="dropdown-item" routerLink="/profile">Gestion perfil</a></li>
-        <!-- Opción para cerrar sesión -->
-        <li><a class="dropdown-item" (click)="logout()">Cerrar sesión</a></li>
-      </ul>
-    </div>
-
-    <!-- Botón para activar el menú en dispositivos móviles -->
-    <div class="toggle_btn">
-      <i class="fa-solid fa-bars"></i>
-    </div>
-  </div>
-
-  <!-- Link para cargar los iconos de FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer" />
+  </nav>
 </header>
+
+<!-- Agregar Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />

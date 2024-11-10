@@ -29,6 +29,9 @@
       </div>
     </div>
 
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+
     <button type="submit" class="btn btn-primary w-100" [disabled]="profileForm.invalid">Actualizar Perfil</button>
   </form>
   <h2 class="text-center mt-5">Actualizar Contraseña</h2>

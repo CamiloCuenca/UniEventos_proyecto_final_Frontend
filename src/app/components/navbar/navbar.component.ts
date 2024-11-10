@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   userName: string | null = null; // Almacena el nombre de usuario para mostrar en la interfaz
   dropdownOpen: boolean = false;   // Propiedad para controlar la visibilidad del menú desplegable
-
+  dropdownTimer: any;
   constructor(private router: Router) {} // Inyecta el servicio Router para navegación en la aplicación
 
   ngOnInit() {
@@ -44,6 +44,17 @@ export class NavbarComponent implements OnInit {
   // Alterna el estado del menú desplegable (abre o cierra el menú)
   toggleDropdown(): void {
     this.dropdownOpen = !this.dropdownOpen;
+
+    // Si el dropdown se abre, configuramos el temporizador para cerrarlo automáticamente
+    if (this.dropdownOpen) {
+      // Cerrar el menú después de 5 segundos (5000 milisegundos)
+      this.dropdownTimer = setTimeout(() => {
+        this.dropdownOpen = false;
+      }, 3000); // Puedes ajustar el tiempo a tu preferencia
+    } else {
+      // Si se cierra manualmente, limpiar el temporizador
+      clearTimeout(this.dropdownTimer);
+    }
   }
 
   // Método para cerrar sesión
@@ -52,4 +63,10 @@ export class NavbarComponent implements OnInit {
     this.userName = null;             // Resetea el nombre de usuario
     this.router.navigate(['/login']); // Redirige al usuario a la página de login
   }
+
+  // Función para abrir/cerrar el dropdown
+
+
+
+
 }
