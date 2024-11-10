@@ -5,6 +5,14 @@
       <th scope="col">Nombre</th>
       <th scope="col">Código</th>
       <th scope="col">Descuento</th>
+      <th scope="col">fecha de inicio</th>
+      <th scope="col">fecha de vencimiento</th>
+      <th scope="col">Estado </th>
+      <th scope="col">Tipo </th>
+      <th scope="col">ID Evento</th>
+
+
+
       <th scope="col">Acciones</th>
     </tr>
   </thead>
@@ -12,11 +20,20 @@
     <tr *ngFor="let cupon of listCupones; let i = index" [ngClass]="{ 'table-warning': editingCouponIndex === i }">
       <td>{{ cupon.couponId }}</td>
       <td *ngIf="editingCouponIndex !== i">{{ cupon.name }}</td>
+
       <td *ngIf="editingCouponIndex === i">
         <input class="form-control" [(ngModel)]="listCupones[i].name" />
       </td>
+
       <td>{{ cupon.code }}</td>
-      <td>{{ cupon.discount }}%</td>
+      <td>{{ cupon.discount }}</td>
+      <td>{{ cupon.startDate }}</td>
+      <td>{{ cupon.expirationDate }}</td>
+      <td>{{ cupon.status }}</td>
+      <td>{{ cupon.type }}</td>
+      <td>{{ cupon.eventId }}</td>
+
+
       <td>
         <button *ngIf="editingCouponIndex !== i" (click)="onEditar(i)" class="btn btn-primary btn-sm">Editar</button>
         <button *ngIf="editingCouponIndex === i" (click)="onGuardarEdicion(i)" class="btn btn-success btn-sm">Guardar</button>
