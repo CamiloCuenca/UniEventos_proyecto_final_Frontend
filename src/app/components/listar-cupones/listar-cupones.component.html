@@ -38,8 +38,8 @@
         <button *ngIf="editingCouponIndex !== i" (click)="onEditar(i)" class="btn btn-primary btn-sm">Editar</button>
         <button *ngIf="editingCouponIndex === i" (click)="onGuardarEdicion(i)" class="btn btn-success btn-sm">Guardar</button>
         <button *ngIf="editingCouponIndex === i" (click)="onCancelarEdicion()" class="btn btn-secondary btn-sm">Cancelar</button>
-        <button *ngIf="isAvailable" class="btn btn-warning" (click)="onDesactivar(cupon)">Desactivar</button>
-        <button *ngIf="!isAvailable" class="btn btn-success" (click)="onActivar(cupon)">Activar</button>
+        <button *ngIf="isAvailable" class="btn btn-warning" (click)="onDesactivar(i)">Desactivar</button>
+        <button *ngIf="!isAvailable" class="btn btn-success" (click)="onActivar(i)">Activar</button>
       </td>
     </tr>
   </tbody>

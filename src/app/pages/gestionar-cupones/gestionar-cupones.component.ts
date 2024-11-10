@@ -20,6 +20,7 @@ export class GestionarCuponesComponent {
   isCreatingCoupon = false;
   isListingCoupons = false;
   showAvailableCoupons = true;
+  titulo = '';
 
   toggleCreateCoupon(): void {
     this.isCreatingCoupon = !this.isCreatingCoupon;
@@ -31,8 +32,14 @@ export class GestionarCuponesComponent {
   toggleCouponList(isAvailable: boolean): void {
     this.isListingCoupons = !this.isListingCoupons;
     this.showAvailableCoupons = isAvailable;
+
     if (this.isListingCoupons) {
       this.isCreatingCoupon = false;
+      if(isAvailable==true){
+        this.titulo="Lista de cupones Activos"
+      }else{
+        this.titulo="Lista de cupones No Activos"
+      }
     }
   }
 }

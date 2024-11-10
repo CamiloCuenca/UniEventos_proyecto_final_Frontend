@@ -77,15 +77,46 @@ export class ListarCuponesComponent implements OnInit {
     this.editingCouponIndex = null;
   }
 
-  onEliminarCupon(index: number) {
-    // Lógica para eliminar el cupón
+
+  onActivar(index: number) {
+
+    const authToken = sessionStorage.getItem('AuthToken');
+    if (!authToken) {
+      console.error('Token de autenticación no encontrado.');
+      return;
+    }
+
+    const activeCupon = { ...this.listCupones[index] };
+    this.couponService.activateCupon(activeCupon,authToken).subscribe(
+      (message) => {
+        console.log('Respuesta de la activacion:', message);
+        this.editingCouponIndex = null;
+        this.ngOnInit();
+      },
+      (error) => {
+        console.error('Error al activar el cupón:', error);
+      }
+    );
+
   }
 
-  onActivar(cupon: CouponDTO) {
-    console.log('Activar cupon:', cupon);
-  }
+  onDesactivar(index: number) {
+    const authToken = sessionStorage.getItem('AuthToken');
+    if (!authToken) {
+      console.error('Token de autenticación no encontrado.');
+      return;
+    }
 
-  onDesactivar(cupon: CouponDTO) {
-    console.log('Desactivar cupon:', cupon);
+    const activeCupon = { ...this.listCupones[index] };
+    this.couponService.desactivateCupon(activeCupon,authToken).subscribe(
+      (message) => {
+        console.log('Respuesta de la activacion:', message);
+        this.editingCouponIndex = null;
+        this.ngOnInit();
+      },
+      (error) => {
+        console.error('Error al desactivar el cupón:', error);
+      }
+    );
   }
 }
