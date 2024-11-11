@@ -10,6 +10,7 @@ import { editAccountDTO } from '../interface/editAccountDTO';
 import { updatePasswordDTO } from '../interface/updatePasswordDTO';
 import { RecoverPasswordDTO } from '../interface/RecoverPasswordDTO';
 import { PasswordDTO } from '../interface/PasswordDTO';
+import { ActiveAccountDTO } from '../interface/ActiveAccountDTO';
 
 interface LoginResponse {
   error: boolean;
@@ -51,6 +52,12 @@ export class AuthService {
     );
   }
 
+  sendActiveCode(correo: string): Observable<any> {
+    return this.http.post<any>(
+      `http://localhost:8080/api/cliente/email/enviar-codigoActive/${correo}`,
+      {}
+    );
+  }
   
 
   recoverPassword(correo: string): Observable<any> {
@@ -85,6 +92,11 @@ export class AuthService {
   changePassword(recoverPasswordDTO: RecoverPasswordDTO): Observable<MessageDTO<string>> {
     // Aquí se pasa el tipo MessageDTO<string> porque la respuesta es un string (mensaje)
     return this.http.put<MessageDTO<string>>(`http://localhost:8080/api/cliente/cuenta/cambiar-password`, recoverPasswordDTO);
+  }
+
+  activateAccount(activeAccountDTO: ActiveAccountDTO): Observable<MessageDTO<string>> {
+    // Aquí se pasa el tipo MessageDTO<string> porque la respuesta es un string (mensaje)
+    return this.http.post<MessageDTO<string>>(`http://localhost:8080/api/auth/cuenta/activar-cuenta`, activeAccountDTO);
   }
 
   crearCuenta(datos: any): Observable<any> {
