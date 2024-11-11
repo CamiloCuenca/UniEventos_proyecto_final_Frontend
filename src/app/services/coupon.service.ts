@@ -73,4 +73,51 @@ export class CouponService {
         })
       );
   }
+
+  activateCupon(updatedCoupon: listaCuponDTO, authToken: string): Observable<string> {
+    const url = `${this.apiUrl}/cupon/activar-cupon/${updatedCoupon.couponId}`;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${authToken}`
+    });
+
+    return this.http.post<{ error: boolean, respuesta: string }>(url, {}, { headers }) // <- Nota el uso de `{}` como cuerpo vacío
+      .pipe(
+        map(response => {
+          if (!response.error) {
+            return response.respuesta; // Devuelve la respuesta si no hay error.
+          } else {
+            throw new Error('Error al activar el cupón.');
+          }
+        }),
+        catchError((error) => {
+          console.error('Error al activar el cupón:', error);
+          return throwError(() => new Error('Error al activar el cupón.'));
+        })
+      );
+  }
+
+
+  desactivateCupon(updatedCoupon: listaCuponDTO, authToken: string): Observable<string> {
+    const url = `${this.apiUrl}/cupon/desactivar-cupon/${updatedCoupon.couponId}`;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${authToken}`
+    });
+
+    return this.http.post<{ error: boolean, respuesta: string }>(url, {}, { headers }) // <- Nota el uso de `{}` como cuerpo vacío
+      .pipe(
+        map(response => {
+          if (!response.error) {
+            return response.respuesta; // Devuelve la respuesta si no hay error.
+          } else {
+            throw new Error('Error al desactivar el cupón.');
+          }
+        }),
+        catchError((error) => {
+          console.error('Error al desactivar el cupón:', error);
+          return throwError(() => new Error('Error al desactivar el cupón.'));
+        })
+      );
+  }
+
+
 }
