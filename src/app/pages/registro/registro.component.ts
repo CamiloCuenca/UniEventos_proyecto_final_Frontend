@@ -1,8 +1,14 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,7 +16,7 @@ import Swal from 'sweetalert2';
   standalone: true,
   templateUrl: './registro.component.html',
   imports: [ReactiveFormsModule, CommonModule],
-  styleUrls: ['./registro.component.css']
+  styleUrls: ['./registro.component.css'],
 })
 export class RegistroComponent {
   registroForm: FormGroup;
@@ -19,19 +25,34 @@ export class RegistroComponent {
   confirmaPasswordVisible = false;
   mensajeError: string | null = null;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
-    this.registroForm = this.fb.group({
-      idNumber: ['', [Validators.required, Validators.maxLength(10)]],
-      name: ['', [Validators.required, Validators.maxLength(100)]],
-      phoneNumber: ['', [Validators.required, Validators.maxLength(10)]],
-      address: ['', [Validators.maxLength(100)]],
-      email: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
-      password: ['', [
-        Validators.required,
-        Validators.pattern(/^(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.*[0-9])(?=.*[a-z]).{8,}$/)
-      ]],
-      confirmaPassword: ['', [Validators.required]]
-    }, { validators: this.passwordsMatchValidator });
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.registroForm = this.fb.group(
+      {
+        idNumber: ['', [Validators.required, Validators.maxLength(10)]],
+        name: ['', [Validators.required, Validators.maxLength(100)]],
+        phoneNumber: ['', [Validators.required, Validators.maxLength(10)]],
+        address: ['', [Validators.maxLength(100)]],
+        email: [
+          '',
+          [Validators.required, Validators.email, Validators.maxLength(50)],
+        ],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(
+              /^(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.*[0-9])(?=.*[a-z]).{8,}$/
+            ),
+          ],
+        ],
+        confirmaPassword: ['', [Validators.required]],
+      },
+      { validators: this.passwordsMatchValidator }
+    );
   }
 
   passwordsMatchValidator(formGroup: FormGroup) {
@@ -43,17 +64,18 @@ export class RegistroComponent {
   public registrar() {
     if (this.registroForm.valid) {
       this.authService.crearCuenta(this.registroForm.value).subscribe(
-        response => {
+        (response) => {
           console.log('Cuenta creada con éxito', response);
           this.mensajeError = null;
           this.registroForm.reset();
           this.registroExitoso = true;
+          this.router.navigate(['/active-account']);
 
           Swal.fire({
             icon: 'success',
             title: 'Registro exitoso',
             text: 'La cuenta ha sido creada correctamente.',
-            confirmButtonText: 'Aceptar'
+            confirmButtonText: 'Aceptar',
           });
         },
         (error: HttpErrorResponse) => {
@@ -64,7 +86,7 @@ export class RegistroComponent {
             icon: 'error',
             title: 'Error en el registro',
             text: `Ocurrió un error al crear la cuenta: ${error.message}`,
-            confirmButtonText: 'Aceptar'
+            confirmButtonText: 'Aceptar',
           });
         }
       );
@@ -75,7 +97,7 @@ export class RegistroComponent {
         icon: 'warning',
         title: 'Formulario no válido',
         text: 'Por favor, complete el formulario correctamente antes de enviarlo.',
-        confirmButtonText: 'Aceptar'
+        confirmButtonText: 'Aceptar',
       });
     }
   }
