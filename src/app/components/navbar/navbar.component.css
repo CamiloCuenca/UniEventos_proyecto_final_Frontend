@@ -1,6 +1,6 @@
 /* Estilos generales */
 body {
-  margin-top: 80px; /* Asegura que no quede tapado por el navbar fijo */
+  margin-top: 56px; /* Asegura que no quede tapado por el navbar fijo */
 }
 
 /* Navbar */
@@ -8,8 +8,10 @@ body {
   background-color: rgba(10, 11, 13, 0.9); /* Fondo oscuro semitransparente */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra ligera */
   border-radius: 8px;
-  backdrop-filter: blur(10px); /* Efecto de desenfoque para el fondo */
+  backdrop-filter: blur(10px);
+  height: auto;
 }
+
 
 /* Logo */
 .navbar .logo a img {
