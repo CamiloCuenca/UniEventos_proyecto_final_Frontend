@@ -1,4 +1,3 @@
-<!-- create-event.component.html -->
 <form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="p-4 border rounded shadow-lg bg-light">
 
   <div class="form-group mb-4">
@@ -17,8 +16,7 @@
   <div class="form-group mb-4">
     <label for="status" class="form-label fw-bold">Estado</label>
     <select id="status" formControlName="status" class="form-select" required>
-      <option value="ACTIVE">Activo</option>
-      <option value="INACTIVE">Inactivo</option>
+      <option *ngFor="let status of eventStatusOptions" [value]="status">{{ status }}</option>
     </select>
   </div>
 
@@ -38,10 +36,7 @@
   <div class="form-group mb-4">
     <label for="type" class="form-label fw-bold">Tipo de Evento</label>
     <select id="type" formControlName="type" class="form-select" required>
-      <option value="CONCERT">Concierto</option>
-      <option value="FAIR">Feria</option>
-      <option value="FESTIVAL">Festival</option>
-      <option value="CONFERENCE">Conferencia</option>
+      <option *ngFor="let type of eventTypeOptions" [value]="type">{{ type }}</option>
     </select>
   </div>
 
@@ -71,9 +66,12 @@
       <h5 class="mb-3">Localidad {{ i + 1 }}</h5>
 
       <div class="form-group mb-2">
-        <label for="name-{{ i }}" class="form-label">Nombre</label>
-        <input type="text" id="name-{{ i }}" formControlName="name" class="form-control" placeholder="Nombre de la localidad" required>
-      </div>
+        <label for="name-{{ i }}" class="form-label fw-bold">Nombre</label>
+        <select id="name" formControlName="name" class="form-select" required>
+          <option *ngFor="let name of locaityName" [value]="name">{{ name }}</option>
+        </select>      </div>
+
+
 
       <div class="form-group mb-2">
         <label for="price-{{ i }}" class="form-label">Precio</label>

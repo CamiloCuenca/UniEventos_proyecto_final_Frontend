@@ -43,10 +43,17 @@ export class LoginComponent {
             this.showAlert('Error en la respuesta del servidor', 'danger');
           }
         },
-        error: (err) => {
-          console.error('Error al iniciar sesión', err);
-          this.showAlert('Error al iniciar sesión. Por favor, verifica tus credenciales.', 'danger');
-        },
+       error: (err) => {
+  console.error('Error al iniciar sesión', err);
+  if (err.status === 401) {
+    this.showAlert('Credenciales incorrectas. Por favor, intente de nuevo.', 'danger');
+  } else if (err.status === 423) {
+    this.showAlert('Ha alcanzado el número máximo de intentos fallidos. Su cuenta ha sido bloqueada.', 'danger');
+  } else {
+    this.showAlert('Error al iniciar sesión. Por favor, intente más tarde.', 'danger');
+  }
+}
+
       });
     } else {
       this.showAlert('Formulario no válido. Por favor verifica los campos.', 'danger');

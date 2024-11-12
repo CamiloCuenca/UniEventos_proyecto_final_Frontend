@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { GestionarEventosService } from '../../services/gestionar-eventos.service';
-import { EventDTO, Locality } from '../../interface/event.dto';
+import { EventDTO, Locality,EventStatus,EventType,localities} from '../../interface/event.dto';
 import { HttpHeaders } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2'; // Importa SweetAlert2
@@ -20,6 +20,11 @@ export class CrearEventoComponent {
 
   localityImageUrl: string | null = null;
   selectedLocalityFile: File | null = null;
+
+  eventStatusOptions = Object.values(EventStatus);
+  eventTypeOptions = Object.values(EventType);
+  locaityName = Object.values(localities)
+
 
   constructor(private fb: FormBuilder, private eventService: GestionarEventosService) {
     this.eventForm = this.fb.group({

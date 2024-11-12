@@ -1,20 +1,43 @@
 // event.dto.ts
+
+export enum EventType {
+  DEPORT = 'DEPORT',
+  CONCERT = 'CONCERT',
+  CULTURAL = 'CULTURAL',
+  BEAUTY = 'BEAUTY',
+  FESTIVAL = 'FESTIVAL',
+  GALA = 'GALA',
+  CONFERENCE = 'CONFERENCE',
+  FAIR = 'FAIR'
+}
+
+
+
+export enum EventStatus {
+  ACTIVE = 'ACTIVE',
+  INACTIVE = 'INACTIVE'
+}
+
+export enum localities {
+  VIP = "VIP",
+  GENERAL = "GENERAL"
+}
+
 export interface Locality {
   price: number;
-  name: string;
+  name: localities;
   ticketsSold: number;
   maximumCapacity: number;
 }
-
 export interface EventDTO {
-  id?: string; // Optional for new events
+  id?: string; // Opcional para eventos nuevos
   coverImage: string;
   name: string;
-  status: 'ACTIVE' | 'INACTIVE'; // Puedes usar un enum si lo prefieres
+  status: EventStatus; // Usando el enum EventStatus
   description: string;
   imageLocalities: string;
-  type: 'CONCERT' | 'FAIR' | 'FESTIVAL' | 'CONFERENCE'; // O usa un enum
-  date: string; // Se puede cambiar a Date si prefieres manejarlo así
+  type: EventType; // Usando el enum EventType
+  date: string; // Puedes cambiar a Date si prefieres manejarlo así
   city: string;
   address: string;
   amount: number;
