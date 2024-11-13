@@ -13,6 +13,7 @@ import { GestionarCuponesComponent } from './pages/gestionar-cupones/gestionar-c
 import { DeleteAccountComponent } from './pages/delete-account/delete-account.component';
 import { ActiveAccountComponent } from './pages/active-account/active-account.component';
 import { SendActiveCodeComponent } from './pages/send-active-code/send-active-code.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 
 
 export const routes: Routes = [
@@ -22,6 +23,7 @@ export const routes: Routes = [
    { path: 'delete-account', component: DeleteAccountComponent},
    {path : 'active-account', component: ActiveAccountComponent},
    {path: 'send-active-code', component: SendActiveCodeComponent},
+   {path: 'shopping-cart', component: ShoppingCartComponent},
    { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
    { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
    {path:'profile',component:ProfileComponent},
