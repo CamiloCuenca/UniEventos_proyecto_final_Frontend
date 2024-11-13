@@ -1,4 +1,8 @@
+<div class="main-container">
+ 
 <div class="conteiner">
+
+  
   <!-- Contenedor del Carrusel -->
   <div class="carrusel-wrapper">
     <div class="carrusel-container">
@@ -7,9 +11,12 @@
         <img *ngFor="let image of images; let i = index" [src]="image" [class.active]="i === currentImageIndex"
           alt="Imagen del carrusel">
       </div>
+      <div>
+      </div>
 
       <button (click)="prevImage()">&#10094;</button>
       <button (click)="nextImage()">&#10095;</button>
     </div>
   </div>
+</div>
 </div>

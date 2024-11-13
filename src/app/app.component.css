@@ -1,24 +1,13 @@
+
+
 /* Fondo dinámico de la aplicación */
 :host {
   display: block;
   background: linear-gradient(135deg, #A60D7D, #6505A6, #3E1659, #400E73, #0A0B0D);
-  background-size: 400% 400%;
-  animation: gradientBackground 8s ease infinite;
+ 
   min-height: 100vh;
 }
 
-/* Animación del fondo */
-@keyframes gradientBackground {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
 /* Contenedor con fondo blanco */
 .container {
