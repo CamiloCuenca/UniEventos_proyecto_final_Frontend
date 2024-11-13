@@ -1,37 +1,77 @@
-/* Estilo para el contenedor del formulario de login */
-.container {
-  max-width: 400px; /* Ancho máximo del contenedor */
-  margin: auto; /* Centra el contenedor */
-  margin-top: 56px; /* Espacio adicional para evitar que el formulario se sobreponga con la navbar */
-  margin-bottom: 4.5rem;
-  padding: 30px; /* Espaciado interior aumentado */
-  border-radius: 12px; /* Bordes redondeados */
-  background-color: rgba(10, 11, 13, 0.6); /* Fondo con opacidad */
-  box-shadow: 0 40px 40px rgba(0, 0, 0, 0.2), 0 8px 30px rgba(0, 0, 0, 0.1); /* Sombra exterior */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+/* Contenedor principal del formulario */
+/* Contenedor principal que centra el formulario */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  background: linear-gradient(135deg, #A60D7D, #6505A6, #3E1659, #400E73, #0A0B0D);
+}
+
+
+
+.form-container {
+  width: 400px;
+  background: linear-gradient(#0A0B0D, #0A0B0D) padding-box,
+              linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+  border: 2px solid transparent;
+  padding: 32px 24px;
+  font-size: 14px;
+  font-family: inherit;
   color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  border-radius: 16px;
 }
 
-/* Estilo para los campos de entrada */
-input[type="email"],
-input[type="password"] {
-  border: 1px solid #5e5e5e; /* Borde del campo de entrada */
-  border-radius: 5px; /* Bordes redondeados */
-  padding: 10px; /* Espaciado interno */
-  width: 100%; /* Ancho completo */
-  margin-bottom: 15px; /* Espacio entre los campos */
-  transition: border-color 0.3s ease; /* Transición suave para el borde */
+/* Efecto de click en el botón */
+.form-container button:active {
+  scale: 0.95;
 }
 
-/* Efecto al pasar el ratón sobre los campos de entrada */
-input[type="email"]:focus,
-input[type="password"]:focus {
-  border-color: burlywood; /* Color del borde al enfocar */
-  outline: none; /* Quitar contorno por defecto */
+/* Estilos del formulario */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-/* Estilos de botón globales */
-button {
+/* Grupo de inputs y labels */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  color: #fffafa;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid #6505A6;
+}
+
+.form-group input::placeholder {
+  opacity: 0.5;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #e81cff;
+}
+
+/* Botón de envío del formulario */
+.form-submit-btn {
   background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
   border-radius: 8px;
   border: none;
@@ -53,13 +93,11 @@ button {
   margin-top: 10px;
 }
 
-/* Efecto hover para todos los botones */
-button:hover {
+.form-submit-btn:hover {
   box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
   transition-duration: .1s;
 }
 
-/* Estilo responsivo para el botón */
 @media (min-width: 768px) {
   button {
     padding: 0 2.6rem;

@@ -1,54 +1,89 @@
-.event-card {
-  width: 300px; /* Ancho de la tarjeta */
-  height: 400px; /* Altura de la tarjeta */
-  background-color: #0A0B0D; /* Fondo negro */
-  color: white; /* Texto blanco */
-  border-radius: 8px; /* Bordes redondeados */
-  overflow: hidden; /* Para que el contenido no desborde */
 
+
+.card {
+  position: relative;
+  width: 250px;
+  height: 320px;
+  background-color: #0A0B0D;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 12px;
+  gap: 12px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-.event-image {
-  height: 60%; /* Ocupa el 60% de la altura de la tarjeta */
-  object-fit: cover; /* Cubre el área sin distorsionar la imagen */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: -5px;
+  margin: auto;
+  width: 200px;
+  height: 264px;
+  border-radius: 10px;
+  background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100% );
+  z-index: -10;
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.event-title {
-  font-size: 1.5em; /* Tamaño de fuente del título */
-  font-weight: bold; /* Título en negrita */
+.card::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+  transform: translate3d(0, 0, 0) scale(0.95);
+  filter: blur(20px);
 }
 
-.event-date, .event-location {
-  font-size: 1em; /* Tamaño de fuente de la fecha y lugar */
-  color: #ddd; /* Color gris claro para el texto */
-  margin: 5px 0; /* Espaciado vertical */
+.heading {
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 700;
 }
 
-.button-container {
-  display: flex; /* Usar flexbox para los botones */
-  justify-content: space-between; /* Espaciado entre botones */
+.card p:not(.heading) {
+  font-size: 14px;
 }
 
-.btn {
-  transition: background-color 0.3s, transform 0.3s; /* Transición suave al cambiar de color y tamaño */
+.card p:last-child {
+  color: #7e2eff;
+  font-weight: 600;
 }
 
-.btn:hover {
-  background-color: burlywood; /* Color al pasar el mouse */
-  transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+.card:hover::after {
+  filter: blur(30px);
 }
 
-.btn-light {
-  background-color: #ffffff; /* Color de fondo de los botones "Comprar" */
-  color: black; /* Texto negro en el botón "Comprar" */
+.card:hover::before {
+  transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
 }
 
-.btn-outline-light {
-  border: 1px solid white; /* Borde blanco para el botón "Agregar al Carrito" */
-  color: white; /* Texto blanco en el botón "Agregar al Carrito" */
+button{
+  background: #7e2eff;
+  border-radius: 999px;
+  box-shadow: #7e2eff 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
 }
 
-.btn-outline-light:hover {
-  background-color: burlywood; /* Fondo blanco al pasar el mouse en el botón "Agregar al Carrito" */
-  color: black; /* Texto negro al pasar el mouse en el botón "Agregar al Carrito" */
-}
+
+

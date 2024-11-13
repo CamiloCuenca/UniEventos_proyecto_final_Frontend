@@ -1,13 +1,12 @@
 /* Estilos generales */
 body {
-  margin-top: 56px; /* Asegura que no quede tapado por el navbar fijo */
+  margin-top: 56px;
+  /* Asegura que no quede tapado por el navbar fijo */
 }
 
 /* Navbar */
 .navbar {
-  background-color: rgba(10, 11, 13, 0.9); /* Fondo oscuro semitransparente */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  border-radius: 8px;
+  background-color: #0A0B0D;
   backdrop-filter: blur(10px);
   height: auto;
 }
@@ -15,55 +14,94 @@ body {
 
 /* Logo */
 .navbar .logo a img {
-  height: 50px; /* Ajusta el tamaño del logo */
+  height: 50px;
+  /* Ajusta el tamaño del logo */
   width: auto;
 }
 
 /* Links del menú */
 .navbar-nav .nav-item .nav-link {
-  color: #fff; /* Color blanco para los enlaces */
+  color: #fff;
+  /* Color blanco para los enlaces */
   font-size: 1rem;
-  padding: 10px 15px; /* Espaciado del enlace */
-  transition: color 0.3s ease, transform 0.3s ease; /* Transición suave */
+  padding: 10px 15px;
+  /* Espaciado del enlace */
+  transition: color 0.3s ease, transform 0.3s ease;
+  /* Transición suave */
 }
 
 .navbar-nav .nav-item .nav-link:hover {
-  color: rgb(121, 3, 255); /* Color morado al hacer hover */
-  transform: scale(1.05); /* Efecto de escala al pasar el ratón */
+  color: rgb(121, 3, 255);
+  /* Color morado al hacer hover */
+  transform: scale(1.05);
+  /* Efecto de escala al pasar el ratón */
 }
 
 /* Dropdown menu */
 .navbar .dropdown-menu {
-  background-color: rgba(98, 0, 255, 0.8); /* Fondo morado con opacidad */
+  background-color: rgba(98, 0, 255, 0.8);
+  /* Fondo morado con opacidad */
   border-radius: 5px;
 }
 
 .navbar .dropdown-menu .dropdown-item {
-  color: white; /* Color del texto en el dropdown */
+  color: white;
+  /* Color del texto en el dropdown */
   padding: 10px 20px;
 }
 
 .navbar .dropdown-menu .dropdown-item:hover {
-  background-color: black; /* Fondo negro al hacer hover */
-  color: rgb(121, 3, 255); /* Cambio de color */
+  background-color: black;
+  /* Fondo negro al hacer hover */
+  color: rgb(121, 3, 255);
+  /* Cambio de color */
 }
 
 /* Botones y iconos */
 .navbar .btn-link {
-  color: #fff; /* Icono del carrito en blanco */
+  color: #fff;
+  /* Icono del carrito en blanco */
 }
 
 .navbar .btn-link:hover {
-  color: rgb(121, 3, 255); /* Color morado al pasar el ratón */
+  color: rgb(121, 3, 255);
+  /* Color morado al pasar el ratón */
 }
 
 .navbar-toggler-icon {
-  background-color: #fff; /* Color blanco para el icono de la hamburguesa */
+  background-color: #fff;
+  /* Color blanco para el icono de la hamburguesa */
 }
 
 @media (max-width: 768px) {
+
   /* Estilos para el toggle y colapsar el menú */
   .navbar-nav {
-    text-align: center; /* Alinea los elementos en el centro en dispositivos pequeños */
+    text-align: center;
+    /* Alinea los elementos en el centro en dispositivos pequeños */
   }
+}
+
+
+/* CSS */
+.button {
+  background: #7e2eff;
+  border-radius: 999px;
+  box-shadow: #7e2eff 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
 }
