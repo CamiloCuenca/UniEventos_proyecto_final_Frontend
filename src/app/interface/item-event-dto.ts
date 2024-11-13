@@ -1,4 +1,5 @@
 export interface ItemEventDTO {
+  idEvento: String
   /** La URL de la imagen del cartel no puede estar vacía */
   urlImagePoster: string;
 
