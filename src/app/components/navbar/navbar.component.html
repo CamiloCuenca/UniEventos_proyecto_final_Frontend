@@ -20,6 +20,10 @@
             <a class="nav-link" routerLink="/login">Login</a>
           </li>
 
+          <li class="nav-item" *ngIf="!isLoggedIn()">
+            <a class="nav-link" routerLink="/registro">Registrarse</a>
+          </li>
+
           <!-- Dropdown para usuario -->
           <li class="nav-item dropdown" *ngIf="isLoggedIn()">
             <!-- Botón de usuario -->
