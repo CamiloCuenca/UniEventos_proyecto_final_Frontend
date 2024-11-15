@@ -1,23 +1,74 @@
+.event-title {
+  text-align: center;
+  color: #6505A6;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
 .table-responsive {
-  max-height: 400px; /* Ajusta la altura según lo necesites */
+  max-height: 600px; /* Ajustable: altura máxima con scroll */
   overflow-y: auto; /* Scroll vertical */
   overflow-x: auto; /* Scroll horizontal */
-  border: 1px solid #dee2e6; /* Agregar borde para mejor visualización */
-  border-radius: 0.25rem; /* Bordes redondeados */
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem; /* Bordes redondeados más grandes */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
 }
 
 .table {
-  min-width: 600px; /* Asegura que la tabla no sea demasiado estrecha */
+  min-width: 800px; /* Ajustable: ancho mínimo */
+  font-size: 0.9rem; /* Tamaño de fuente ajustable */
 }
 
 .table th, .table td {
-  vertical-align: middle; /* Centrar verticalmente */
+  vertical-align: middle;
+  padding: 0.75rem; /* Espaciado interno */
+  text-align: center; /* Centrado de texto */
 }
 
 .table th {
-  background-color: #f8f9fa; /* Color de fondo para los encabezados */
+  background-color: #6505A6;
+  color: #ffffff;
+  border-bottom: 2px solid #520486; /* Línea de división */
 }
 
 .table td {
-  white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+  white-space: nowrap;
+  background-color: #fdfdfd; /* Fondo suave */
+}
+
+.table-warning {
+  background-color: #fff3cd; /* Amarillo claro para fila de edición */
+}
+
+.btn {
+  border-radius: 0.25rem; /* Bordes redondeados */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transiciones suaves */
+}
+
+.btn-warning {
+  color: #ffffff;
+  background-color: #f0ad4e;
+  border: none;
+}
+
+.btn-danger {
+  color: #ffffff;
+  background-color: #d9534f;
+  border: none;
+}
+
+.btn-success {
+  color: #ffffff;
+  background-color: #5cb85c;
+  border: none;
+}
+
+.btn-secondary {
+  color: #ffffff;
+  background-color: #6c757d;
+  border: none;
+}
+
+.btn:hover {
+  opacity: 0.85; /* Efecto de hover */
 }

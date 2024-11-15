@@ -1,42 +1,76 @@
+<h3>Lista de Eventos</h3>
 
-  <h3>Lista de Eventos</h3>
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Tipo</th>
-          <th>Estado</th>
-          <th>Ciudad</th>
-          <th>Dirección</th>
-          <th>Fecha</th>
-          <th>Localidades</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let event of events">
-          <td>{{event.id}}</td>
-          <td>{{ event.name }}</td>
-          <td>{{ event.type }}</td>
-          <td>{{ event.status }}</td>
-          <td>{{ event.city }}</td>
-          <td>{{ event.address }}</td>
-          <td>{{ event.date | date: 'short' }}</td>
-          <td>
-            <ul>
-              <li *ngFor="let locality of event.localities">
-                {{ locality.name }} - Precio: {{ locality.price }} - Capacidad: {{ locality.maximumCapacity }} - Vendidos: {{ locality.ticketsSold }}
-              </li>
-            </ul>
-          </td>
-          <td>
-            <button (click)="editEvent(event)" class="btn btn-sm btn-warning me-2">Editar</button>
-            <button (click)="deleteEvent(event)" class="btn btn-sm btn-danger">Eliminar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col" >ID</th>
+        <th scope="col" >Nombre</th>
+        <th scope="col" >Tipo</th>
+        <th scope="col" >Estado</th>
+        <th scope="col" >Ciudad</th>
+        <th scope="col" >Dirección</th>
+        <th scope="col" >Fecha</th>
+        <th scope="col" >Localidades</th>
+        <th scope="col" >Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events; let i = index" [ngClass]="{ 'table-warning': editingEventIndex === i }">
+        <td>{{ event.id }}</td>
+
+        <!-- Nombre -->
+        <td *ngIf="editingEventIndex !== i">{{ event.name }}</td>
+        <td *ngIf="editingEventIndex === i">
+          <input class="form-control" [(ngModel)]="events[i].name" />
+        </td>
+
+        <!-- Tipo -->
+        <td *ngIf="editingEventIndex !== i">{{ event.type }}</td>
+        <td *ngIf="editingEventIndex === i">
+          <input class="form-control" [(ngModel)]="events[i].type" />
+        </td>
+
+        <!-- Estado -->
+        <td *ngIf="editingEventIndex !== i">{{ event.status }}</td>
+        <td *ngIf="editingEventIndex === i">
+          <input class="form-control" [(ngModel)]="events[i].status" />
+        </td>
+
+        <!-- Ciudad -->
+        <td *ngIf="editingEventIndex !== i">{{ event.city }}</td>
+        <td *ngIf="editingEventIndex === i">
+          <select class="form-control" [(ngModel)]="events[i].city">
+            <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+          </select>
+        </td>
+
+
+        <!-- Dirección -->
+        <td *ngIf="editingEventIndex !== i">{{ event.address }}</td>
+        <td *ngIf="editingEventIndex === i">
+          <input class="form-control" [(ngModel)]="events[i].address" />
+        </td>
+
+        <!-- Fecha -->
+        <td *ngIf="editingEventIndex !== i">{{ event.date | date: 'short' }}</td>
+        <td *ngIf="editingEventIndex === i">
+          <input class="form-control" [(ngModel)]="events[i].date" />
+        </td>
+
+        <td>
+          <ul>
+            <li *ngFor="let locality of event.localities">
+              {{ locality.name }} - Precio: {{ locality.price }} - Capacidad: {{ locality.maximumCapacity }} - Vendidos: {{ locality.ticketsSold }}
+            </li>
+          </ul>
+        </td>
+        <td>
+          <button *ngIf="editingEventIndex !== i" (click)="onEditar(i)" class="btn btn-sm btn-warning me-2">Editar</button>
+          <button (click)="deleteEvent(event)" class="btn btn-sm btn-danger">Eliminar</button>
+          <button *ngIf="editingEventIndex === i" (click)="onGuardarEdicion(i)" class="btn btn-success btn-sm">Guardar</button>
+          <button *ngIf="editingEventIndex === i" (click)="onCancelarEdicion()" class="btn btn-secondary btn-sm">Cancelar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 

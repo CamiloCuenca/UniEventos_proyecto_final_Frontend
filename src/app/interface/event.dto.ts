@@ -12,7 +12,6 @@ export enum EventType {
 }
 
 
-
 export enum EventStatus {
   ACTIVE = 'ACTIVE',
   INACTIVE = 'INACTIVE'
@@ -21,6 +20,30 @@ export enum EventStatus {
 export enum localities {
   VIP = "VIP",
   GENERAL = "GENERAL"
+}
+
+export enum city {
+  BOGOTA = "BOGOTA",
+  MEDELLIN = "MEDELLIN",
+  CALI = "CALI",
+  BARRANQUILLA = "BARRANQUILLA",
+  CARTAGENA = "CARTAGENA",
+  CUCUTA = "CUCUTA",
+  BUCARAMANGA = "BUCARAMANGA",
+  IBAGUE = "IBAGUE",
+  SANTA_MARTA = "SANTA_MARTA",
+  MANIZALES = "MANIZALES",
+  PEREIRA = "PEREIRA",
+  VILLAVICENCIO = "VILLAVICENCIO",
+  MONTERIA = "MONTERIA",
+  PASTO = "PASTO",
+  NEIVA = "NEIVA",
+  ARMENIA = "ARMENIA",
+  SINCELEJO = "SINCELEJO",
+  VALLEDUPAR = "VALLEDUPAR",
+  RIOHACHA = "RIOHACHA",
+  POPAYAN = "POPAYAN"
+
 }
 
 export interface Locality {
@@ -37,8 +60,8 @@ export interface EventDTO {
   description: string;
   imageLocalities: string;
   type: EventType; // Usando el enum EventType
-  date: string; // Puedes cambiar a Date si prefieres manejarlo así
-  city: string;
+  date: string;
+  city: city;
   address: string;
   amount: number;
   localities: Locality[];

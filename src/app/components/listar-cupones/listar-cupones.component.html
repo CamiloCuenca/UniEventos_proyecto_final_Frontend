@@ -19,18 +19,39 @@
   <tbody>
     <tr *ngFor="let cupon of listCupones; let i = index" [ngClass]="{ 'table-warning': editingCouponIndex === i }">
       <td>{{ cupon.couponId }}</td>
-      <td *ngIf="editingCouponIndex !== i">{{ cupon.name }}</td>
 
+        <!-- Nombre -->
+      <td *ngIf="editingCouponIndex !== i">{{ cupon.name }}</td>
       <td *ngIf="editingCouponIndex === i">
         <input class="form-control" [(ngModel)]="listCupones[i].name" />
       </td>
 
       <td>{{ cupon.code }}</td>
-      <td>{{ cupon.discount }}</td>
+
+      <!--Descuento-->
+      <td *ngIf="editingCouponIndex !== i">{{ cupon.discount }}</td>
+      <td *ngIf="editingCouponIndex === i">
+        <input class="form-control" [(ngModel)]="listCupones[i].discount" />
+      </td>
+      <!--<td>{{ cupon.discount }}</td>-->
       <td>{{ cupon.startDate }}</td>
       <td>{{ cupon.expirationDate }}</td>
-      <td>{{ cupon.status }}</td>
-      <td>{{ cupon.type }}</td>
+
+       <!--Status-->
+       <td *ngIf="editingCouponIndex !== i">{{ cupon.status }}</td>
+       <td *ngIf="editingCouponIndex === i">
+         <input class="form-control" [(ngModel)]="listCupones[i].status" />
+       </td>
+      <!--<td>{{ cupon.status }}</td>-->
+
+      <!--Type-->
+      <td *ngIf="editingCouponIndex !== i">{{ cupon.type }}</td>
+      <td *ngIf="editingCouponIndex === i">
+        <input class="form-control" [(ngModel)]="listCupones[i].type" />
+      </td>
+
+      <!--<td>{{ cupon.type }}</td> -->
+
       <td>{{ cupon.eventId }}</td>
 
 
