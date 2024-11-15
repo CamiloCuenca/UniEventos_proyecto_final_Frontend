@@ -1,23 +1,24 @@
-<div class="event-card card shadow-lg">
+<div class="main-container">
+  <div class="event-card card shadow-lg">
     <img [src]="eventImage" alt="Imagen del Evento" class="card-img-top event-image">
     <div class="card-body d-flex flex-column">
-     
-      <!-- Información adicional centrada -->
-      <div class="additional-info text-center mt-3">
+      <!-- Sección de información adicional -->
+      <section class="additional-info text-center mt-3">
         <p class="card-title event-title">{{ eventTitle }}</p>
         <p class="card-text event-city">{{ eventCity }}</p>
         <p class="card-text event-date">Fecha: {{ eventDate }}</p>
         <p class="card-text event-location">Lugar: {{ eventLocation }}</p>
-      </div>
+      </section>
       
-      <!-- Contenedor de botones -->
-      <div class="button-container d-flex justify-content-around mt-auto">
+      <!-- Sección de botones -->
+      <section class="button-container d-flex justify-content-around mt-auto">
         <button class="btn btn-light buy-btn">
           <i class="fas fa-shopping-cart"></i>
         </button>
         <button class="btn btn-light buy-btn">
           <i class="fas fa-plus-circle"></i> Comprar
         </button>
-      </div>
+      </section>
     </div>
   </div>
+</div>
