@@ -1,7 +1,10 @@
-
 <div class="conteiner">
   <app-carrucel></app-carrucel>
   <app-search-bar></app-search-bar>
+
+  <!-- Escuchar el evento (filterApplied) y llamar a onFilterApplied -->
+  <app-event-filter-component (filterApplied)="onFilterApplied($event)"></app-event-filter-component>
+
   <div class="card-container">
     <app-card *ngFor="let event of events"
       [eventImage]="event.urlImagePoster"
@@ -10,5 +13,4 @@
       [eventLocation]="event.address ?? 'Ubicación no disponible'">
     </app-card>
   </div>
-
 </div>
