@@ -1,13 +1,11 @@
 .main-container {
-  
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40vh; /* Ocupa toda la altura de la pantalla */
-
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
 }
-
-
 
 .card {
   position: relative;
@@ -17,11 +15,17 @@
   color: #ffffff;
   display: flex;
   flex-direction: column;
-  justify-content: end;
-  padding: 12px;
-  gap: 12px;
-  border-radius: 8px;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
 .card::before {
@@ -34,62 +38,76 @@
   height: 264px;
   border-radius: 10px;
   background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
-  z-index: -10;
+  z-index: -1;
   pointer-events: none;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .card::after {
-  content: "";
-  z-index: -1;
+  content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
   transform: translate3d(0, 0, 0) scale(0.95);
   filter: blur(20px);
-}
-
-.heading {
-  font-size: 20px;
-  text-transform: capitalize;
-  font-weight: 700;
-}
-
-.card p:not(.heading) {
-  font-size: 14px;
-}
-
-.card p:last-child {
-  color: #7e2eff;
-  font-weight: 600;
-}
-
-.card:hover::after {
-  filter: blur(30px);
+  z-index: -2;
 }
 
 .card:hover::before {
   transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
 }
 
-button {
+.card:hover::after {
+  filter: blur(30px);
+}
+
+.event-image {
+  border-radius: 8px;
+  object-fit: cover;
+  height: 180px;
+}
+
+.additional-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.event-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.event-city, .event-date, .event-location {
+  font-size: 14px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.btn {
   background: #7e2eff;
-  border-radius: 999px;
-  box-shadow: #7e2eff 0 10px 20px -10px;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 24px;
-  opacity: 1;
-  outline: 0 solid transparent;
-  padding: 8px 18px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: fit-content;
-  word-break: break-word;
-  border: 0;
+  border-radius: 50px;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 8px 16px;
+  transition: background 0.3s, box-shadow 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn:hover {
+  background: #5c1db8;
+  box-shadow: 0 4px 8px rgba(126, 46, 255, 0.4);
+}
+
+.btn i {
+  margin-right: 5px;
 }

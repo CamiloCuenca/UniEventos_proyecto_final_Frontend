@@ -1,57 +1,95 @@
-/* Estilos generales para el contenedor */
-.container {
-  max-width: 1200px; /* Aumento el ancho máximo para pantallas más grandes */
-  margin: auto; /* Centra el contenedor en la página */
-  margin-bottom: 4.5rem;
-  padding: 30px; /* Espaciado interior */
-  border-radius: 12px; /* Bordes redondeados */
-  background-color: rgba(10, 11, 13, 0.6); /* Fondo oscuro y semitransparente */
-  box-shadow: 0 40px 40px rgba(0, 0, 0, 0.2), 0 8px 30px rgba(0, 0, 0, 0.1); /* Sombra */
+/* Estilos generales */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow: auto;
+}
+
+/* Contenedor de las cartas */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+app-carrucel {
+  position: relative; /* O 'absolute' si es necesario */
+}
+
+/* Estilos para el componente de la carta (app-card) */
+app-card {
+  display: block;
+  max-width: 300px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: white;
+}
+
+app-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen del evento */
+app-card .event-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover; /* Hace que la imagen se adapte a la tarjeta */
+}
+
+/* Contenido de la tarjeta */
+app-card .card-body {
+  padding: 16px;
   display: flex;
-  justify-content: center; /* Centra el contenedor */
   flex-direction: column;
 }
 
-/* Contenedor de las cartas (card-container) */
-.card-container {
-  display: grid;
-  margin-top: 80px;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas fijas */
-  gap: 16px; /* Espacio entre las cartas */
-  justify-items: center; /* Centra cada carta dentro de su celda */
+app-card .additional-info {
+  text-align: center;
+  margin-top: 10px;
 }
 
-/* Estilos de cada carta (app-card) */
-app-card {
-  max-width: 300px; /* Ancho máximo para evitar que las cartas sean muy grandes */
-  width: 100%; /* Asegura que las cartas ocupen todo el espacio dentro de la celda */
-  height: auto; /* Mantiene la proporción de las cartas */
-  border-radius: 8px; /* Bordes redondeados */
-  overflow: hidden; /* Evita que el contenido sobrepase los bordes */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para las cartas */
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease; /* Transición suave */
+app-card .event-title {
+  font-size: 20px;
+  font-weight: bold;
 }
 
-/* Efecto hover para las cartas */
-app-card:hover {
-  transform: translateY(-5px); /* Eleva la carta al pasar el cursor */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
+app-card .event-city,
+app-card .event-date,
+app-card .event-location {
+  font-size: 14px;
 }
 
-/* Media Queries para Responsividad */
+/* Botones */
+app-card .button-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: auto;
+}
 
-/* En pantallas más pequeñas (móviles), se ajusta a 1 columna */
+app-card .btn {
+  background-color: #7e2eff;
+  border: none;
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-weight: 600;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+app-card .btn:hover {
+  background-color: #5c1db8;
+  box-shadow: 0 4px 8px rgba(126, 46, 255, 0.4);
+}
+
+
+
+/* Media queries para adaptabilidad */
 @media (max-width: 768px) {
   .card-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas (tablet) */
-  }
-}
-
-/* En pantallas muy pequeñas (móviles), se ajusta a 1 sola columna */
-@media (max-width: 480px) {
-  .card-container {
-    grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas (móviles) */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }

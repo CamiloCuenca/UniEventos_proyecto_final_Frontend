@@ -1,20 +1,16 @@
 /* Contenedor principal del formulario */
-/* Contenedor principal que centra el formulario */
 .main-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh; /* Ocupa toda la altura de la pantalla */
- 
 }
 
-
-
 .form-container {
-  width: 400px;
-  background: linear-gradient(#0A0B0D, #0A0B0D) padding-box,
-              linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
-  border: 2px solid transparent;
+  width: 600px;
+  background-color: rgba(10, 11, 13, 0.6); /* Fondo semitransparente */
+  box-shadow: 0 40px 40px rgba(0, 0, 0, 0.2), 0 8px 30px rgba(0, 0, 0, 0.1); /* Sombra exterior */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
   padding: 32px 24px;
   font-size: 14px;
   font-family: inherit;
@@ -35,30 +31,31 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px; /* Aumentar el espacio entre los elementos */
 }
 
 /* Grupo de inputs y labels */
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 10px; /* Aumentar el espacio entre label y input */
 }
 
 .form-group label {
   margin-bottom: 5px;
   color: #fffafa;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 14px; /* Aumentar el tamaño de la fuente del label */
 }
 
 .form-group input {
   width: 100%;
-  padding: 12px 16px;
-  border-radius: 8px;
+  padding: 16px 20px; /* Aumentar el tamaño del input */
+  border-radius: 10px; /* Bordes más redondeados */
   color: #fff;
   background-color: transparent;
   border: 1px solid #6505A6;
+  font-size: 16px; /* Aumentar el tamaño del texto en el input */
 }
 
 .form-group input::placeholder {
@@ -67,7 +64,7 @@
 
 .form-group input:focus {
   outline: none;
-  border-color: #e81cff;
+  border-color: #03f7ff;
 }
 
 /* Botón de envío del formulario */
@@ -79,10 +76,10 @@
   color: #FFFFFF;
   cursor: pointer;
   font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 16px;
+  font-size: 18px; /* Aumentar el tamaño de la fuente del botón */
   font-weight: 500;
-  height: 4rem;
-  padding: 0 1.6rem;
+  height: 4.5rem; /* Aumentar la altura del botón */
+  padding: 0 2rem; /* Aumentar el relleno del botón */
   text-align: center;
   text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
   transition: all .5s;
@@ -90,7 +87,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .form-submit-btn:hover {
@@ -99,7 +96,31 @@
 }
 
 @media (min-width: 768px) {
-  button {
-    padding: 0 2.6rem;
+  .form-container {
+    padding: 60px; /* Aumentar padding en pantallas grandes */
   }
+  .form-group input {
+    font-size: 18px; /* Aumentar tamaño de los inputs en pantallas grandes */
+  }
+  .form-submit-btn {
+    font-size: 20px; /* Aumentar el tamaño del botón */
+    height: 5rem; /* Aumentar la altura del botón */
+  }
+
+
+  /* Estilo para los párrafos */
+p.mt-3.text-center {
+  color: #ffffff; /* Cambiar color del texto del párrafo a blanco */
+}
+
+/* Estilo para los enlaces dentro de los párrafos */
+p.mt-3.text-center a {
+  color: #00d9ff; /* Cambiar el color del enlace a un tono personalizado (ejemplo: rojo anaranjado) */
+  text-decoration: none; /* Eliminar subrayado si lo prefieres */
+}
+
+/* Cambiar el color del enlace cuando el usuario pasa el ratón sobre él */
+p.mt-3.text-center a:hover {
+  color: #b500fd; /* Cambiar color del enlace al pasar el ratón (ejemplo: tono más oscuro) */
+}
 }

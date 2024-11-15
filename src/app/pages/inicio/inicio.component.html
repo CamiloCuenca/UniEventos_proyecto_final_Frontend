@@ -1,16 +1,30 @@
-<div class="conteiner">
-  <app-carrucel></app-carrucel>
+<!-- Componente principal de la app -->
+<div class="d-flex flex-column min-vh-100">
+
+  <!-- Contenido principal que ocupa el espacio restante -->
+  <div class="flex-grow-1 main-content">
+    <!-- Renderizado de rutas -->
 
 
-  <!-- Escuchar el evento (filterApplied) y llamar a onFilterApplied -->
-  <app-event-filter-component (filterApplied)="onFilterApplied($event)"></app-event-filter-component>
+    <!-- Carrucel u otras secciones -->
+    <app-carrucel></app-carrucel>
 
-  <div class="card-container">
-    <app-card *ngFor="let event of events"
-      [eventImage]="event.urlImagePoster"
-      [eventTitle]="event.name"
-      [eventDate]="event.date | date:'medium'"
-      [eventLocation]="event.address ?? 'Ubicación no disponible'">
-    </app-card>
+    <!-- Filtro de eventos -->
+    <app-event-filter-component (filterApplied)="onFilterApplied($event)">
+    </app-event-filter-component>
+
+
+
+    <!-- Contenedor de las cards -->
+    <div class="card-container">
+      <app-card *ngFor="let event of events"
+        [eventImage]="event.urlImagePoster"
+        [eventTitle]="event.name"
+        [eventDate]="event.date | date:'medium'"
+        [eventLocation]="event.address ?? 'Ubicación no disponible'">
+      </app-card>
+    </div>
   </div>
+
+
 </div>
