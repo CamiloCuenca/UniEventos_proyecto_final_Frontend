@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ItemEventDTO } from '../interface/item-event-dto'; // Asegúrate de que esta ruta sea correcta
+import { EventFilter } from '../interface/EventFilter';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import { ItemEventDTO } from '../interface/item-event-dto'; // Asegúrate de que
 export class EventService {
   private apiUrl = 'http://localhost:8080/api/auth/evento'; // Cambia a la ruta correcta de tu API
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // Método para obtener la lista de eventos
   getEvents(): Observable<ItemEventDTO[]> {
@@ -19,6 +20,21 @@ export class EventService {
       map(response => response.respuesta) // Accede al array de eventos
     );
   }
+
+  filterEvents(filter: EventFilter): Observable<ItemEventDTO[]> {
+    let params = new HttpParams();
+
+    // Solo agregar los parámetros que estén definidos
+    if (filter.name) params = params.set('name', filter.name);
+    if (filter.city) params = params.set('city', filter.city); // Aquí enviamos el enum como string
+    if (filter.type) params = params.set('type', filter.type); // Aquí enviamos el enum como string
+    if (filter.date) params = params.set('date', filter.date.toISOString()); // Asumimos que date es un Date
+    if (filter.status) params = params.set('status', filter.status); // Aquí enviamos el enum como string
+
+    return this.http.get<ItemEventDTO[]>('http://localhost:8080/api/auth/evento/filter', { params });
+  }
+
+
 
 
 }

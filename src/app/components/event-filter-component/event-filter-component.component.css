@@ -1,0 +1,89 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    background-color: #0A0B0D;
+
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 2em; /* Espacio entre filtros */
+    justify-content: center;
+    padding: 1.5em;
+    max-width: 100%;
+    background-color: #0A0B0D;
+    border-radius: 0.5em;
+  }
+  
+  .search-field {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar input[type="search"] {
+    width: 15em;
+    margin-right: 0.5em;
+  }
+  
+  .search-btn {
+    background: #171717;
+    padding: 0.75em;
+    border-radius: 0 0.75em 0.75em 0 / 0 1.5em 1.5em 0;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .search-btn span {
+    display: inline-block;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+  }
+  
+  /* Ajustes para los filtros en línea */
+  .search-bar div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  
+  label {
+    margin-bottom: 0.25em;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  select,
+  input[type="date"],
+  .search-bar input[type="search"] {
+    border-radius: 0.375em;
+    padding: 0.5em;
+    width: 100%;
+    font-size: 1em;
+  }
+  
+  button[type="submit"],
+  button[type="button"] {
+    background: #7e2eff;
+    border-radius: 999px;
+    box-shadow: #7e2eff 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+  }

@@ -11,7 +11,6 @@ export enum EventType {
   FAIR = 'FAIR'
 }
 
-
 export enum EventStatus {
   ACTIVE = 'ACTIVE',
   INACTIVE = 'INACTIVE'
@@ -22,7 +21,8 @@ export enum localities {
   GENERAL = "GENERAL"
 }
 
-export enum city {
+export enum EventCity {
+
   BOGOTA = "BOGOTA",
   MEDELLIN = "MEDELLIN",
   CALI = "CALI",
@@ -44,7 +44,6 @@ export enum city {
   RIOHACHA = "RIOHACHA",
   POPAYAN = "POPAYAN"
 
-}
 
 export interface Locality {
   price: number;
@@ -52,6 +51,7 @@ export interface Locality {
   ticketsSold: number;
   maximumCapacity: number;
 }
+
 export interface EventDTO {
   id?: string; // Opcional para eventos nuevos
   coverImage: string;
@@ -60,8 +60,8 @@ export interface EventDTO {
   description: string;
   imageLocalities: string;
   type: EventType; // Usando el enum EventType
-  date: string;
-  city: city;
+  date: string; // Puedes cambiar a Date si prefieres manejarlo así
+  city: EventCity;
   address: string;
   amount: number;
   localities: Locality[];
