@@ -1,3 +1,14 @@
+/* Contenedor principal del formulario */
+/* Contenedor principal que centra el formulario */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh; /* Ocupa toda la altura de la pantalla */
+ 
+}
+
+
 .icon-large {
   font-size: 3rem;
   color: #007bff;
