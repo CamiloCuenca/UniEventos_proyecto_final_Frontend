@@ -7,14 +7,14 @@ import { CommonModule } from '@angular/common';
 import { EventService } from '../../services/event.service';
 import { PaginadorComponent } from '../../components/paginador/paginador.component';
 import { FooterComponent } from '../../components/footer/footer.component';
-import { SearchBarComponent } from "../../components/search-bar/search-bar.component";
+
 import { EventFilterComponentComponent } from "../../components/event-filter-component/event-filter-component.component";
 import { EventFilter } from '../../interface/EventFilter';
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [CarrucelComponent, CardComponent, CommonModule, PaginadorComponent, FooterComponent, SearchBarComponent, EventFilterComponentComponent],
+  imports: [CarrucelComponent, CardComponent, CommonModule, PaginadorComponent, FooterComponent, EventFilterComponentComponent],
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
 })
