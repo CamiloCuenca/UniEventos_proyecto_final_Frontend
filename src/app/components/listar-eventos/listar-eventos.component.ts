@@ -1,18 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { GestionarEventosService } from '../../services/gestionar-eventos.service';
-import { EventDTO } from '../../interface/event.dto';
+import { EventDTO ,city} from '../../interface/event.dto';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-listar-eventos',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './listar-eventos.component.html',
   styleUrls: ['./listar-eventos.component.css']
 })
 export class ListarEventosComponent implements OnInit {
+  @Input() isAvailable: boolean = true;
   events: EventDTO[] = [];
+  editingEventIndex: number | null = null;
+
+  cities = Object.values(city);
+
 
   constructor(private eventService: GestionarEventosService) {}
 
@@ -45,6 +51,36 @@ export class ListarEventosComponent implements OnInit {
   editEvent(event: EventDTO): void {
     console.log('Editando evento:', event);
   }
+
+
+  onEditar(index: number) {
+    this.editingEventIndex = index;
+  }
+
+  onGuardarEdicion(index: number) {
+    const authToken = sessionStorage.getItem('AuthToken');
+    if (!authToken) {
+      console.error('Token de autenticación no encontrado.');
+      return;
+    }
+
+    const updatedEvent = { ...this.events[index] };
+    this.eventService.updateEvent(updatedEvent, authToken).subscribe(
+      (message) => {
+        console.log('Respuesta de la actualización:', message);
+        this.editingEventIndex = null;
+        this.ngOnInit();
+      },
+      (error) => {
+        console.error('Error al actualizar el evento:', error);
+      }
+    );
+  }
+
+  onCancelarEdicion() {
+    this.editingEventIndex = null;
+  }
+
 
   deleteEvent(event: EventDTO): void {
     const token = sessionStorage.getItem('AuthToken');

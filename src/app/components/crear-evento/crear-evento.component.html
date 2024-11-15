@@ -47,7 +47,9 @@
 
   <div class="form-group mb-4">
     <label for="city" class="form-label fw-bold">Ciudad</label>
-    <input type="text" id="city" formControlName="city" class="form-control" placeholder="Ciudad del evento" required>
+    <select id="city" formControlName="city" class="form-select" required>
+      <option *ngFor="let city of cityOptions" [value]="city">{{ city }}</option>
+    </select>
   </div>
 
   <div class="form-group mb-4">

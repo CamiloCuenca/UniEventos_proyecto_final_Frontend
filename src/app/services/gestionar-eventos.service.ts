@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable,throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { EventDTO } from '../interface/event.dto';
 
 @Injectable({
@@ -32,5 +32,34 @@ export class GestionarEventosService {
   uploadImage(imageData: FormData) {
     return this.http.post<{ error: boolean, respuesta: string }>('http://localhost:8080/api/imagenes/upload-image', imageData);
   }
+
+  // Método para actualizar un evento
+  updateEvent(updatedEvent: EventDTO, authToken: string): Observable<string> {
+    const url = `${this.apiUrl}/editar-evento`;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${authToken}`,
+      'Content-Type': 'application/json' // Asegúrate de tener este encabezado
+    });
+
+    return this.http.put<{ error: boolean, respuesta: string }>(url, updatedEvent, { headers })
+      .pipe(
+        map(response => {
+          if (!response.error) {
+            return response.respuesta;
+          } else {
+            throw new Error('Error en la actualización del evento.');
+          }
+        }),
+        catchError((error) => {
+          console.error('Error al actualizar el evento:', error);
+          if (error.error) {
+            console.error('Detalles del error:', error.error); // Imprime los detalles del error
+          }
+          return throwError(() => new Error('Error al actualizar el evento.'));
+        })
+      );
+  }
+
+
 
 }
