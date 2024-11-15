@@ -1,14 +1,11 @@
 <!-- Componente principal de la app -->
 <div class="d-flex flex-column min-vh-100">
-  <!-- Navbar siempre estará en la parte superior -->
+  <!-- Navbar siempre en la parte superior -->
   <app-navbar></app-navbar>
- 
 
- 
-
-  <!-- El contenido principal ocupa el espacio restante, se muestra según las rutas -->
-  <div class="flex-grow-1">
-    <router-outlet></router-outlet> <!-- Aquí se renderizan las rutas -->
+  <!-- Contenido principal que ocupa el espacio restante -->
+  <div class="flex-grow-1 main-content">
+    <router-outlet></router-outlet> <!-- Renderizado de rutas -->
   </div>
 
   <!-- Footer se mantiene en la parte inferior -->

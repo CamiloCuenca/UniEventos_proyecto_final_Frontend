@@ -1,7 +1,18 @@
+.main-container {
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh; /* Ocupa toda la altura de la pantalla */
+
+}
+
+
+
 .card {
   position: relative;
-  width: 250px;
-  height: 320px;
+  width: 350px;
+  height: 400px;
   background-color: #0A0B0D;
   color: #ffffff;
   display: flex;
