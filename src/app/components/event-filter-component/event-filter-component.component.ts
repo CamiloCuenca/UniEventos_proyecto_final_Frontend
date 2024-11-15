@@ -36,6 +36,8 @@ export class EventFilterComponentComponent {
     this.filterApplied.emit(this.filter);  // Emite el filtro al componente padre
   }
 
+  //filtrar
+
    // Método para reiniciar los filtros
    resetFilters() {
     this.filter = {
