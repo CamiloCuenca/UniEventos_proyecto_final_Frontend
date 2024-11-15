@@ -10,11 +10,12 @@ import { FooterComponent } from '../../components/footer/footer.component';
 
 import { EventFilterComponentComponent } from "../../components/event-filter-component/event-filter-component.component";
 import { EventFilter } from '../../interface/EventFilter';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [CarrucelComponent, CardComponent, CommonModule, PaginadorComponent, FooterComponent, EventFilterComponentComponent],
+  imports: [CarrucelComponent, CardComponent, CommonModule, PaginadorComponent, FooterComponent, EventFilterComponentComponent, NavbarComponent,],
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
 })
