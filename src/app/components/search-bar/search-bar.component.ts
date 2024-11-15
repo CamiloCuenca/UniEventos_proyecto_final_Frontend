@@ -2,7 +2,7 @@ import { Component,OnInit } from '@angular/core';
 // Importa los módulos necesarios para el componente
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-search-bar',
