@@ -51,6 +51,12 @@
   height: 1px;
 }
 
+app-event-filter-component {
+  position: relative; /* Asegura que esté en el flujo normal del documento */
+  z-index: 0; /* Ajusta el valor si es necesario */
+}
+
+
 /* Ajustes para los filtros en línea */
 .search-bar div {
   display: flex;

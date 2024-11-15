@@ -13,35 +13,18 @@
     <app-event-filter-component (filterApplied)="onFilterApplied($event)">
     </app-event-filter-component>
 
-    
+
 
     <!-- Contenedor de las cards -->
     <div class="card-container">
-      <div *ngFor="let event of events" class="event-card card shadow-lg">
-        <img [src]="event.urlImagePoster" alt="Imagen del Evento" class="card-img-top event-image">
-        <div class="card-body d-flex flex-column">
-          <!-- Sección de información adicional -->
-          <section class="additional-info text-center mt-3">
-            <p class="card-title event-title">{{ event.name }}</p>
-            <p class="card-text event-city">{{ event.city }}</p>
-            <p class="card-text event-date">Fecha: {{ event.date | date:'medium' }}</p>
-            <p class="card-text event-location">Lugar: {{ event.address ?? 'Ubicación no disponible' }}</p>
-          </section>
-
-          <!-- Sección de botones -->
-          <section class="button-container d-flex justify-content-around mt-auto">
-            <button class="btn btn-light buy-btn">
-              <i class="fas fa-shopping-cart"></i>
-            </button>
-            <button class="btn btn-light buy-btn">
-              <i class="fas fa-plus-circle"></i> Comprar
-            </button>
-          </section>
-        </div>
-      </div>
+      <app-card *ngFor="let event of events"
+        [eventImage]="event.urlImagePoster"
+        [eventTitle]="event.name"
+        [eventDate]="event.date | date:'medium'"
+        [eventLocation]="event.address ?? 'Ubicación no disponible'">
+      </app-card>
     </div>
   </div>
 
-  <!-- Footer se mantiene en la parte inferior -->
-  <app-footer></app-footer>
+
 </div>

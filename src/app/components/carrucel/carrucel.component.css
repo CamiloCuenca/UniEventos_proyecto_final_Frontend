@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   height: 40vh; /* Ocupa toda la altura de la pantalla */
- 
+
 }
 
 /* Reset y estilo general */
@@ -39,16 +39,17 @@ body {
   overflow: hidden; /* Evita que el contenido se desborde */
 }
 
-/* Estilos del Carrusel */
 .carrusel-container {
   position: relative;
+  z-index: 1; /* Ajusta el valor según sea necesario */
   width: 100%;
-  max-width: 1000px; /* Ancho máximo del carrusel */
+  max-width: 1000px;
   margin: auto;
-  overflow: hidden; /* Para ocultar imágenes fuera del contenedor */
-  border-radius: 20px; /* Bordes redondeados */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra para profundidad */
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
+
 
 /* Animación para las imágenes */
 .carrusel img {
