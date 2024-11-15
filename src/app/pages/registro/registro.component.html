@@ -63,7 +63,17 @@
         </div>
       </div>
 
-      <!-- Continúa de la misma manera para los otros campos -->
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label for="confirmaPassword">Confirmar Contraseña:</label>
+          <input id="confirmaPassword" [type]="confirmaPasswordVisible ? 'text' : 'password'" formControlName="confirmaPassword" required
+            class="form-control" />
+          <div *ngIf="registroForm.hasError('passwordsMismatch') && registroForm.get('confirmaPassword')?.touched"
+            class="text-danger">
+            <small>Las contraseñas no coinciden.</small>
+          </div>
+        </div>
+      </div>
 
       <div class="text-center">
         <button class="form-submit-btn" type="submit">Registrar</button>
