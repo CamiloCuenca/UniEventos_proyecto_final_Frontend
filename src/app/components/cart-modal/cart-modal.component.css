@@ -1,0 +1,15 @@
+.modal {
+    display: none; /* Escondemos el modal por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal.show {
+    display: flex; /* Mostramos el modal cuando tiene la clase 'show' */
+  }

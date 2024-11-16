@@ -62,7 +62,7 @@
 
 .form-group input:focus {
   outline: none;
-  border-color: #e81cff;
+  border-color: #03f7ff;
 }
 
 /* Botón de envío del formulario */
