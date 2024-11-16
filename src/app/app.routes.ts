@@ -15,6 +15,7 @@ import { ActiveAccountComponent } from './pages/active-account/active-account.co
 import { SendActiveCodeComponent } from './pages/send-active-code/send-active-code.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { EventFilterComponentComponent } from './components/event-filter-component/event-filter-component.component';
+import { CrearOrdenComponent } from './pages/crear-orden/crear-orden.component';
 
 
 
@@ -32,6 +33,7 @@ export const routes: Routes = [
    { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
    { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
    { path: 'profile', component: ProfileComponent },
+   {path: 'crear-orden',component: CrearOrdenComponent },
    {
       path: 'home-admin',
       component: HomeAdminComponent,

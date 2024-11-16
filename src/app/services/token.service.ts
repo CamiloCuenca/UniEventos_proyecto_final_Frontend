@@ -8,6 +8,7 @@ const TOKEN_KEY = "AuthToken";
   providedIn: 'root'
 })
 export class TokenService {
+  static getIDCuenta: string;
   constructor(private router: Router) { }
 
   public setToken(tokesessionStoragen: string) {
@@ -50,7 +51,7 @@ export class TokenService {
     const token = this.getToken();
     if (token) {
       const values = this.decodePayload(token);
-      return values.id; // Suponiendo que 'id' está en el payload
+      return values.id;
     }
     return "";
   }
@@ -64,7 +65,7 @@ export class TokenService {
     return "";
   }
 
- 
+
   public getRol(): string {
     const token = this.getToken();
     if (token) {

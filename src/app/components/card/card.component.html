@@ -7,14 +7,17 @@
         <p class="card-text event-city">{{ eventCity }}</p>
         <p class="card-text event-date">Fecha: {{ eventDate }}</p>
         <p class="card-text event-location">Lugar: {{ eventLocation }}</p>
+        <!--<p>{{ eventId }}</p>-->
       </section>
       <section class="button-container d-flex justify-content-around mt-auto">
         <button class="btn btn-light buy-btn">
           <i class="fas fa-shopping-cart"></i>
         </button>
-        <button class="btn btn-light buy-btn">
-          <i class="fas fa-plus-circle"></i> Comprar
-        </button>
+      <!-- Modificar el botón Comprar -->
+      <button class="btn btn-light buy-btn" [routerLink]="['/crear-orden']" [queryParams]="{ idEvent: eventId }">
+  <i class="fas fa-plus-circle"></i> Comprar
+      </button>
+
       </section>
     </div>
   </div>
