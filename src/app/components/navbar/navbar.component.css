@@ -45,7 +45,7 @@ body {
 }
 
 .navbar .dropdown-menu .dropdown-item {
-  color: white;
+  color: rgb(255, 255, 255);
   /* Color del texto en el dropdown */
   padding: 10px 20px;
 }

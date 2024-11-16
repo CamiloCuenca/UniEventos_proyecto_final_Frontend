@@ -42,17 +42,15 @@ export class NavbarComponent implements OnInit {
   }
 
   // Alterna el estado del menú desplegable (abre o cierra el menú)
-  toggleDropdown(): void {
+  toggleDropdown(event: Event): void {
+    event.preventDefault();  // Prevenir la acción predeterminada del enlace
     this.dropdownOpen = !this.dropdownOpen;
-
-    // Si el dropdown se abre, configuramos el temporizador para cerrarlo automáticamente
+  
     if (this.dropdownOpen) {
-      // Cerrar el menú después de 5 segundos (5000 milisegundos)
       this.dropdownTimer = setTimeout(() => {
         this.dropdownOpen = false;
-      }, 3000); // Puedes ajustar el tiempo a tu preferencia
+      }, 3000); 
     } else {
-      // Si se cierra manualmente, limpiar el temporizador
       clearTimeout(this.dropdownTimer);
     }
   }
