@@ -24,6 +24,7 @@ body {
   align-items: center; /* Centrado vertical */
   margin: 0;
   background-color: #f0f0f0; /* Fondo de página */
+  animation: fadeIn 1.2s ease-out;
 }
 
 /* Contenedor principal */
@@ -117,4 +118,15 @@ button:nth-of-type(2) {
 .carrusel img {
   width: 100%; /* Asegura que las imágenes ocupen todo el ancho */
   min-width: 100%; /* Asegura que cada imagen ocupe toda la vista */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
