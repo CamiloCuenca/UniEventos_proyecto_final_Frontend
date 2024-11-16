@@ -46,6 +46,7 @@ export class CardComponent {
       quantity: this.quantity
     };
 
+    /** 
     // Llamar al servicio para agregar el ítem al carrito
     this.authService.addItemToCart(accountId, cartDetailDTO).subscribe(
       (response) => {
@@ -56,5 +57,6 @@ export class CardComponent {
         console.error('Error al agregar al carrito:', error);
       }
     );
+    /** */
   }
 }
