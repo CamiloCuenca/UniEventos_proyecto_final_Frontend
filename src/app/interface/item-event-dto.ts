@@ -1,7 +1,7 @@
 import { EventCity} from './event.dto';  // Importar los enums desde event.dto.ts
 
 export interface ItemEventDTO {
-  idEvento: String
+  idEvento: string
   /** La URL de la imagen del cartel no puede estar vacía */
   urlImagePoster: string;
 

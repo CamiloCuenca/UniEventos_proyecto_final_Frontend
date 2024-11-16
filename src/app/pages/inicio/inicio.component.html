@@ -18,6 +18,7 @@
     <!-- Contenedor de las cards -->
     <div class="card-container">
       <app-card *ngFor="let event of events"
+        [eventId]="event.idEvento"
         [eventImage]="event.urlImagePoster"
         [eventTitle]="event.name"
         [eventDate]="event.date | date:'medium'"

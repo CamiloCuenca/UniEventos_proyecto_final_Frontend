@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ItemEventDTO } from '../interface/item-event-dto'; // Asegúrate de que esta ruta sea correcta
+import { ItemEventDTO } from '../interface/item-event-dto';
 import { EventFilter } from '../interface/EventFilter';
 
 
@@ -10,7 +10,7 @@ import { EventFilter } from '../interface/EventFilter';
   providedIn: 'root' // Esto lo hace disponible en toda la aplicación
 })
 export class EventService {
-  private apiUrl = 'http://localhost:8080/api/auth/evento'; // Cambia a la ruta correcta de tu API
+  private apiUrl = 'http://localhost:8080/api/auth/evento';
 
   constructor(private http: HttpClient) { }
 
