@@ -1,74 +1,153 @@
-.event-title {
-  text-align: center;
-  color: #6505A6;
-  font-weight: bold;
-  margin-bottom: 1rem;
+body {
+  background-color: #0A0B0D;
+  font-family: Arial, sans-serif;
+  color: #03f7ff;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: auto; /* Para manejar tablas anchas */
 }
 
-.table-responsive {
-  max-height: 600px; /* Ajustable: altura máxima con scroll */
-  overflow-y: auto; /* Scroll vertical */
-  overflow-x: auto; /* Scroll horizontal */
-  border: 1px solid #dee2e6;
-  border-radius: 0.5rem; /* Bordes redondeados más grandes */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+
+.titulo{
+  color: #03f7ff;
+   font-family: Arial, sans-serif;
+}
+.main-container {
+  width: 100%;
+  max-width: 1200px; /* Ajusta el tamaño máximo de la tabla */
+  background-color: #0A0B0D;
+  padding: 20px 40px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(3, 247, 255, 0.3);
+  animation: fadeIn 1.2s ease-out;
 }
 
-.table {
-  min-width: 800px; /* Ajustable: ancho mínimo */
-  font-size: 0.9rem; /* Tamaño de fuente ajustable */
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 15px;
+  margin: 20px 0;
+  box-shadow: 0 4px 15px rgba(3, 247, 255, 0.3);
 }
 
-.table th, .table td {
-  vertical-align: middle;
-  padding: 0.75rem; /* Espaciado interno */
-  text-align: center; /* Centrado de texto */
+thead {
+  background-color: #03f7ff;
 }
 
-.table th {
-  background-color: #6505A6;
+thead th {
+  padding: 15px;
   color: #ffffff;
-  border-bottom: 2px solid #520486; /* Línea de división */
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: bold;
 }
 
-.table td {
-  white-space: nowrap;
-  background-color: #fdfdfd; /* Fondo suave */
+tbody tr {
+  transition: all 0.3s ease-in-out;
 }
 
-.table-warning {
-  background-color: #fff3cd; /* Amarillo claro para fila de edición */
+tbody tr:nth-child(odd) {
+  background-color: rgba(3, 247, 255, 0.1);
 }
 
-.btn {
-  border-radius: 0.25rem; /* Bordes redondeados */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Transiciones suaves */
+tbody tr:hover {
+  background-color: #03f7ff;
+  color: #0A0B0D;
+  transform: scale(1.01);
+}
+
+td {
+  padding: 15px;
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Input y select */
+input,
+select {
+  padding: 8px;
+  border: 2px solid #03f7ff;
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+input:focus,
+select:focus {
+  border-color: #b500fd;
+  box-shadow: 0px 0px 10px #b500fd;
+}
+
+/* Botones */
+button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .btn-warning {
-  color: #ffffff;
-  background-color: #f0ad4e;
-  border: none;
+  background: linear-gradient(90deg, #ffcc00, #ff9900);
+  color: #0A0B0D;
+}
+
+.btn-warning:hover {
+  box-shadow: 0px 4px 15px rgba(255, 153, 0, 0.4);
+  transform: scale(1.05);
 }
 
 .btn-danger {
-  color: #ffffff;
-  background-color: #d9534f;
-  border: none;
+  background: linear-gradient(90deg, #ff4d4d, #b500fd);
+  color: white;
+}
+
+.btn-danger:hover {
+  box-shadow: 0px 4px 15px rgba(255, 77, 77, 0.4);
+  transform: scale(1.05);
 }
 
 .btn-success {
-  color: #ffffff;
-  background-color: #5cb85c;
-  border: none;
+  background: linear-gradient(90deg, #00cc66, #03f7ff);
+  color: white;
+}
+
+.btn-success:hover {
+  box-shadow: 0px 4px 15px rgba(0, 204, 102, 0.4);
+  transform: scale(1.05);
 }
 
 .btn-secondary {
-  color: #ffffff;
-  background-color: #6c757d;
-  border: none;
+  background: linear-gradient(90deg, #666666, #0A0B0D);
+  color: white;
 }
 
-.btn:hover {
-  opacity: 0.85; /* Efecto de hover */
+.btn-secondary:hover {
+  box-shadow: 0px 4px 15px rgba(102, 102, 102, 0.4);
+  transform: scale(1.05);
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

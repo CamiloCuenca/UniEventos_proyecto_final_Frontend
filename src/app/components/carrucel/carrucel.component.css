@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh; /* Ocupa toda la altura de la pantalla */
+  height: 53vh; /* Ocupa toda la altura de la pantalla */
 
 }
 
@@ -58,12 +58,14 @@ body {
   object-position: center; /* Centra la imagen */
   display: none; /* Oculta todas las imágenes por defecto */
   opacity: 0; /* Inicialmente transparentes */
-  transition: opacity 0.5s ease-in-out; /* Transición suave de opacidad */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Transición suave de opacidad y movimiento */
 }
 
 .carrusel img.active {
   display: block; /* Muestra la imagen activa */
   opacity: 1; /* Hace visible la imagen activa */
+  transform: translateX(0); /* Se asegura de que las imágenes se alineen correctamente */
+
 }
 
 
