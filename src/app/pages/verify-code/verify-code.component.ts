@@ -50,7 +50,7 @@ export class VerifyCodeComponent implements OnInit {
       next: (response: MessageDTO<string>) => {
         this.successMessage = response.respuesta;  // Mensaje de éxito
         this.errorMessage = '';
-        // Redirigir o realizar alguna acción adicional si es necesario
+        this.router.navigate(['/login']); // Redirige al componente de verificación si tiene éxito
       },
       error: (error) => {
         this.successMessage = '';
