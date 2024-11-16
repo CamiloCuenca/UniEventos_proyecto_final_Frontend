@@ -1,15 +1,98 @@
-.modal {
-    display: none; /* Escondemos el modal por defecto */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal.show {
-    display: flex; /* Mostramos el modal cuando tiene la clase 'show' */
-  }
+/* Overlay del modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 11, 13, 0.9); /* Fondo oscuro con transparencia */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+/* Contenedor del modal */
+.modal-dialog {
+  width: 90%;
+  max-width: 500px;
+  background-color: #0A0B0D; /* Fondo negro */
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenido del modal */
+.modal-content {
+  padding: 20px;
+  color: #fff; /* Texto blanco */
+}
+
+/* Encabezado */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #40c9ff; /* Línea inferior azul */
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e81cff; /* Título rosado */
+}
+
+.close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff; /* Ícono blanco */
+  cursor: pointer;
+}
+
+/* Cuerpo */
+.modal-body {
+  margin-top: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #40c9ff; /* Texto del label azul */
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #40c9ff;
+  border-radius: 4px;
+  background-color: #0A0B0D; /* Fondo negro */
+  color: #fff; /* Texto blanco */
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #e81cff; /* Enfoque rosado */
+  box-shadow: 0 0 5px #e81cff;
+}
+
+/* Botón */
+.btn-primary {
+  background-color: #40c9ff; /* Fondo azul */
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  color: #fff; /* Texto blanco */
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #e81cff; /* Fondo rosado al pasar el mouse */
+}

@@ -9,8 +9,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './cart-modal.component.css'
 })
 export class CartModalComponent {
-
   @Input() isVisible: boolean = false; // Propiedad para controlar la visibilidad
+  @Input() eventId: string | null = null; // Recibe el ID del evento desde el padre
   @Output() close = new EventEmitter<void>(); // Evento para cerrar el modal
 
   selectedLocality: string = '';
@@ -23,6 +23,7 @@ export class CartModalComponent {
 
   // Método de envío del formulario
   onSubmit() {
+    console.log('Evento ID:', this.eventId);
     console.log('Localidad seleccionada:', this.selectedLocality);
     console.log('Cantidad de boletos:', this.quantity);
     this.closeModal(); // Cierra el modal después de enviar

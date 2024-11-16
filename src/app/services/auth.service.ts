@@ -107,6 +107,9 @@ export class AuthService {
       );
   }
 
+
+  
+
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Ocurrió un error inesperado.';
 
