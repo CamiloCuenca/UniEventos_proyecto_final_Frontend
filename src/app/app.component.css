@@ -2,7 +2,15 @@
 :host {
   display: block;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  /* background-image: url('ruta/de/a.gif'); Cambia la ruta */
+  /*background-color: aqua;*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.main-content{
   background-image: url('ruta/de/a.gif'); /* Cambia la ruta */
   background-size: cover;
   background-position: center;

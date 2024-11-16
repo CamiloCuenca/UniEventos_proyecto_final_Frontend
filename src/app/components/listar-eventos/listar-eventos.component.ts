@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { GestionarEventosService } from '../../services/gestionar-eventos.service';
-import { EventDTO ,city} from '../../interface/event.dto';
+import { EventDTO ,EventCity} from '../../interface/event.dto';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -17,7 +17,7 @@ export class ListarEventosComponent implements OnInit {
   events: EventDTO[] = [];
   editingEventIndex: number | null = null;
 
-  cities = Object.values(city);
+  cities = Object.values(EventCity);
 
 
   constructor(private eventService: GestionarEventosService) {}

@@ -43,7 +43,7 @@ export enum EventCity {
   VALLEDUPAR = "VALLEDUPAR",
   RIOHACHA = "RIOHACHA",
   POPAYAN = "POPAYAN"
-
+}
 
 export interface Locality {
   price: number;
