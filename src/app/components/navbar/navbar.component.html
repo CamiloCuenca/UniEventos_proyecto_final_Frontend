@@ -17,7 +17,7 @@
             <a class="nav-link" routerLink="#">Inicio</a>
           </li>
 
-          
+
           <li class="nav-item" *ngIf="!isLoggedIn()">
             <a class="nav-link" routerLink="/login">Login</a>
           </li>
@@ -26,12 +26,12 @@
             <a class="nav-link" routerLink="/registro">Registrarse</a>
           </li>
 
-         
+
           <!-- Dropdown para usuario -->
           <li class="nav-item dropdown" *ngIf="isLoggedIn()">
             <!-- Botón de usuario -->
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
-               (click)="toggleDropdown()">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+              (click)="toggleDropdown($event)">
               <i class="fa-solid fa-user"></i> {{ userName || 'Usuario' }}
             </a>
             <!-- Menú del dropdown -->
@@ -42,7 +42,7 @@
             </ul>
           </li>
 
-           <button class="button" routerLink="/shopping-cart">
+          <button class="button" routerLink="/shopping-cart">
             <i class="fa-solid fa-cart-shopping"></i>
           </button>
 

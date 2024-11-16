@@ -5,12 +5,13 @@ import { AdminCardComponent } from '../../components/admin-card/admin-card.compo
 import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
 import { Reporteservice } from '../../services/reporte.service';
-import Swal from 'sweetalert2'; // Importación de SweetAlert2
+import Swal from 'sweetalert2';
+import { SidebarComponent } from "../../components/sidebar/sidebar.component"; // Importación de SweetAlert2
 
 @Component({
   selector: 'app-home-admin',
   standalone: true,
-  imports: [RouterModule, CommonModule, AdminCardComponent],
+  imports: [RouterModule, CommonModule, AdminCardComponent, SidebarComponent],
   templateUrl: './home-admin.component.html',
   styleUrls: ['./home-admin.component.css']
 })

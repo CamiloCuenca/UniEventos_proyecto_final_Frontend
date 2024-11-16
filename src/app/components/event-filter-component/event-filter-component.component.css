@@ -1,62 +1,94 @@
-/* Contenedor principal */
-.main-container {
+body {
+  background-color: #0A0B0D;
+  font-family: Arial, sans-serif;
+  color: #03f7ff;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 15vh;
-  margin: 2em 0;
+  height: 100vh;
 }
 
-/* Barra de búsqueda */
+.main-container {
+  width: 100%;
+  max-width: 100%; /* Ocupa todo el ancho disponible */
+  background-color: #0A0B0D;
+  padding: 20px 40px;
+  box-sizing: border-box; /* Asegura que el padding no exceda el tamaño total */
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(3, 247, 255, 0.3);
+  animation: fadeIn 1.2s ease-out;
+}
+
 .search-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  padding: 1em;
-  background-color: #0A0B0D; /* Fondo semi-transparente */
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  align-items: center;
+  width: 100%;
 }
 
-/* Labels */
+.search-field,
+div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 label {
   font-size: 14px;
-  color: #ffffff;
-  font-weight: 500;
+  color: #03f7ff;
 }
 
-/* Inputs y selects */
 input[type="search"],
 input[type="date"],
 select {
   width: 100%;
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  background-color: rgba(255, 255, 255, 0.2); /* Fondo semi-transparente */
-  color: black; /* Texto blanco */
+  padding: 8px 10px;
+  border: 2px solid #03f7ff;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #ffffff;
   font-size: 14px;
   outline: none;
+  transition: all 0.3s ease-in-out;
 }
 
-input[type="search"]::placeholder {
-  color: #e0e0e0;
+input[type="search"]:focus,
+input[type="date"]:focus,
+select:focus {
+  border-color: #b500fd;
+  box-shadow: 0px 0px 10px #b500fd;
 }
 
-/* Botones */
-button[type="submit"],
-button[type="button"] {
-  background: rgba(126, 46, 255, 0.8); /* Fondo semi-transparente */
-  color: #ffffff;
+button {
+  padding: 10px 20px;
+  color: #0A0B0D;
+  background: linear-gradient(90deg, #03f7ff, #b500fd);
   border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
-button[type="submit"]:hover,
-button[type="button"]:hover {
-  background: rgba(126, 46, 255, 1);
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 15px rgba(181, 0, 253, 0.4);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -16,6 +16,8 @@ import { SendActiveCodeComponent } from './pages/send-active-code/send-active-co
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { EventFilterComponentComponent } from './components/event-filter-component/event-filter-component.component';
 import { CrearOrdenComponent } from './pages/crear-orden/crear-orden.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+
 
 
 
@@ -27,6 +29,7 @@ export const routes: Routes = [
    { path: 'active-account', component: ActiveAccountComponent },
    { path: 'send-active-code', component: SendActiveCodeComponent },
    { path: 'shopping-cart', component: ShoppingCartComponent },
+   { path: 'sidebar',component:SidebarComponent},
 
    { path: 'event-filter', component: EventFilterComponentComponent },
 
