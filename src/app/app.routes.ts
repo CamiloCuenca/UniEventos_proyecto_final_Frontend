@@ -17,12 +17,14 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
 import { EventFilterComponentComponent } from './components/event-filter-component/event-filter-component.component';
 import { CrearOrdenComponent } from './pages/crear-orden/crear-orden.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { CartModalComponent } from './components/cart-modal/cart-modal.component';
 
 
 
 
 export const routes: Routes = [
    { path: '', component: InicioComponent },
+   { path: 'cart-modal', component: CartModalComponent},
    { path: 'recover-password', component: RecoverPasswordComponent },
    { path: 'verify-code', component: VerifyCodeComponent },
    { path: 'delete-account', component: DeleteAccountComponent },

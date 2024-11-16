@@ -1,0 +1,28 @@
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isVisible}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Agregar al Carrito</h5>
+          <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="locality">Localidad</label>
+              <select id="locality" [(ngModel)]="selectedLocality" name="locality" class="form-control" required>
+                <option value="VIP">VIP</option>
+                <option value="General">General</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="quantity">Cantidad de Boletos</label>
+              <input id="quantity" type="number" [(ngModel)]="quantity" name="quantity" class="form-control" min="1" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar al Carrito</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
