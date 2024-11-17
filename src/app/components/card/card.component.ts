@@ -46,6 +46,8 @@ export class CardComponent {
       quantity: this.quantity
     };
 
+
+    ///Aquiiiiiiiiiiiiii se llama el servicio 
     /** 
     // Llamar al servicio para agregar el ítem al carrito
     this.authService.addItemToCart(accountId, cartDetailDTO).subscribe(
