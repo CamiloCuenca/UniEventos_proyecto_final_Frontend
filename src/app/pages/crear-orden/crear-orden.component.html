@@ -3,22 +3,12 @@
   <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <label for="idAccount" class="form-label">ID de Cuenta</label>
-      <input type="text" id="idAccount" class="form-control" formControlName="idAccount" readonly>
+      <input type="text" id="idAccount" class="form-control" formControlName="idAccount">
     </div>
 
     <div class="mb-3">
       <label for="date" class="form-label">Fecha</label>
-      <input type="date" id="date" class="form-control" formControlName="date">
-    </div>
-
-    <div class="mb-3">
-      <label for="gatewayCode" class="form-label">Código de Gateway</label>
-      <input type="text" id="gatewayCode" class="form-control" formControlName="gatewayCode">
-    </div>
-
-    <div class="mb-3">
-      <label for="total" class="form-label">Total</label>
-      <input type="number" id="total" class="form-control" formControlName="total">
+      <input type="datetime-local" id="date" class="form-control" formControlName="date">
     </div>
 
     <div class="mb-3">
@@ -26,64 +16,29 @@
       <input type="text" id="codeCoupon" class="form-control" formControlName="codeCoupon">
     </div>
 
-    <!-- Información de Pago -->
-    <fieldset class="border p-3 mb-4">
-      <legend>Información de Pago</legend>
-      <div formGroupName="payment">
-        <div class="mb-3">
-          <label for="currency" class="form-label">Moneda</label>
-          <input type="text" id="currency" class="form-control" formControlName="currency">
-        </div>
-        <div class="mb-3">
-          <label for="typePayment" class="form-label">Tipo de Pago</label>
-          <select id="typePayment" class="form-select" formControlName="typePayment">
-            <option *ngFor="let type of paymentTypes" [value]="type">{{ type }}</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="authorizationCode" class="form-label">Código de Autorización</label>
-          <input type="text" id="authorizationCode" class="form-control" formControlName="authorizationCode">
-        </div>
-        <div class="mb-3">
-          <label for="paymentDate" class="form-label">Fecha de Pago</label>
-          <input type="date" id="paymentDate" class="form-control" formControlName="date">
-        </div>
-        <div class="mb-3">
-          <label for="transactionValue" class="form-label">Valor de la Transacción</label>
-          <input type="number" id="transactionValue" class="form-control" formControlName="transactionValue">
-        </div>
-        <div class="mb-3">
-          <label for="paymentState" class="form-label">Estado del Pago</label>
-          <select id="paymentState" class="form-select" formControlName="state">
-            <option *ngFor="let state of paymentStates" [value]="state">{{ state }}</option>
-          </select>
-        </div>
-      </div>
-    </fieldset>
-
     <!-- Items (solo para visualización, sin opciones de agregar/quitar) -->
     <div formArrayName="items">
       <div *ngFor="let item of items.controls; let i = index" [formGroupName]="i" class="p-3 mb-3 bg-light">
         <h5>Item {{ i + 1 }}</h5>
         <div class="mb-3">
           <label class="form-label">ID del Evento</label>
-          <input type="text" class="form-control" formControlName="idEvent" readonly>
+          <input type="text" class="form-control" formControlName="idEvent">
         </div>
         <div class="mb-3">
           <label for="price-{{ i }}" class="form-label">Precio</label>
-          <input type="number" [id]="'price-' + i" class="form-control" formControlName="price" readonly>
+          <input type="number" [id]="'price-' + i" class="form-control" formControlName="price">
         </div>
         <div class="mb-3">
           <label for="localityName-{{ i }}" class="form-label">Nombre de la Localidad</label>
-          <input type="text" [id]="'localityName-' + i" class="form-control" formControlName="localityName" readonly>
+          <input type="text" [id]="'localityName-' + i" class="form-control" formControlName="localityName">
         </div>
         <div class="mb-3">
           <label for="EventName-{{ i }}" class="form-label">Nombre del Evento</label>
-          <input type="text" [id]="'EventName-' + i" class="form-control" formControlName="EventName" readonly>
+          <input type="text" [id]="'EventName-' + i" class="form-control" formControlName="EventName">
         </div>
         <div class="mb-3">
           <label for="amount-{{ i }}" class="form-label">Cantidad</label>
-          <input type="number" [id]="'amount-' + i" class="form-control" formControlName="amount" readonly>
+          <input type="number" [id]="'amount-' + i" class="form-control" formControlName="amount">
         </div>
       </div>
     </div>

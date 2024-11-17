@@ -21,5 +21,4 @@ export class OrderService{
       return this.http.post(url,orderData,{headers});
     }
 
-
 }
