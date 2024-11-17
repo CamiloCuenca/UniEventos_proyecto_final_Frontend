@@ -21,14 +21,14 @@ interface LoginResponse {
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/api/auth';
+  private apiUrl = 'https://unieventos-proyecto-final-backend-49t8.onrender.com/api/auth';
 
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
   getUserData(): Observable<MessageDTO<dtoAccountInformation>> {
     const userId = this.tokenService.getIDCuenta(); // Obtén el ID del token
     return this.http.get<MessageDTO<dtoAccountInformation>>(
-      `http://localhost:8080/api/cliente/cuenta/obtener-info/${userId}`
+      `https://unieventos-proyecto-final-backend-49t8.onrender.com/api/cliente/cuenta/obtener-info/${userId}`
     );
   }
 
@@ -37,7 +37,7 @@ export class AuthService {
     userId: string
   ): Observable<MessageDTO<string>> {
     return this.http.put<MessageDTO<string>>(
-      `http://localhost:8080/api/cliente/cuenta/editar-perfil/${userId}`,
+      `https://unieventos-proyecto-final-backend-49t8.onrender.com/api/cliente/cuenta/editar-perfil/${userId}`,
       accountData
     );
   }
@@ -47,22 +47,22 @@ export class AuthService {
     userId: string
   ): Observable<MessageDTO<string>> {
     return this.http.put<MessageDTO<string>>(
-      `http://localhost:8080/api/cliente/cuenta/editar-password/${userId}`,
+      `https://unieventos-proyecto-final-backend-49t8.onrender.com/api/cliente/cuenta/editar-password/${userId}`,
       passwordData
     );
   }
 
   sendActiveCode(correo: string): Observable<any> {
     return this.http.post<any>(
-      `http://localhost:8080/api/cliente/email/enviar-codigoActive/${correo}`,
+      `https://unieventos-proyecto-final-backend-49t8.onrender.com/api/cliente/email/enviar-codigoActive/${correo}`,
       {}
     );
   }
-  
+
 
   recoverPassword(correo: string): Observable<any> {
     return this.http.post<any>(
-      `http://localhost:8080/api/cliente/email/enviar-codigo/${correo}`,
+      `https://unieventos-proyecto-final-backend-49t8.onrender.com/api/cliente/email/enviar-codigo/${correo}`,
       {}
     );
   }
@@ -79,36 +79,36 @@ export class AuthService {
     userId: string
   ): Observable<MessageDTO<string>> {
     return this.http.put<MessageDTO<string>>(
-      `http://localhost:8080/api/cliente/cuenta/cambiar-password/${userId}`,
+      `https://unieventos-proyecto-final-backend-49t8.onrender.com/api/cliente/cuenta/cambiar-password/${userId}`,
       passwordData
     );
   }
 
   deleteAccount(userId: string, passwordDTO: PasswordDTO): Observable<MessageDTO<string>> {
-    return this.http.post<MessageDTO<string>>(`http://localhost:8080/api/cliente/cuenta/eliminar/${userId}`, passwordDTO);
+    return this.http.post<MessageDTO<string>>(`https://unieventos-proyecto-final-backend-49t8.onrender.com/api/cliente/cuenta/eliminar/${userId}`, passwordDTO);
   }
 
 
   changePassword(recoverPasswordDTO: RecoverPasswordDTO): Observable<MessageDTO<string>> {
     // Aquí se pasa el tipo MessageDTO<string> porque la respuesta es un string (mensaje)
-    return this.http.put<MessageDTO<string>>(`http://localhost:8080/api/cliente/cuenta/cambiar-password`, recoverPasswordDTO);
+    return this.http.put<MessageDTO<string>>(`https://unieventos-proyecto-final-backend-49t8.onrender.com/api/cliente/cuenta/cambiar-password`, recoverPasswordDTO);
   }
 
   activateAccount(activeAccountDTO: ActiveAccountDTO): Observable<MessageDTO<string>> {
     // Aquí se pasa el tipo MessageDTO<string> porque la respuesta es un string (mensaje)
-    return this.http.post<MessageDTO<string>>(`http://localhost:8080/api/auth/cuenta/activar-cuenta`, activeAccountDTO);
+    return this.http.post<MessageDTO<string>>(`https://unieventos-proyecto-final-backend-49t8.onrender.com/api/auth/cuenta/activar-cuenta`, activeAccountDTO);
   }
 
   crearCuenta(datos: any): Observable<any> {
     return this.http
-      .post('http://localhost:8080/api/auth/cuenta/crear-cuenta', datos)
+      .post('https://unieventos-proyecto-final-backend-49t8.onrender.com/api/auth/cuenta/crear-cuenta', datos)
       .pipe(
         catchError(this.handleError) // Captura y maneja errores
       );
   }
 
 
-  
+
 
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Ocurrió un error inesperado.';

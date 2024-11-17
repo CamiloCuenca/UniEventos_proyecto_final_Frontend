@@ -8,7 +8,7 @@ import { CouponDTO } from '../interface/cupon.dto';
   providedIn: 'root'
 })
 export class CouponService {
-  private apiUrl = 'http://localhost:8080/api/administrador';
+  private apiUrl = 'https://unieventos-proyecto-final-backend-49t8.onrender.com/api/administrador';
 
   constructor(private http: HttpClient) {}
 
