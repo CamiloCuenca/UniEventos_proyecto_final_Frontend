@@ -8,7 +8,7 @@ import { EventDTO } from '../interface/event.dto';
   providedIn: 'root'
 })
 export class GestionarEventosService {
-  private apiUrl = 'http://localhost:8080/api/administrador'; // URL base de la API
+  private apiUrl = 'https://unieventos-proyecto-final-backend-49t8.onrender.com/api/administrador'; // URL base de la API
 
   constructor(private http: HttpClient) {}
 
@@ -30,7 +30,7 @@ export class GestionarEventosService {
   }
 
   uploadImage(imageData: FormData) {
-    return this.http.post<{ error: boolean, respuesta: string }>('http://localhost:8080/api/imagenes/upload-image', imageData);
+    return this.http.post<{ error: boolean, respuesta: string }>('https://unieventos-proyecto-final-backend-49t8.onrender.com/api/imagenes/upload-image', imageData);
   }
 
   // Método para actualizar un evento

@@ -10,7 +10,7 @@ import { EventFilter } from '../interface/EventFilter';
   providedIn: 'root' // Esto lo hace disponible en toda la aplicación
 })
 export class EventService {
-  private apiUrl = 'http://localhost:8080/api/auth/evento';
+  private apiUrl = 'https://unieventos-proyecto-final-backend-49t8.onrender.com/api/auth/evento';
 
   constructor(private http: HttpClient) { }
 
@@ -31,7 +31,7 @@ export class EventService {
     if (filter.date) params = params.set('date', filter.date.toISOString()); // Asumimos que date es un Date
     if (filter.status) params = params.set('status', filter.status); // Aquí enviamos el enum como string
 
-    return this.http.get<ItemEventDTO[]>('http://localhost:8080/api/auth/evento/filter', { params });
+    return this.http.get<ItemEventDTO[]>('https://unieventos-proyecto-final-backend-49t8.onrender.com/api/auth/evento/filter', { params });
   }
 
 

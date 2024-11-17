@@ -7,20 +7,28 @@
         <p class="card-text event-city">{{ eventCity }}</p>
         <p class="card-text event-date">Fecha: {{ eventDate }}</p>
         <p class="card-text event-location">Lugar: {{ eventLocation }}</p>
-        <!--<p>{{ eventId }}</p>-->
       </section>
       <section class="button-container d-flex justify-content-around mt-auto">
-        <!-- Botón para abrir el modal -->
-        <button (click)="openCartModal()">Abrir Modal</button>
-        
-        <app-cart-modal [isVisible]="modalVisible" (close)="closeCartModal()"></app-cart-modal>
-        <!-- Modificar el botón Comprar -->
-        <button class="btn btn-light buy-btn" [routerLink]="['/crear-orden']" [queryParams]="{ idEvent: eventId }">
-          <i class="fas fa-plus-circle"></i> Comprar
+        <!-- Botón para abrir el modal con apariencia de carrito -->
+        <button class="btn btn-light" (click)="openCartModal(eventId)">
+          <i class="fa-solid fa-cart-shopping"></i> <!-- Ícono del carrito -->
         </button>
 
+        <!-- Modal -->
+        <app-cart-modal
+          [isVisible]="modalVisible"
+          [eventId]="selectedEventId"
+          (close)="closeCartModal()">
+        </app-cart-modal>
+
+        <!-- Botón Comprar -->
+        <button
+          class="btn btn-light buy-btn"
+          [routerLink]="['/crear-orden']"
+          [queryParams]="{ idEvent: eventId }">
+          <i class="fas fa-plus-circle"></i> Comprar
+        </button>
       </section>
     </div>
   </div>
-  <!-- Repite las cartas de evento aquí -->
 </div>
