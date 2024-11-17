@@ -50,13 +50,9 @@ export interface DetalleOrden{
 
 
 export interface OrdenDTO{
-
   idAccount: string;
   date: string;
-  gatewayCode: string;
   items: DetalleOrden[];
-  payment: Payment;
-  total: number;
   codeCoupon: string;
 
 }

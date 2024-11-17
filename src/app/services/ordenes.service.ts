@@ -10,7 +10,7 @@ import {localities} from '../interface/event.dto'
   providedIn: 'root' // Esto lo hace disponible en toda la aplicación
 })
 export class OrderService{
-  private apiUrl = 'http://localhost:8080/api/orden';
+  private apiUrl = 'https://unieventos-proyecto-final-backend-49t8.onrender.com/api/orden';
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +20,5 @@ export class OrderService{
       const url = `${this.apiUrl}/crear-orden`;
       return this.http.post(url,orderData,{headers});
     }
-
 
 }

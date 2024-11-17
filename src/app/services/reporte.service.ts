@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class Reporteservice {
-  private apiUrl = 'http://localhost:8080/api/administrador';
+  private apiUrl = 'https://unieventos-proyecto-final-backend-49t8.onrender.com/api/administrador';
 
   constructor(private http: HttpClient) {}
 
