@@ -3,6 +3,9 @@ import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router'
 import { CartModalComponent } from "../cart-modal/cart-modal.component";
 import { AuthService } from '../../services/auth.service';
+import { TokenService } from '../../services/token.service';
+import { cartDetailDTO, Localities } from '../../interface/cartDetailDTO';
+
 
 @Component({
   selector: 'app-card',
@@ -20,7 +23,7 @@ export class CardComponent {
   @Input() eventId: string = ''; // ID del evento
   modalVisible: boolean = false; // Controla la visibilidad del modal
   selectedEventId: string | null = null; // ID del evento actualmente seleccionado
-  selectedLocality: string = 'VIP'; // Valor predeterminado para localidad (puede ser General o VIP)
+  selectedLocality: Localities = Localities.VIP; // Valor predeterminado para localidad
   quantity: number = 1; // Cantidad de boletos predeterminada
 
   constructor(private authService: AuthService) {}
@@ -39,26 +42,21 @@ export class CardComponent {
 
   // Método para enviar el formulario y agregar el ítem al carrito
   onSubmit() {
-    const accountId = 'userAccountId'; // Aquí puedes obtener el ID de la cuenta desde el servicio de autenticación
-    const cartDetailDTO = {
-      eventId: this.selectedEventId,
-      localityName: this.selectedLocality,
-      quantity: this.quantity
+    const accountId = TokenService.getIDCuenta; // Obtén el ID de la cuenta del usuario autenticado
+    const cartDetailDTO: cartDetailDTO = {
+        eventId: this.selectedEventId!,
+        localites: this.selectedLocality, // Nota: Asegúrate de que coincida con el nombre del campo en la interfaz
+        quantity: this.quantity
     };
 
-
-    ///Aquiiiiiiiiiiiiii se llama el servicio 
-    /** 
-    // Llamar al servicio para agregar el ítem al carrito
     this.authService.addItemToCart(accountId, cartDetailDTO).subscribe(
-      (response) => {
-        console.log('Ítem agregado al carrito:', response);
-        this.closeCartModal(); // Cerrar el modal después de agregar al carrito
-      },
-      (error) => {
-        console.error('Error al agregar al carrito:', error);
-      }
+        (response) => {
+            console.log('Ítem agregado al carrito:', response);
+            this.closeCartModal(); // Cierra el modal después de agregar al carrito
+        },
+        (error) => {
+            console.error('Error al agregar al carrito:', error);
+        }
     );
-    /** */
   }
 }
