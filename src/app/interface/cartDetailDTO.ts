@@ -1,8 +1,12 @@
 
-import { Locality} from './event.dto'; 
-export interface cartDetailDTO{
-    eventId: String,
-    localite : Locality,
-    quantity : number
+export enum Localities {
+    VIP = "VIP",
+    GENERAL = "GENERAL"
+  }
 
+
+export interface cartDetailDTO {
+    eventId: String,
+    localites: Localities, // Cambiar a "localite" si es lo esperado
+    quantity: number
 }

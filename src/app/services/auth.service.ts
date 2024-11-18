@@ -11,6 +11,7 @@ import { updatePasswordDTO } from '../interface/updatePasswordDTO';
 import { RecoverPasswordDTO } from '../interface/RecoverPasswordDTO';
 import { PasswordDTO } from '../interface/PasswordDTO';
 import { ActiveAccountDTO } from '../interface/ActiveAccountDTO';
+import { cartDetailDTO } from '../interface/cartDetailDTO';
 
 interface LoginResponse {
   error: boolean;
@@ -23,7 +24,7 @@ interface LoginResponse {
 export class AuthService {
   private apiUrl = 'https://unieventos-proyecto-final-backend-49t8.onrender.com/api/auth';
 
-  constructor(private http: HttpClient, private tokenService: TokenService) {}
+  constructor(private http: HttpClient, private tokenService: TokenService) { }
 
   getUserData(): Observable<MessageDTO<dtoAccountInformation>> {
     const userId = this.tokenService.getIDCuenta(); // Obtén el ID del token
@@ -105,6 +106,11 @@ export class AuthService {
       .pipe(
         catchError(this.handleError) // Captura y maneja errores
       );
+  }
+
+  addItemToCart(userId: string, cartDetailDTO: cartDetailDTO): Observable<any> {
+    return this.http.post<MessageDTO<string>>(`http://localhost:8080/api/cliente/carrito/agregar-item/${userId}`,cartDetailDTO);
+    
   }
 
 
